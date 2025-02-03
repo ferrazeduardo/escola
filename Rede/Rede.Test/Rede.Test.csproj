@@ -21,10 +21,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="UnitTest\" />
+      <Folder Include="UnitTest\Application\" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Rede.Application\Rede.Application.csproj" />
       <ProjectReference Include="..\Rede.Domain\Rede.Domain.csproj" />
     </ItemGroup>
 
