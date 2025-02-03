@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="UseCases\RedeUseCase\" />
       <Folder Include="UseCases\UnidadeUseCase\" />
     </ItemGroup>
 
