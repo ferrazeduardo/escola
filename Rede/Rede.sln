@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Domain", "Rede.Domain\Rede.Domain.csproj", "{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Test", "Rede.Test\Rede.Test.csproj", "{E6AD176B-7B4A-4442-9C9C-989645127F93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
