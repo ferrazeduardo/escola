@@ -16,16 +16,21 @@ public class ValidadorDeRegra
         return new ValidadorDeRegra();
     }
 
-    public void Quando(bool temErro, string mensagem)
+    public  ValidadorDeRegra Quando(bool temErro, string mensagem)
     {
         if (temErro)
             _mensagens.Add(mensagem);
+
+        return this;
     }
 
 
-    public void DispararExcecaoSeExistir()
+    public  ValidadorDeRegra DispararExcecaoSeExistir()
     {
         if(_mensagens.Any())
             throw new ExcecaoDeDominio(_mensagens);
+
+
+        return this;
     }
 }
