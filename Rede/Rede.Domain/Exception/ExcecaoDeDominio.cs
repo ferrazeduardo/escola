@@ -1,8 +1,8 @@
 namespace Rede.Domain.Exception;
 
-public class EntityValidationException : System.Exception
+public class ExcecaoDeDominio : System.Exception
 {
-    public EntityValidationException(
+    public ExcecaoDeDominio(
         string? message
     ) : base(message)
     {
