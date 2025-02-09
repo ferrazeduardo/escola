@@ -31,8 +31,6 @@ public class Rede : SeedWork.Entity
     public void Update(string dsRede)
     {
         DS_REDE = dsRede;
-        
-        
     }
     public string DS_REDE { get; set; }
     public string NR_CNPJ { get; set; }
