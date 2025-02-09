@@ -1,27 +1,64 @@
+using Rede.Domain.Validation;
+
 namespace Rede.Domain.Entity;
 
 public class Rede : SeedWork.Entity
 {
-    public Rede(string dsRede, string nrCnpj,int codigoUsuario)
+    public Rede(string razaoSocial, string nrCnpj,int codigoUsuario, List<DiaVencimento> diasVencimento)
     {
-        DS_REDE = dsRede;
+        RZ_SOCIAL = razaoSocial;
         NR_CNPJ = nrCnpj;
         DH_REGISTRO = DateTime.Now;
         US_REGISTRO = codigoUsuario;
         _unidades = new List<Unidade>();
+        SetDiaVencimento(diasVencimento);
         Ativar();
 
-        ValidacaoAdd();
+        ValidacaoInserir();
     }
 
     public Rede()
     {
         _unidades = new List<Unidade>();
     }
-    private void ValidacaoAdd()
+    private void ValidacaoInserir()
     {
-        throw new NotImplementedException();
+        var valorMaximoRazaoSocial = ValidacaoDominio.MaxLength(RZ_SOCIAL, 20, "razaoSocial");
+        var valorMinimoRazaoSocial = ValidacaoDominio.MinLength(RZ_SOCIAL,5, "razaoSocial");
+        var valorNuloRazaoSocial = ValidacaoDominio.EhNull(RZ_SOCIAL, "razaoSocial");
+        var campoVazioRazaoSocial = ValidacaoDominio.CampoVazio(RZ_SOCIAL, "razaoSocial");
+
+        var cnpjApenasDigitos = ApenasDigitosCnpj();
+        var valorMaximoCnpj = ValidacaoDominio.MaxLength(cnpjApenasDigitos,14, "cnpj");
+        var valorMinimoCnpj = ValidacaoDominio.MinLength(cnpjApenasDigitos,1, "cnpj");
+        var valorNuloCnpj = ValidacaoDominio.EhNull(cnpjApenasDigitos, "cnpj");
+        var campoVazioCnpj = ValidacaoDominio.CampoVazio(cnpjApenasDigitos, "cnpj");
+        
+        ValidadorDeRegra.Novo()
+            .Quando(valorMaximoRazaoSocial.response,valorMaximoRazaoSocial.mensagem)
+            .Quando(valorMinimoRazaoSocial.response, valorMinimoRazaoSocial.mensagem)
+            .Quando(valorNuloRazaoSocial.response, valorNuloRazaoSocial.mensagem)
+            .Quando(campoVazioRazaoSocial.response,campoVazioRazaoSocial.mensagem)
+            .Quando(valorMaximoCnpj.response,valorMaximoCnpj.mensagem)
+            .Quando(valorMinimoCnpj.response,valorMinimoCnpj.mensagem)
+            .Quando(campoVazioCnpj.response,campoVazioCnpj.mensagem)
+            .Quando(valorNuloCnpj.response,valorNuloCnpj.mensagem)
+            .Quando(QuantidadeDiasVencimentos() == 0,"Falta escolher um dia de vencimento")
+            .Quando(NaoPodeExistirDiaNegativo(), "Os dias de vencimento devem ser positivos")
+            .DispararExcecaoSeExistir();
     }
+
+    private bool NaoPodeExistirDiaNegativo()
+    {
+        return DiasVencimentos.FirstOrDefault(diaVencimento => diaVencimento.Dia <= 0) is not null;
+    }
+
+
+    private string ApenasDigitosCnpj()
+    {
+        return new string(NR_CNPJ.Where(char.IsDigit).ToArray());
+    }
+
 
     private void ValidacaoUpdate()
     {
@@ -30,20 +67,27 @@ public class Rede : SeedWork.Entity
 
     public void Update(string dsRede)
     {
-        DS_REDE = dsRede;
+        RZ_SOCIAL = dsRede;
+        ValidacaoUpdate();
     }
-    public string DS_REDE { get; set; }
+    public string RZ_SOCIAL { get; set; }
     public string NR_CNPJ { get; set; }
     public DateTime DH_REGISTRO { get; set; }
     public int US_REGISTRO { get; set; }
     public string ST_REDE { get; set; }
 
-    public List<Unidade> Unidades { get; set; }
+    public List<DiaVencimento> DiasVencimento { get; set; }
     
     public IReadOnlyList<Unidade> Categories 
         => _unidades.AsReadOnly();
 
     private List<Unidade> _unidades;
+
+
+    public IReadOnlyList<DiaVencimento> DiasVencimentos
+        => _diasVencimento.AsReadOnly();
+    
+    private List<DiaVencimento> _diasVencimento;
 
     public void Ativar()
     {
@@ -54,6 +98,26 @@ public class Rede : SeedWork.Entity
     {
         ST_REDE = "N";
     }
+    
+    public void AddDiaVencimento(DiaVencimento diaVencimento)
+    {
+        _diasVencimento.Add(diaVencimento);
+    }
+    
+    public void SetDiaVencimento(List<DiaVencimento> diasVencimento) => _diasVencimento = diasVencimento;
+
+    public void RemoveVencimento(DiaVencimento diaVencimento)
+    {
+        _diasVencimento.Remove(diaVencimento);
+    }
+
+    public void RemoveAllDiasVencimentos()
+    {
+        _diasVencimento.Clear();
+    }
+    
+    public int QuantidadeDiasVencimentos() => _diasVencimento.Count;
+
     
     public void AddUnidade(Unidade unidade)
     {

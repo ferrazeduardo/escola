@@ -24,4 +24,11 @@ public class RedeTest
         
         Assert.Equal("N",rede.ST_REDE);
     }
+
+    [Fact(DisplayName = nameof(DispararExcecaoDeDominioQuandoValorMaximoRazaoSocialForMaiorQue14))]
+    [Trait("Domain", "Rede")]
+    public void DispararExcecaoDeDominioQuandoValorMaximoRazaoSocialForMaiorQue14()
+    {
+        var rede = new domain.Rede();
+    }
 }
