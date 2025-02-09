@@ -1,5 +1,5 @@
 using domain = Rede.Domain.Entity;
-namespace Rede.Test.Entity;
+namespace Rede.Test.Domain.Entity;
 
 public class UnidadeTest
 {
