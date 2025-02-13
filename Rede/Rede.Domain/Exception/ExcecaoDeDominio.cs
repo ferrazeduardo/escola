@@ -4,11 +4,9 @@ namespace Rede.Domain.Exception
     {
         public IEnumerable<string> Mensagens { get; }
 
-        public ExcecaoDeDominio(
-            IEnumerable<string> mensagens
-        ) : base(string.Join(" \n - ", mensagens))
+        public ExcecaoDeDominio(string mensagem) : base(mensagem)
         {
-            Mensagens = mensagens;
+            
         }
     }
 }

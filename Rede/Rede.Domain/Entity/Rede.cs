@@ -23,29 +23,19 @@ public class Rede : SeedWork.Entity
     }
     private void ValidacaoInserir()
     {
-        var valorMaximoRazaoSocial = ValidacaoDominio.MaxLength(RZ_SOCIAL, 20, "razaoSocial");
-        var valorMinimoRazaoSocial = ValidacaoDominio.MinLength(RZ_SOCIAL,5, "razaoSocial");
-        var valorNuloRazaoSocial = ValidacaoDominio.EhNull(RZ_SOCIAL, "razaoSocial");
-        var campoVazioRazaoSocial = ValidacaoDominio.CampoVazio(RZ_SOCIAL, "razaoSocial");
+        ValidacaoDominio.MaxLength(RZ_SOCIAL, 20, "razaoSocial");
+        ValidacaoDominio.MinLength(RZ_SOCIAL,5, "razaoSocial");
+        ValidacaoDominio.EhNull(RZ_SOCIAL, "razaoSocial");
+        ValidacaoDominio.CampoVazio(RZ_SOCIAL, "razaoSocial");
 
         var cnpjApenasDigitos = ApenasDigitosCnpj();
-        var valorMaximoCnpj = ValidacaoDominio.MaxLength(cnpjApenasDigitos,14, "cnpj");
-        var valorMinimoCnpj = ValidacaoDominio.MinLength(cnpjApenasDigitos,1, "cnpj");
-        var valorNuloCnpj = ValidacaoDominio.EhNull(cnpjApenasDigitos, "cnpj");
-        var campoVazioCnpj = ValidacaoDominio.CampoVazio(cnpjApenasDigitos, "cnpj");
-        
-        ValidadorDeRegra.Novo()
-            .Quando(valorMaximoRazaoSocial.response,valorMaximoRazaoSocial.mensagem)
-            .Quando(valorMinimoRazaoSocial.response, valorMinimoRazaoSocial.mensagem)
-            .Quando(valorNuloRazaoSocial.response, valorNuloRazaoSocial.mensagem)
-            .Quando(campoVazioRazaoSocial.response,campoVazioRazaoSocial.mensagem)
-            .Quando(valorMaximoCnpj.response,valorMaximoCnpj.mensagem)
-            .Quando(valorMinimoCnpj.response,valorMinimoCnpj.mensagem)
-            .Quando(campoVazioCnpj.response,campoVazioCnpj.mensagem)
-            .Quando(valorNuloCnpj.response,valorNuloCnpj.mensagem)
-            .Quando(QuantidadeDiasVencimentos() == 0,"Falta escolher um dia de vencimento")
-            .Quando(NaoPodeExistirDiaNegativo(), "Os dias de vencimento devem ser positivos")
-            .DispararExcecaoSeExistir();
+        ValidacaoDominio.MaxLength(cnpjApenasDigitos,14, "cnpj");
+        ValidacaoDominio.MinLength(cnpjApenasDigitos,1, "cnpj");
+        ValidacaoDominio.EhNull(cnpjApenasDigitos, "cnpj");
+        ValidacaoDominio.CampoVazio(cnpjApenasDigitos, "cnpj");
+
+        ValidacaoDominio.Quando(QuantidadeDiasVencimentos() == 0, "Falta escolher um dia de vencimento");
+        ValidacaoDominio.Quando(NaoPodeExistirDiaNegativo(), "Os dias de vencimento devem ser positivos");
     }
 
     private bool NaoPodeExistirDiaNegativo()
