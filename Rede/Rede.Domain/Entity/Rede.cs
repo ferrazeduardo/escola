@@ -11,6 +11,7 @@ public class Rede : SeedWork.Entity
         DH_REGISTRO = DateTime.Now;
         US_REGISTRO = codigoUsuario;
         _unidades = new List<Unidade>();
+        _diasVencimento = new List<DiaVencimento>();
         SetDiaVencimento(diasVencimento);
         Ativar();
 
