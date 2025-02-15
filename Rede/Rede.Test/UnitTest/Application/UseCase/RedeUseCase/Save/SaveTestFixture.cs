@@ -1,11 +1,11 @@
 using Moq;
-using Rede.Application.UseCases.RedeUseCase.Inserir;
+using Rede.Application.UseCases.RedeUseCase.Save;
 using Rede.Domain.Entity;
 using Rede.Domain.Interfaces.Repository;
 
 namespace Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Inserir;
 
-public class InserirTestFixture
+public class SaveTestFixture
 {
     private List<DiaVencimento> ObterDiasVencimento()
     {
@@ -21,23 +21,23 @@ public class InserirTestFixture
     public Rede.Domain.Entity.Rede ObterRede() =>
         new Rede.Domain.Entity.Rede(razaoSocial:  "teste razao social",nrCnpj:"84949144000189",codigoUsuario:1,diasVencimento: ObterDiasVencimento());
 
-    public InserirRedeCommand ObterInserirRedeCommand()
+    public SaveRedeCommand ObterInserirRedeCommand()
     {
-        var inserir = new InserirRedeCommand();
-        inserir.razaoSocial = "teste razao social";
-        inserir.cnpj = "84949144000189";
-        inserir.codigoUsuario = 1;
-        inserir.diasVencimentoRede = new();
-        inserir.diasVencimentoRede.Add(10);
-        inserir.diasVencimentoRede.Add(20);
-        return inserir;
+        var save = new SaveRedeCommand();
+        save.razaoSocial = "teste razao social";
+        save.cnpj = "84949144000189";
+        save.codigoUsuario = 1;
+        save.diasVencimentoRede = new();
+        save.diasVencimentoRede.Add(10);
+        save.diasVencimentoRede.Add(20);
+        return save;
     }
     
     public Mock<IRedeRepository> redeRepositoryMock () => new Mock<IRedeRepository>();
 }
 
-[CollectionDefinition(nameof(InserirTestFixture))]
-public class InserirTestFixtureCollection : ICollectionFixture<InserirTestFixture>
+[CollectionDefinition(nameof(SaveTestFixture))]
+public class InserirTestFixtureCollection : ICollectionFixture<SaveTestFixture>
 {
     
 }

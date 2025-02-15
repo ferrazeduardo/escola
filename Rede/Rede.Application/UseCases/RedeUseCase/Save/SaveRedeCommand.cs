@@ -1,9 +1,9 @@
 using System.Text.Json.Serialization;
 using MediatR;
 
-namespace Rede.Application.UseCases.RedeUseCase.Inserir;
+namespace Rede.Application.UseCases.RedeUseCase.Save;
 
-public class InserirRedeCommand : IRequest<InserirRedeOutput>
+public class SaveRedeCommand : IRequest<SaveRedeOutput>
 {
         public string razaoSocial { get; set; }
         public string cnpj { get; set; }

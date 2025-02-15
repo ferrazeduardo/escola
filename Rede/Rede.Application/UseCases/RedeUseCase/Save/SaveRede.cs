@@ -2,18 +2,18 @@ using MediatR;
 using Rede.Domain.Entity;
 using Rede.Domain.Interfaces.Repository;
 
-namespace Rede.Application.UseCases.RedeUseCase.Inserir;
+namespace Rede.Application.UseCases.RedeUseCase.Save;
 
-public class InserirRede : IRequestHandler<InserirRedeCommand, InserirRedeOutput>
+public class SaveRede : IRequestHandler<SaveRedeCommand, SaveRedeOutput>
 {
     private readonly IRedeRepository _redeRepository;
 
-    public InserirRede(IRedeRepository redeRepository)
+    public SaveRede(IRedeRepository redeRepository)
     {
         _redeRepository = redeRepository;
     }
     
-    public async Task<InserirRedeOutput> Handle(InserirRedeCommand request, CancellationToken cancellationToken)
+    public async Task<SaveRedeOutput> Handle(SaveRedeCommand request, CancellationToken cancellationToken)
     {
         var diasVencimento = DiasVencimento(request);
         
@@ -21,13 +21,13 @@ public class InserirRede : IRequestHandler<InserirRedeCommand, InserirRedeOutput
         
         await _redeRepository.Inserir(rede);
 
-        InserirRedeOutput output = new();
+        SaveRedeOutput output = new();
         output.codigo = rede.Id;
         
         return output;
     }
 
-    private static List<DiaVencimento> DiasVencimento(InserirRedeCommand request)
+    private static List<DiaVencimento> DiasVencimento(SaveRedeCommand request)
     {
         var diasVencimento = request.diasVencimentoRede.Select(dia => new DiaVencimento()
         {

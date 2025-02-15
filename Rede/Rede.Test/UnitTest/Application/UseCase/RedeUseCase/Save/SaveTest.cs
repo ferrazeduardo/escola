@@ -1,16 +1,17 @@
 using Moq;
-using Rede.Application.UseCases.RedeUseCase.Inserir;
+using Rede.Application.UseCases.RedeUseCase.Save;
 using Rede.Domain.Interfaces.Repository;
+using Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Inserir;
 
-namespace Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Inserir;
+namespace Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Save;
 
-[Collection(nameof(InserirTestFixture))]
-public class InserirTest
+[Collection(nameof(SaveTestFixture))]
+public class SaveTest
 {
-    private readonly InserirTestFixture _fixture;
+    private readonly SaveTestFixture _fixture;
     private readonly Mock<IRedeRepository> _redeRepositoryMock;
 
-    public InserirTest(InserirTestFixture fixture)
+    public SaveTest(SaveTestFixture fixture)
     {
         _fixture = fixture;
         _redeRepositoryMock = _fixture.redeRepositoryMock();
@@ -24,7 +25,7 @@ public class InserirTest
         var inserir = _fixture.ObterInserirRedeCommand();
         _redeRepositoryMock.Setup(m => m.Inserir(rede)).Returns(Task.CompletedTask);
 
-        var response = new InserirRede(_redeRepositoryMock.Object);
+        var response = new SaveRede(_redeRepositoryMock.Object);
         var output = await response.Handle(inserir,CancellationToken.None);
         // Assert
         Assert.NotNull(output);
