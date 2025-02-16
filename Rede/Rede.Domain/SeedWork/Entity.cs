@@ -1,8 +1,12 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace Rede.Domain.SeedWork;
 
 public abstract class Entity
 {
-    public Guid Id { get; protected set; }
+    
+    [BsonGuidRepresentation(GuidRepresentation.Standard)] public Guid Id { get; protected set; }
     
     protected Entity() =>
         Id = Guid.NewGuid();

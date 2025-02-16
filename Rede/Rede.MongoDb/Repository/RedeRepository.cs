@@ -1,3 +1,4 @@
+using MongoDB.Driver;
 using Rede.Domain.Interfaces.Repository;
 using Rede.MongoDb.Model;
 
@@ -22,9 +23,10 @@ public class RedeRepository : IRedeRepository
         throw new NotImplementedException();
     }
 
-    public Task<Domain.Entity.Rede> ObterPorId(Guid id)
+    public async Task<Domain.Entity.Rede> ObterPorId(Guid id)
     {
-        throw new NotImplementedException();
+        var filter = Builders<Domain.Entity.Rede>.Filter.Eq(r => r.Id, id);
+        return await _mongoDbContext.RedeContext.Find(filter).FirstOrDefaultAsync();
     }
 
     public Task<List<Domain.Entity.Rede>> ObterTodos()

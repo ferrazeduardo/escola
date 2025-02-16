@@ -1,7 +1,9 @@
+using Rede.Api;
 using  Rede.Application.DependencyInjection;
 using  Rede.MongoDb.DependencyInjection;
 using Rede.Api.DependencyInjection;
 using Rede.Api.Redes;
+using Query = Rede.Api.Redes.Query;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,11 +14,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddApi(builder.Configuration)
+    .ResolverDependencyInjectionCors()
     .AddApplication()
     .AddMongo()    
     .AddGraphQLServer()
-    .AddQueryType<RedesQuery>()
-    .AddMutationType<RedesMutation>();
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>();
 
 
 var app = builder.Build();
@@ -28,8 +31,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(options =>
+    options.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+    
 app.UseHttpsRedirection();
-
+app.MapGraphQL();
 app.Run();
 

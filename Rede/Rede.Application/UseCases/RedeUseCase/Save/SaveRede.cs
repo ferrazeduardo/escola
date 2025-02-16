@@ -4,7 +4,7 @@ using Rede.Domain.Interfaces.Repository;
 
 namespace Rede.Application.UseCases.RedeUseCase.Save;
 
-public class SaveRede : IRequestHandler<SaveRedeCommand, SaveRedeOutput>
+public class SaveRede : IRequestHandler<SaveRedeInput, SaveRedePayload>
 {
     private readonly IRedeRepository _redeRepository;
 
@@ -13,7 +13,7 @@ public class SaveRede : IRequestHandler<SaveRedeCommand, SaveRedeOutput>
         _redeRepository = redeRepository;
     }
     
-    public async Task<SaveRedeOutput> Handle(SaveRedeCommand request, CancellationToken cancellationToken)
+    public async Task<SaveRedePayload> Handle(SaveRedeInput request, CancellationToken cancellationToken)
     {
         var diasVencimento = DiasVencimento(request);
         
@@ -21,13 +21,13 @@ public class SaveRede : IRequestHandler<SaveRedeCommand, SaveRedeOutput>
         
         await _redeRepository.Inserir(rede);
 
-        SaveRedeOutput output = new();
-        output.codigo = rede.Id;
+        SaveRedePayload payload = new();
+        payload.codigo = rede.Id;
         
-        return output;
+        return payload;
     }
 
-    private static List<DiaVencimento> DiasVencimento(SaveRedeCommand request)
+    private static List<DiaVencimento> DiasVencimento(SaveRedeInput request)
     {
         var diasVencimento = request.diasVencimentoRede.Select(dia => new DiaVencimento()
         {

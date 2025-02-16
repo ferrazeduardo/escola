@@ -21,9 +21,9 @@ public class SaveTestFixture
     public Rede.Domain.Entity.Rede ObterRede() =>
         new Rede.Domain.Entity.Rede(razaoSocial:  "teste razao social",nrCnpj:"84949144000189",codigoUsuario:1,diasVencimento: ObterDiasVencimento());
 
-    public SaveRedeCommand ObterInserirRedeCommand()
+    public SaveRedeInput ObterInserirRedeCommand()
     {
-        var save = new SaveRedeCommand();
+        var save = new SaveRedeInput();
         save.razaoSocial = "teste razao social";
         save.cnpj = "84949144000189";
         save.codigoUsuario = 1;
