@@ -17,6 +17,7 @@ public class ObterRede : IRequestHandler<ObterRedeInput, ObterRedePayload>
         Domain.Entity.Rede rede = await _redeRepository.ObterPorId(request.id);
 
         ObterRedePayload obterRedePayload = new();
+        obterRedePayload.Id = rede.Id;
         obterRedePayload.razaoSocial = rede.RZ_SOCIAL;
         obterRedePayload.cnpj = rede.NR_CNPJ;
         

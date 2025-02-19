@@ -21,6 +21,7 @@ public class Rede : SeedWork.Entity
     public Rede()
     {
         _unidades = new List<Unidade>();
+        _diasVencimento = new List<DiaVencimento>();
     }
     private void ValidacaoInserir()
     {

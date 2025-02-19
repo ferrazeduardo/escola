@@ -3,5 +3,6 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Domain.Entity.Validation.ValidacaoDominioTest&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Inserir.InserirTest.Inserir&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Obter.ObterTest.ObterDeveRetornarUmRede&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
