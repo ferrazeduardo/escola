@@ -2,6 +2,7 @@ using Rede.Api;
 using  Rede.Application.DependencyInjection;
 using  Rede.MongoDb.DependencyInjection;
 using Rede.Api.DependencyInjection;
+using Rede.Api.Filters;
 using Rede.Api.Redes;
 using Query = Rede.Api.Redes.Query;
 
@@ -19,7 +20,8 @@ builder.Services
     .AddMongo()    
     .AddGraphQLServer()
     .AddQueryType<Query>()
-    .AddMutationType<Mutation>();
+    .AddMutationType<Mutation>()
+    .AddErrorFilter<GraphqlErrorFilter>();
 
 
 var app = builder.Build();
