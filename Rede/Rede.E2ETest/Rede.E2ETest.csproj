@@ -10,4 +10,10 @@
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.13" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="xunit.runner.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
