@@ -8,12 +8,19 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.13" />
+      <PackageReference Include="StrawberryShake.Server" Version="13.5.1" />
     </ItemGroup>
 
     <ItemGroup>
       <None Update="xunit.runner.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <GraphQL Update="Graphql\Rede\SaveRede\SaveRede.graphql">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </GraphQL>
     </ItemGroup>
 
 </Project>

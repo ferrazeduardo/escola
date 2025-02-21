@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Rede.E2ETest.Base;
 //criação de um servidor web para testes E2E
@@ -14,7 +15,7 @@ public class CustomWebApplicationFactory<TStartup> : WebApplicationFactory<TStar
         builder.UseEnvironment(environmentName);
         builder.ConfigureServices(services =>
         {
-
+            services.AddRedeClient();
         });
         base.ConfigureWebHost(builder);
     }
