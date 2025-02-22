@@ -27,4 +27,10 @@
       <ProjectReference Include="..\Rede.Api\Rede.Api.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="xunit.core">
+        <HintPath>..\..\..\..\.nuget\packages\xunit.extensibility.core\2.5.3\lib\netstandard1.1\xunit.core.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

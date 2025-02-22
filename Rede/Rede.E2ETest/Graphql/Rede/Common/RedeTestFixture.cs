@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Rede.E2ETest.Base;
+using Xunit;
 
 namespace Rede.E2ETest.Graphql.Rede.Common;
 
@@ -26,3 +27,6 @@ public class RedeTestFixture
 
 
 }
+
+[CollectionDefinition(nameof(RedeTestFixture))]
+public class RedeTestFixtureCollection : ICollectionFixture<RedeTestFixture>{}
