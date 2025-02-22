@@ -23,4 +23,8 @@
       </GraphQL>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Rede.Api\Rede.Api.csproj" />
+    </ItemGroup>
+
 </Project>
