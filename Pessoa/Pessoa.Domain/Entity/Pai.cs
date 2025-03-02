@@ -1,6 +1,6 @@
 namespace Pessoa.Domain.Entity;
 
-public class Pai
+public class Pai : SeedWorks.Pessoa
 {
     
 }

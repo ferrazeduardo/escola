@@ -68,9 +68,7 @@ public class Rede : SeedWork.Entity
     public int US_REGISTRO { get; set; }
     public string ST_REDE { get; set; }
 
-    public List<DiaVencimento> DiasVencimento { get; set; }
-    
-    public IReadOnlyList<Unidade> Categories 
+    public IReadOnlyList<Unidade> Unidades 
         => _unidades.AsReadOnly();
 
     private List<Unidade> _unidades;

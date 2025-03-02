@@ -1,6 +1,6 @@
 namespace Pessoa.Domain.Entity;
 
-public class Mae
+public class Mae : SeedWorks.Pessoa
 {
     
 }
