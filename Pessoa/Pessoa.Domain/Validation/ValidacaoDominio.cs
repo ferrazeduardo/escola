@@ -1,6 +1,6 @@
 using Pessoa.Domain.Exception;
 
-namespace Pessoa.Domain.ValidacaoDominio;
+namespace Pessoa.Domain.Validation;
 
 public class ValidacaoDominio
 {
