@@ -10,8 +10,8 @@ public class Rede : SeedWork.Entity
         NR_CNPJ = nrCnpj;
         DH_REGISTRO = DateTime.Now;
         US_REGISTRO = codigoUsuario;
-        _unidades = new List<Unidade>();
-        _diasVencimento = new List<DiaVencimento>();
+        Unidades = new List<Unidade>();
+        DiaVencimentos = new List<DiaVencimento>();
         SetDiaVencimento(diasVencimento);
         Ativar();
 
@@ -42,7 +42,7 @@ public class Rede : SeedWork.Entity
 
     private bool NaoPodeExistirDiaNegativo()
     {
-        return DiasVencimentos.FirstOrDefault(diaVencimento => diaVencimento.Dia <= 0) is not null;
+        return DiaVencimentos.FirstOrDefault(diaVencimento => diaVencimento.Dia <= 0) is not null;
     }
 
 
@@ -67,15 +67,16 @@ public class Rede : SeedWork.Entity
     public DateTime DH_REGISTRO { get; set; }
     public int US_REGISTRO { get; set; }
     public string ST_REDE { get; set; }
-
-    public IReadOnlyList<Unidade> Unidades 
-        => _unidades.AsReadOnly();
+    public List<Unidade> Unidades { get; set; }
+    public List<DiaVencimento> DiaVencimentos { get; set; }
+    // public IReadOnlyList<Unidade> Unidades 
+    //     => _unidades.AsReadOnly();
 
     private List<Unidade> _unidades;
 
 
-    public IReadOnlyList<DiaVencimento> DiasVencimentos
-        => _diasVencimento.AsReadOnly();
+    // public IReadOnlyList<DiaVencimento> DiasVencimentos
+    //     => _diasVencimento.AsReadOnly();
     
     private List<DiaVencimento> _diasVencimento;
 
@@ -94,7 +95,7 @@ public class Rede : SeedWork.Entity
         _diasVencimento.Add(diaVencimento);
     }
     
-    public void SetDiaVencimento(List<DiaVencimento> diasVencimento) => _diasVencimento = diasVencimento;
+    public void SetDiaVencimento(List<DiaVencimento> diasVencimento) => DiaVencimentos = diasVencimento;
 
     public void RemoveVencimento(DiaVencimento diaVencimento)
     {
@@ -106,7 +107,7 @@ public class Rede : SeedWork.Entity
         _diasVencimento.Clear();
     }
     
-    public int QuantidadeDiasVencimentos() => _diasVencimento.Count;
+    public int QuantidadeDiasVencimentos() => DiaVencimentos.Count;
 
     
     public void AddUnidade(Unidade unidade)

@@ -49,5 +49,11 @@ public class RedeRepository : IRedeRepository
         await _mongoDbContext.RedeContext.UpdateOneAsync(filter, update);
     }
 
+    public async Task AddDiaVencimento(Guid redeId, DiaVencimento diaVencimento)
+    {
+        var filter = Builders<Domain.Entity.Rede>.Filter.Eq(r => r.Id, redeId);
+        var update = Builders<Domain.Entity.Rede>.Update.Push("DiaVencimentos", diaVencimento);
+        await _mongoDbContext.RedeContext.UpdateOneAsync(filter, update);
+    }
 }
 

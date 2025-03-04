@@ -28,9 +28,9 @@ public class ObterTest
         var response = new ObterRede(_redeRepositoryMock.Object);
         var output = await response.Handle(input, CancellationToken.None);
 
-        Assert.Equal(output.Id, input.id);
-        Assert.Equal("teste razao social", output.razaoSocial);
-        Assert.Equal("84949144000189", output.cnpj);
+        Assert.Equal(output.rede.id, input.id);
+        Assert.Equal("teste razao social", output.rede.razaoSocial);
+        Assert.Equal("84949144000189", output.rede.cnpj);
 
     }
 }

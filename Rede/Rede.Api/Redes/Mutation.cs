@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Rede.Application.UseCases.DiaVencimentoUseCase.AddDiaVencimento;
 using Rede.Application.UseCases.RedeUseCase.Save;
 using Rede.Application.UseCases.UnidadeUseCase.AddUnidade;
 
@@ -15,6 +16,13 @@ public class Mutation
     }
 
     public async Task<AddUnidadePayload> AddUnidadeAsync([FromBody] AddUnidadeInput input,
+        [Service] IMediator _mediator, CancellationToken ctCancellationToken)
+    {
+        var response = await _mediator.Send(input, ctCancellationToken);
+        return response;
+    }
+
+    public async Task<AddDiaVEncimentoPayload> AddDiaVencimentoAsync([FromBody] AddDiaVencimentoInput input,
         [Service] IMediator _mediator, CancellationToken ctCancellationToken)
     {
         var response = await _mediator.Send(input, ctCancellationToken);
