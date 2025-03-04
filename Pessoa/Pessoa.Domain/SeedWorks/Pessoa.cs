@@ -70,4 +70,9 @@ public  abstract class Pessoa : Entity
         ValidacaoDominio.EhNull(NR_ENDERECO,"número de endereco");
         ValidacaoDominio.CampoVazio(NR_ENDERECO,"número de endereco");
     }
+
+    public void ValidacaoMaiorDeIdade()
+    {
+        ValidacaoDominio.Quando(Idade() < 18, "Idade tem que ser maior que 18 anos" );
+    }
 }
