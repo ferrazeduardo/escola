@@ -37,16 +37,22 @@ public class ValidacaoDominio
         if(condicao)
             throw new ExcecaoDeDominio(mensagem);
     }
+
+    public static void TodosNumerosIguais(string numero,string nomeCampo)
+    {
+        if (numero.Distinct().Count() == 1)
+            throw new ExcecaoDeDominio($"O campo {nomeCampo} possui números iguais");
+    }
     
     public static bool ValidarCPF(string cpf)
     {
         cpf = new string(cpf.Where(char.IsDigit).ToArray());
 
-        if (cpf.Length != 11)
-            return false;
-
-        if (cpf.Distinct().Count() == 1)
-            return false;
+         if (cpf.Length != 11)
+             throw new ExcecaoDeDominio("Número de digitos diferente de 11");
+        
+         if (cpf.Distinct().Count() == 1)
+             throw new ExcecaoDeDominio("Todos os números são iguais");
 
         int[] pesos = { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
         int primeiroDigito = CalcularDigito(cpf.Substring(0, 9), pesos);
@@ -54,7 +60,10 @@ public class ValidacaoDominio
         pesos = new int[] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
         int segundoDigito = CalcularDigito(cpf.Substring(0, 10), pesos);
 
-        return cpf[9] == primeiroDigito + '0' && cpf[10] == segundoDigito + '0';
+        if(cpf[9] == primeiroDigito + '0' && cpf[10] == segundoDigito + '0')
+            return true;
+        
+        throw new ExcecaoDeDominio("Cpf inválido");
     }
 
     private static int CalcularDigito(string cpfParcial, int[] pesos)
