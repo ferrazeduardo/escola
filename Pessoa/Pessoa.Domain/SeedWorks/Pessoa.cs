@@ -43,32 +43,35 @@ public  abstract class Pessoa : Entity
   
     public void Validacao()
     {
-        ValidacaoDominio.EhNull(NM_NOME,"nome");
-        ValidacaoDominio.CampoVazio(NM_NOME,"nome");
-        ValidacaoDominio.MaxLength(NM_NOME, 100,"nome");
-        ValidacaoDominio.MinLength(NM_NOME, 7,"nome");
+        ValidacaoDominio.EhNull(NM_NOME, "nome");    
+        ValidacaoDominio.CampoVazio(NM_NOME, "nome");    
+        ValidacaoDominio.MaxLength(NM_NOME, 200,"nome");    
+        ValidacaoDominio.MinLength(NM_NOME,10,"nome");
 
         ValidacaoDominio.ValidarCPF(NR_CPF);
         
         ValidacaoDominio.EhNull(NR_RG,"rg");
         ValidacaoDominio.CampoVazio(NR_RG,"rg");
-        ValidacaoDominio.MaxLength(NR_RG,60,"rg");
-        ValidacaoDominio.MinLength(NR_RG,0,"rg");
+        ValidacaoDominio.MinLength(NR_RG,7,"rg");
+        ValidacaoDominio.MaxLength(NR_RG,50,"rg");
+        ValidacaoDominio.TodosNumerosIguais(NR_RG,"rg");
         
-        ValidacaoDominio.Quando(DT_NASCIMENTO < new DateTime(1920,1,1), "data de nascimento tem que ser maior que 1/1/1920");
         
         ValidacaoDominio.EhNull(DS_ENDERECO,"endereço");
         ValidacaoDominio.CampoVazio(DS_ENDERECO,"endereço");
+        ValidacaoDominio.MinLength(DS_ENDERECO,10,"endereço");
         ValidacaoDominio.MaxLength(DS_ENDERECO,200,"endereço");
-        ValidacaoDominio.MinLength(DS_ENDERECO,0,"endereço");
         
-        ValidacaoDominio.MaxLength(UF,2,"UF");
-        ValidacaoDominio.MinLength(UF,0,"UF");
+        ValidacaoDominio.EhNull(NR_ENDERECO,"numero");
+        ValidacaoDominio.CampoVazio(NR_ENDERECO,"numero");
+        ValidacaoDominio.MaxLength(NR_ENDERECO,10,"numero");
         
-        ValidacaoDominio.Quando(_telefone.Count == 0, "esta faltando adicionar um telefone");
+        ValidacaoDominio.EhNull(UF,"uf");
+        ValidacaoDominio.CampoVazio(UF,"uf");
+        ValidacaoDominio.MaxLength(UF,2,"uf");
         
-        ValidacaoDominio.EhNull(NR_ENDERECO,"número de endereco");
-        ValidacaoDominio.CampoVazio(NR_ENDERECO,"número de endereco");
+        ValidacaoDominio.Quando(DT_NASCIMENTO < new DateTime(1900,1,1),"data de nascimento invalida");
+
     }
 
     public void ValidacaoMaiorDeIdade()

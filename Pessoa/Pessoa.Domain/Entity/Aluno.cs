@@ -1,3 +1,6 @@
+using Pessoa.Domain.Exception;
+using Pessoa.Domain.Validation;
+
 namespace Pessoa.Domain.Entity;
 
 public class Aluno : SeedWorks.Pessoa
@@ -48,4 +51,6 @@ public class Aluno : SeedWorks.Pessoa
     {
         return _rede;
     }
+    
+
 }

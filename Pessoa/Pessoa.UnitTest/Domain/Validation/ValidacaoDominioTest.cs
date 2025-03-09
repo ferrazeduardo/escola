@@ -70,7 +70,7 @@ public class ValidacaoDominioTest
     [Trait("Dominio", "validation - ValidacaoDominio")]
     public void ValidacaoDominioEmiteExcecaoDominio()
     {
-        string cpf = "1122222222";
+        string cpf = "11122222222";
         
         var resposta = Assert.Throws<ExcecaoDeDominio>(() => ValidacaoDominio.ValidarCPF(cpf));
         Assert.Equal("Cpf inválido",resposta.Message); 
