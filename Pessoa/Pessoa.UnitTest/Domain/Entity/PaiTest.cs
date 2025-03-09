@@ -3,11 +3,11 @@ using Pessoa.Domain.Exception;
 
 namespace Pessoa.UnitTest.Domain.Entity;
 
-public class MaeTest
+public class PaiTest
 {
 
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNomeForNull))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNomeForNull()
     {
         
@@ -18,8 +18,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo nome deveria ser nulo",response.Message);
         
@@ -27,7 +27,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNomeForCampoVazio))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNomeForCampoVazio()
     {
         
@@ -38,8 +38,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo nome tem que ser preenchido",response.Message);
         
@@ -48,7 +48,7 @@ public class MaeTest
     
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNomeForMaiorQueDuzendoCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNomeForMaiorQueDuzendoCaracteres()
     {
         
@@ -59,8 +59,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo nome tem que ter menos de 200 caracteres",response.Message);
         
@@ -68,7 +68,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNomeForMenorQueDezCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNomeForMenorQueDezCaracteres()
     {
         
@@ -79,8 +79,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo nome tem que ter ao menos 10 caracteres",response.Message);
         
@@ -88,7 +88,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoCpfForInvalido))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoCpfForInvalido()
     {
         
@@ -99,8 +99,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"Cpf inválido",response.Message);
         
@@ -108,7 +108,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoRgForNulo))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoRgForNulo()
     {
         
@@ -119,14 +119,14 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo rg deveria ser nulo",response.Message);
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoRgForVazio))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoRgForVazio()
     {
         
@@ -137,13 +137,13 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo rg tem que ser preenchido",response.Message);
     }
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoRgTiverMenosDeSeteCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoRgTiverMenosDeSeteCaracteres()
     {
         
@@ -154,14 +154,14 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo rg tem que ter ao menos 7 caracteres",response.Message);
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoRgTiverMaisDeCincoentaCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoRgTiverMaisDeCincoentaCaracteres()
     {
         
@@ -172,14 +172,14 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo rg tem que ter menos de 50 caracteres",response.Message);
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoRgTiverTodosNumerosIguais))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoRgTiverTodosNumerosIguais()
     {
         
@@ -190,14 +190,14 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo rg possui números iguais",response.Message);
     }
     
      [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoEnderecoForNull))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoEnderecoForNull()
     {
         
@@ -208,8 +208,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo endereço deveria ser nulo",response.Message);
         
@@ -217,7 +217,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoEnderecoForCampoVazio))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoEnderecoForCampoVazio()
     {
         
@@ -228,8 +228,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo endereço tem que ser preenchido",response.Message);
         
@@ -238,7 +238,7 @@ public class MaeTest
     
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoEnderecoForMaiorQueDuzendoCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoEnderecoForMaiorQueDuzendoCaracteres()
     {
         string nome = "João Silva";
@@ -248,8 +248,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo endereço tem que ter menos de 200 caracteres",response.Message);
         
@@ -257,7 +257,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoEnderecoForMenorQueDezCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoEnderecoForMenorQueDezCaracteres()
     {
         
@@ -268,8 +268,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo endereço tem que ter ao menos 10 caracteres",response.Message);
         
@@ -278,7 +278,7 @@ public class MaeTest
     
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNumeroEnderecoForNull))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNumeroEnderecoForNull()
     {
         
@@ -289,8 +289,8 @@ public class MaeTest
         string numeroEndereco = null;
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo numero deveria ser nulo",response.Message);
         
@@ -298,7 +298,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNumeroEnderecoForCampoVazio))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNumeroEnderecoForCampoVazio()
     {
         
@@ -309,8 +309,8 @@ public class MaeTest
         string numeroEndereco = "";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo numero tem que ser preenchido",response.Message);
         
@@ -320,7 +320,7 @@ public class MaeTest
     
   
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNumeroEnderecoForMaiorQueDezCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoNumeroEnderecoForMaiorQueDezCaracteres()
     {
         
@@ -331,8 +331,8 @@ public class MaeTest
         string numeroEndereco =  new string('A', 19);
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo numero tem que ter menos de 10 caracteres",response.Message);
         
@@ -341,7 +341,7 @@ public class MaeTest
     
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoUFForNull))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoUFForNull()
     {
         
@@ -352,8 +352,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = null;
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo uf deveria ser nulo",response.Message);
         
@@ -361,7 +361,7 @@ public class MaeTest
     }
     
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoNumeroEnderecoForCampoVazio))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoUFCampoVazio()
     {
         
@@ -372,8 +372,8 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo uf tem que ser preenchido",response.Message);
         
@@ -383,7 +383,7 @@ public class MaeTest
     
   
     [Fact(DisplayName = nameof(LancarExcecaoDominioQuandoUFForMaiorQueDoisCaracteres))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void LancarExcecaoDominioQuandoUFForMaiorQueDoisCaracteres()
     {
         
@@ -394,15 +394,15 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MGE";
         DateTime dataNascimento = new DateTime(2000, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"O campo uf tem que ter menos de 2 caracteres",response.Message);
         
     }
 
     [Fact(DisplayName = nameof(DataNascimentoForInvalida))]
-    [Trait("Dominio", "Entity - Mae")]
+    [Trait("Dominio", "Entity - Pai")]
     public void DataNascimentoForInvalida()
     {
         string nome = "João Silva";
@@ -412,15 +412,15 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(1800, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         
         Assert.Equal($"data de nascimento invalida",response.Message);
     }
     
-    [Fact(DisplayName = nameof(LancarExcecaoDeDominioQuandoMaeNaoForMaiorDeIdade))]
-    [Trait("Dominio", "Entity - Mae")]
-    public void LancarExcecaoDeDominioQuandoMaeNaoForMaiorDeIdade()
+    [Fact(DisplayName = nameof(LancarExcecaoDeDominioQuandoPaiNaoForMaiorDeIdade))]
+    [Trait("Dominio", "Entity - Pai")]
+    public void LancarExcecaoDeDominioQuandoPaiNaoForMaiorDeIdade()
     {
         string nome = "João Silva";
         string cpf = "15019192023";
@@ -429,8 +429,9 @@ public class MaeTest
         string numeroEndereco = "123";
         string uf = "MG";
         DateTime dataNascimento = new DateTime(2222, 1, 1);
-        // Criação do objeto Mae
-        var response = Assert.Throws<ExcecaoDeDominio>(() => new Mae(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
+        // Criação do objeto Pai
+        var response = Assert.Throws<ExcecaoDeDominio>(() => new Pai(nome, cpf, rg, endereco, numeroEndereco, uf, dataNascimento));
         Assert.Equal($"Idade tem que ser maior que 18 anos",response.Message);
     }
+
 }
