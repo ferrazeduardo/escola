@@ -15,9 +15,10 @@ public class Aluno : SeedWorks.Pessoa
         this.NR_ENDERECO = NR_ENDERECO;
         this.UF = UF;
         this.DT_NASCIMENTO = DT_NASCIMENTO;
-        
+        this.DH_REGISTRO = DateTime.Now;
         this.Validacao();
     }
+
     
     private Rede _rede;
     private Pai _pai;
