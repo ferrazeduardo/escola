@@ -1,3 +1,7 @@
+using Bogus.Extensions.Brazil;
+using Microsoft.EntityFrameworkCore;
+using Pessoa.Data.EF;
+using Pessoa.Domain.Entity;
 using Pessoa.IntegrationTest.Base;
 
 namespace Pessoa.IntegrationTest.Data.EF.Repository.PessoaRepositoy;
@@ -11,5 +15,23 @@ public class PessoaRepositoryFixtureCollection
 
 public class PessoaRepositoryFixture : BaseFixture
 {
-    
+    public Domain.SeedWorks.Pessoa GetExemploPessoa()
+    {
+        Pai pai = new Pai( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString(), UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
+        Mae mae = new Mae( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString(), UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
+        Aluno aluno = new Aluno( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString(), UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
+        aluno.AddTelefone(new Telefone(){NR_TELEFONE = Faker.Phone.PhoneNumber()});
+        aluno.SetMae(mae);
+        aluno.SetPai(pai);
+        return aluno;
+    }
+
+    public PessoaDbContext CreateDbContext()
+    {
+        return new PessoaDbContext(
+            new DbContextOptionsBuilder<PessoaDbContext>()
+            .UseInMemoryDatabase("integration-tests-db")
+            .Options
+            );
+    }
 }

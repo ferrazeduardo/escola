@@ -5,6 +5,7 @@ public abstract class Entity
     public Guid Id { get; set; }
     public Guid Id_PAI { get; set; }
     public Guid Id_MAE { get; set; }
+    public Guid Id_REDE { get; set; }
     
     protected Entity() =>
         Id = Guid.NewGuid();

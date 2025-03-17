@@ -1,12 +1,21 @@
+using Microsoft.EntityFrameworkCore;
 using Pessoa.Application.Interface.Repository;
 
 namespace Pessoa.Data.EF.Repository;
 
 public class PessoaRepository : IPessoaRepository
 {
-    public Task Inserir(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
+    private readonly PessoaDbContext _dbContext;
+    private  DbSet<Domain.SeedWorks.Pessoa> _pessoas => _dbContext.Set<Domain.SeedWorks.Pessoa>();
+
+    public PessoaRepository(PessoaDbContext dbContext)
     {
-        throw new NotImplementedException();
+        _dbContext  = dbContext;
+    }
+    
+    public async Task Inserir(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
+    {
+        await _dbContext.Set<Domain.SeedWorks.Pessoa>().AddAsync(entity, cancellationToken);
     }
 
     public Task Remove(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
