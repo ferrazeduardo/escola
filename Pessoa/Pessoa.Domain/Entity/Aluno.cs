@@ -48,6 +48,7 @@ public class Aluno : SeedWorks.Pessoa
     public void SetRede(Rede Rede)
     {
         _rede = Rede;
+        Id_REDE = Rede.Id;
     }
 
     public Rede GetRede()
