@@ -26,6 +26,7 @@ public class Aluno : SeedWorks.Pessoa
     public void SetPai(Pai pai)
     {
         _pai = pai;
+        Id_PAI = pai.Id;
     }
 
     public Pai GetPai()
@@ -36,6 +37,7 @@ public class Aluno : SeedWorks.Pessoa
     public void SetMae(Mae mae)
     {
         _mae = mae;
+        Id_MAE = mae.Id;
     }
 
     public Mae GetMae()
