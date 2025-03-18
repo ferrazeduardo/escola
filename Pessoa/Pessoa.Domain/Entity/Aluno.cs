@@ -18,43 +18,4 @@ public class Aluno : SeedWorks.Pessoa
         this.DH_REGISTRO = DateTime.Now;
         this.Validacao();
     }
-
-    
-    private Rede _rede;
-    private Pai _pai;
-    private Mae _mae;
-    public void SetPai(Pai pai)
-    {
-        _pai = pai;
-        Id_PAI = pai.Id;
-    }
-
-    public Pai GetPai()
-    {
-        return _pai;
-    }
-
-    public void SetMae(Mae mae)
-    {
-        _mae = mae;
-        Id_MAE = mae.Id;
-    }
-
-    public Mae GetMae()
-    {
-        return _mae;
-    }
-
-    public void SetRede(Rede Rede)
-    {
-        _rede = Rede;
-        Id_REDE = Rede.Id;
-    }
-
-    public Rede GetRede()
-    {
-        return _rede;
-    }
-    
-
 }

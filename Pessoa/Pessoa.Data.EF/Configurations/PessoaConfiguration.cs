@@ -8,6 +8,7 @@ public class PessoaConfiguration : IEntityTypeConfiguration<Domain.SeedWorks.Pes
     public void Configure(EntityTypeBuilder<Domain.SeedWorks.Pessoa> builder)
     {
         builder.HasKey(pessoa => pessoa.Id);
+        builder.Property(pessoa => pessoa.Id).ValueGeneratedOnAdd();
         builder.Property(pessoa => pessoa.NM_NOME)
             .HasMaxLength(201)
             .IsRequired();
@@ -33,11 +34,30 @@ public class PessoaConfiguration : IEntityTypeConfiguration<Domain.SeedWorks.Pes
             .IsRequired();
     
         builder.Property(pessoa => pessoa.DH_REGISTRO)
-            .IsRequired();
+            .IsRequired()
+            .ValueGeneratedOnAdd();
 
-        builder.Property(pessoa => pessoa.Id_MAE);
+        builder.HasOne(pessoa => pessoa.Mae)
+            .WithMany(pessoa => pessoa.FilhosComoMae)
+            .HasForeignKey(pessoa => pessoa.Id_MAE)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        builder.Property(pessoa => pessoa.Id_PAI);
-        builder.Property(pessoa => pessoa.Id_REDE);
+        builder.HasOne(pessoa => pessoa.Pai)
+            .WithMany(pessoa => pessoa.FilhosComoPai)
+            .HasForeignKey(pessoa => pessoa.Id_PAI)
+            .OnDelete(DeleteBehavior.Restrict); 
+        
+        builder.Property(pessoa => pessoa.Id_MAE).ValueGeneratedOnAdd();
+
+        builder.Property(pessoa => pessoa.Id_PAI).ValueGeneratedOnAdd();
+        
+        builder.HasOne(pessoa => pessoa.Rede)
+            .WithOne()
+            .HasForeignKey<Domain.SeedWorks.Pessoa>("ID_REDE");
+
+        builder.HasMany(pessoa => pessoa.Telefones)
+            .WithOne(telefone => telefone.Pessoa)
+            .HasForeignKey(telefone => telefone.ID_PESSOA)
+            .OnDelete(DeleteBehavior.Cascade); 
     }
 }

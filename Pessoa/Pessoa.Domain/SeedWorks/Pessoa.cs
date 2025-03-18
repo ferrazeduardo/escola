@@ -5,6 +5,8 @@ namespace Pessoa.Domain.SeedWorks;
 
 public  abstract class Pessoa : Entity
 {
+    public Guid? Id_PAI { get; set; }
+    public Guid? Id_MAE { get; set; }
     public string NR_CPF { get; set; }
     public string NR_RG { get; set; }
     public string NM_NOME { get; set; }
@@ -13,8 +15,14 @@ public  abstract class Pessoa : Entity
     public string UF { get; set; }
     public DateTime DT_NASCIMENTO { get; set; }
     public DateTime DH_REGISTRO { get; set; }
-    public IReadOnlyList<Telefone> Telefone => _telefone.AsReadOnly();
-    private List<Telefone> _telefone;
+    public ICollection<Telefone> Telefones { get; private set; } = new List<Telefone>();
+    public Pai Pai { get; private set; }
+    public Mae Mae{ get; private set; }
+    public Rede Rede { get; private set; }
+
+    // Coleção para auto-relacionamento reverso (filhos)
+    public ICollection<Pessoa> FilhosComoMae { get; set; } = new List<Pessoa>();
+    public ICollection<Pessoa> FilhosComoPai { get; set; } = new List<Pessoa>();
     public int Idade()
     {
         DateTime dataAtual = DateTime.Today;
@@ -32,12 +40,12 @@ public  abstract class Pessoa : Entity
 
     public void AddTelefone(Telefone telefone)
     {
-        _telefone.Add(telefone);
+        Telefones.Add(telefone);
     }
 
     public void RemoveTelefone(Telefone telefone)
     {
-        _telefone.Remove(telefone);
+        Telefones.Remove(telefone);
     }
 
   
@@ -78,4 +86,26 @@ public  abstract class Pessoa : Entity
     {
         ValidacaoDominio.Quando(Idade() < 18, "Idade tem que ser maior que 18 anos" );
     }
+    
+    public void SetRede(Rede rede)
+    {
+        Rede = rede;
+    }
+    
+    
+    
+    public void SetPai(Pai pai)
+    {
+        Pai = pai;
+        Id_PAI = pai.Id;
+    }
+
+
+    public void SetMae(Mae mae)
+    {
+        Mae = mae;
+        Id_MAE = mae.Id;
+    }
+
+  
 }

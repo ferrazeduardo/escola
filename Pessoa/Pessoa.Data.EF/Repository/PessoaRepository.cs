@@ -28,9 +28,14 @@ public class PessoaRepository : IPessoaRepository
         throw new NotImplementedException();
     }
 
-    public Task<List<Domain.SeedWorks.Pessoa>> ObterTodos()
+    public  async Task<List<Domain.SeedWorks.Pessoa>> ObterTodos()
     {
-        throw new NotImplementedException();
+        var pessoas = await _dbContext.Pessoas
+            .Include(p => p.Mae)
+            .Include(p => p.Pai)
+            .ToListAsync();
+
+        return pessoas;
     }
 
     public Task Editar(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
