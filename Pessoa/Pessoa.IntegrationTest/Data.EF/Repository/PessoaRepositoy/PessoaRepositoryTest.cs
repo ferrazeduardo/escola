@@ -1,5 +1,6 @@
 using Pessoa.Data.EF;
 using Pessoa.Data.EF.Repository;
+using Pessoa.Domain.Entity;
 
 namespace Pessoa.IntegrationTest.Data.EF.Repository.PessoaRepositoy;
 
@@ -20,6 +21,7 @@ public class PessoaRepositoryTest
         PessoaDbContext dbContext = _fixture.CreateDbContext();
         //exemplo pessoa
         Domain.SeedWorks.Pessoa pessoa = _fixture.GetExemploPessoa();
+        Telefone telefone = pessoa.Telefones.FirstOrDefault();
         //instaciar a classe repository
         var pessoaRepository = new PessoaRepository(dbContext);
 
@@ -29,6 +31,6 @@ public class PessoaRepositoryTest
         var dbPessoa = await dbContext.Pessoas.FindAsync(pessoa.Id);
         
         Assert.NotNull(dbPessoa);
-
+        Assert.Contains(pessoa.Telefones, t => t.NR_TELEFONE == telefone.NR_TELEFONE);
     }
 }

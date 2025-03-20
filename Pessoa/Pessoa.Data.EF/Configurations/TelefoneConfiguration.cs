@@ -8,7 +8,7 @@ public class TelefoneConfiguration : IEntityTypeConfiguration<Telefone>
 {
     public void Configure(EntityTypeBuilder<Telefone> builder)
     {
-        builder.HasNoKey();
+        builder.HasKey(telefone => telefone.Id);
 
         builder.Property(telefone => telefone.Id)
             .ValueGeneratedNever();

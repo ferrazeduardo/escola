@@ -17,10 +17,10 @@ public class PessoaRepositoryFixture : BaseFixture
 {
     public Domain.SeedWorks.Pessoa GetExemploPessoa()
     {
-        Pai pai = new Pai( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString(), UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
-        Mae mae = new Mae( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString(), UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
-        Aluno aluno = new Aluno( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString(), UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
-        aluno.AddTelefone(new Telefone(){NR_TELEFONE = Faker.Phone.PhoneNumber()});
+        Pai pai = new Pai( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString()[..3], UF: Faker.Address.State()[..1],DT_NASCIMENTO: new DateTime(1985,1,1));
+        Mae mae = new Mae( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString()[..3], UF: Faker.Address.State()[..1],DT_NASCIMENTO: new DateTime(1985,1,1));
+        Aluno aluno = new Aluno( NM_NOME: Faker.Name.FullName(), NR_CPF: Faker.Person.Cpf(),  NR_RG: Faker.Random.Int().ToString(), DS_ENDERECO: Faker.Address.FullAddress(), NR_ENDERECO: Faker.Random.Int().ToString()[..3], UF: Faker.Address.State()[..1],DT_NASCIMENTO: Faker.Date.Past());
+        aluno.AddTelefone(new Telefone( aluno.Id,Faker.Phone.PhoneNumber()));
         aluno.SetMae(mae);
         aluno.SetPai(pai);
         return aluno;

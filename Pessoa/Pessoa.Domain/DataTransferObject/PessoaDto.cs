@@ -10,4 +10,6 @@ public class PessoaDto
     public string numero { get; set; }
     public DateTime dataNascimento { get; set; }
     public string uf { get; set; }
+
+    public List<string> telefones { get; set; }
 }
