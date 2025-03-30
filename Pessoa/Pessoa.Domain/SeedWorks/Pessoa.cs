@@ -6,6 +6,7 @@ namespace Pessoa.Domain.SeedWorks;
 public  abstract class Pessoa : Entity
 {
     public Guid? Id_PAI { get; set; }
+    public Guid? ID_REDE { get; set; }
     public Guid? Id_MAE { get; set; }
     public string NR_CPF { get; set; }
     public string NR_RG { get; set; }

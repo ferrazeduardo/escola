@@ -53,11 +53,16 @@ public class PessoaConfiguration : IEntityTypeConfiguration<Domain.SeedWorks.Pes
         
         builder.HasOne(pessoa => pessoa.Rede)
             .WithOne()
-            .HasForeignKey<Domain.SeedWorks.Pessoa>("ID_REDE");
+            .HasForeignKey<Domain.SeedWorks.Pessoa>(pessoa => pessoa.ID_REDE);
+        //    .HasForeignKey<Domain.SeedWorks.Pessoa>("ID_REDE");
 
         builder.HasMany(pessoa => pessoa.Telefones)
             .WithOne(telefone => telefone.Pessoa)
             .HasForeignKey(telefone => telefone.ID_PESSOA)
             .OnDelete(DeleteBehavior.Cascade); 
+        
+        builder.HasIndex(pessoa => new { pessoa.NR_CPF, pessoa.ID_REDE })
+            .IsUnique();
+
     }
 }
