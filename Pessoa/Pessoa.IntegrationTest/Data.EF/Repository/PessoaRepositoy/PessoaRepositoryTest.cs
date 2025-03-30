@@ -56,4 +56,63 @@ public class PessoaRepositoryTest
         Assert.NotNull(pessoasDb);
         Assert.True(pessoasDb.Count > 0);
     }
+
+    [Fact(DisplayName = nameof(ObterPessoa))]
+    [Trait("Data.EF ","Repository")]
+    public async Task ObterPessoa()
+    {
+        //o contexto
+        PessoaDbContext dbContext = _fixture.CreateDbContext();
+        
+        Domain.SeedWorks.Pessoa pessoa = _fixture.GetExemploPessoa();
+        var pessoaRepository = new PessoaRepository(dbContext);
+        
+        await dbContext.Pessoas.AddAsync(pessoa);
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+        
+        var pessoaDb = await pessoaRepository.ObterPorId(pessoa.Id);
+        
+        Assert.Equal(pessoa.Id, pessoaDb.Id);
+    }
+
+    [Fact(DisplayName = nameof(RemovePessoa))]
+    [Trait("Data.EF", "Repository")]
+    public async Task RemovePessoa()
+    {
+        PessoaDbContext dbContext = _fixture.CreateDbContext();
+        Domain.SeedWorks.Pessoa pessoa = _fixture.GetExemploPessoa();
+        
+        var pessoaRepository = new PessoaRepository(dbContext);
+        
+        await dbContext.Pessoas.AddAsync(pessoa);
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+
+
+        await pessoaRepository.Remove(pessoa, CancellationToken.None);
+        
+        var dbPessoa = await dbContext.Pessoas.FindAsync(pessoa.Id);
+        
+        Assert.Null(dbPessoa);
+    }
+
+    [Fact(DisplayName = nameof(EditarPessoa))]
+    [Trait("Data.EF", "Repository")]
+    public async Task EditarPessoa()
+    {
+        PessoaDbContext dbContext = _fixture.CreateDbContext();
+        Domain.SeedWorks.Pessoa pessoa = _fixture.GetExemploPessoa();
+        Domain.SeedWorks.Pessoa pessoaUpdate = _fixture.GetExemploPessoaUpdate(pessoa);
+        
+        var pessoaRepository = new PessoaRepository(dbContext);
+        
+        await dbContext.Pessoas.AddAsync(pessoa);
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+        
+        await pessoaRepository.Editar(pessoaUpdate, CancellationToken.None);
+        
+        var dbPessoa = await dbContext.Pessoas.FindAsync(pessoa.Id);
+        
+        Assert.Equal(pessoaUpdate.NM_NOME,dbPessoa.NM_NOME);
+        Assert.Equal(pessoaUpdate.DT_NASCIMENTO.Date,dbPessoa.DT_NASCIMENTO.Date);
+    }
 }

@@ -25,29 +25,30 @@ public class PessoaRepository : IPessoaRepository
         }
     }
 
-    public Task Remove(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
+    public async  Task Remove(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+         _dbContext.Set<Domain.SeedWorks.Pessoa>().Remove(entity);
+         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public Task<Domain.SeedWorks.Pessoa> ObterPorId(Guid id)
+    public async Task<Domain.SeedWorks.Pessoa> ObterPorId(Guid id)
     {
-        throw new NotImplementedException();
+        var pessoa = await _dbContext.Set<Domain.SeedWorks.Pessoa>().FindAsync(id);
+        return pessoa;
     }
 
     public  async Task<List<Domain.SeedWorks.Pessoa>> ObterTodos()
     {
-        var pessoas = await _dbContext.Pessoas
-            .Include(p => p.Mae)
-            .Include(p => p.Pai)
+        var pessoas = await _dbContext.Set<Domain.SeedWorks.Pessoa>()
             .ToListAsync();
 
         return pessoas;
     }
 
-    public Task Editar(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
+    public async  Task Editar(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+         _dbContext.Set<Domain.SeedWorks.Pessoa>().Update(entity);
+         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task InserirAluno(Aluno aluno, CancellationToken cancellationToken)

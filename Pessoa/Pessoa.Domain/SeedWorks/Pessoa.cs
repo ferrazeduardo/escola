@@ -108,5 +108,4 @@ public  abstract class Pessoa : Entity
         Id_MAE = mae.Id;
     }
 
-  
 }
