@@ -53,7 +53,8 @@ public class PessoaConfiguration : IEntityTypeConfiguration<Domain.SeedWorks.Pes
         
         builder.HasOne(pessoa => pessoa.Rede)
             .WithOne()
-            .HasForeignKey<Domain.SeedWorks.Pessoa>(pessoa => pessoa.ID_REDE);
+            .HasForeignKey<Domain.SeedWorks.Pessoa>(pessoa => pessoa.ID_REDE)
+            .OnDelete(DeleteBehavior.Restrict); 
         //    .HasForeignKey<Domain.SeedWorks.Pessoa>("ID_REDE");
 
         builder.HasMany(pessoa => pessoa.Telefones)

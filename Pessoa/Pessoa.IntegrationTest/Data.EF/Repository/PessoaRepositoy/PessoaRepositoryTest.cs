@@ -12,9 +12,12 @@ public class PessoaRepositoryTest
     public PessoaRepositoryTest(PessoaRepositoryFixture fixture)
     {
         _fixture = fixture;
+        //o contexto
+        PessoaDbContext dbContext = _fixture.CreateDbContext();
     }
 
     [Fact(DisplayName = nameof(Insert))]
+    [Trait("Data.EF", "Repository")]
     public async Task Insert()
     {
         //o contexto
@@ -32,5 +35,25 @@ public class PessoaRepositoryTest
         
         Assert.NotNull(dbPessoa);
         Assert.Contains(pessoa.Telefones, t => t.NR_TELEFONE == telefone.NR_TELEFONE);
+    }
+
+    [Fact(DisplayName = nameof(ListPessoas))]
+    [Trait("Data.EF ","Repository")]
+    public async Task ListPessoas()
+    {
+        //o contexto
+        PessoaDbContext dbContext = _fixture.CreateDbContext();
+
+        var pessoas = _fixture.ListPessoas();
+        
+        var pessoaRepository = new PessoaRepository(dbContext);
+
+        await dbContext.Pessoas.AddRangeAsync(pessoas);
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+
+        var pessoasDb = await pessoaRepository.ObterTodos();
+        
+        Assert.NotNull(pessoasDb);
+        Assert.True(pessoasDb.Count > 0);
     }
 }

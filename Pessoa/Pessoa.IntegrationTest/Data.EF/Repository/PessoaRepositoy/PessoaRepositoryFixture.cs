@@ -26,6 +26,17 @@ public class PessoaRepositoryFixture : BaseFixture
         return aluno;
     }
 
+
+    public List<Domain.SeedWorks.Pessoa> ListPessoas()
+    {
+        List<Domain.SeedWorks.Pessoa> pessoas = new List<Domain.SeedWorks.Pessoa>();
+        
+        pessoas.Add(GetExemploPessoa());
+        pessoas.Add(GetExemploPessoa());
+
+        return pessoas;
+    }
+
     public PessoaDbContext CreateDbContext()
     {
         return new PessoaDbContext(

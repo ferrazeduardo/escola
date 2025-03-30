@@ -8,6 +8,7 @@ public class PessoaDbContext  : DbContext
 {
     public DbSet<Domain.SeedWorks.Pessoa> Pessoas => Set<Domain.SeedWorks.Pessoa>();
     public DbSet<Telefone> Telefone => Set<Telefone>();
+    public DbSet<Rede> Rede => Set<Rede>();
 
     public PessoaDbContext(DbContextOptions<PessoaDbContext> options) : base(options)
     {
@@ -18,6 +19,7 @@ public class PessoaDbContext  : DbContext
     {
         modelBuilder.ApplyConfiguration(new PessoaConfiguration());
         modelBuilder.ApplyConfiguration(new TelefoneConfiguration());
+        modelBuilder.ApplyConfiguration(new RedeConfiguration());
         //base.OnModelCreating(modelBuilder);
     }
 }
