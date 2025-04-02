@@ -3,10 +3,10 @@ using Pessoa.Domain.Validation;
 
 namespace Pessoa.Domain.SeedWorks;
 
-public  abstract class Pessoa : Entity
+public   class Pessoa : Entity
 {
     public Guid? Id_PAI { get; set; }
-    public Guid? ID_REDE { get; set; }
+    public Guid ID_REDE { get; set; }
     public Guid? Id_MAE { get; set; }
     public string NR_CPF { get; set; }
     public string NR_RG { get; set; }
@@ -21,9 +21,6 @@ public  abstract class Pessoa : Entity
     public Mae Mae{ get; private set; }
     public Rede Rede { get; private set; }
 
-    // Coleção para auto-relacionamento reverso (filhos)
-    public ICollection<Pessoa> FilhosComoMae { get; set; } = new List<Pessoa>();
-    public ICollection<Pessoa> FilhosComoPai { get; set; } = new List<Pessoa>();
     public int Idade()
     {
         DateTime dataAtual = DateTime.Today;
@@ -91,9 +88,8 @@ public  abstract class Pessoa : Entity
     public void SetRede(Rede rede)
     {
         Rede = rede;
+        ID_REDE = rede.Id;
     }
-    
-    
     
     public void SetPai(Pai pai)
     {

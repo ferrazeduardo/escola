@@ -37,33 +37,22 @@ public class PessoaConfiguration : IEntityTypeConfiguration<Domain.SeedWorks.Pes
             .IsRequired()
             .ValueGeneratedOnAdd();
 
-        builder.HasOne(pessoa => pessoa.Mae)
-            .WithMany(pessoa => pessoa.FilhosComoMae)
-            .HasForeignKey(pessoa => pessoa.Id_MAE)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        builder.HasOne(pessoa => pessoa.Pai)
-            .WithMany(pessoa => pessoa.FilhosComoPai)
-            .HasForeignKey(pessoa => pessoa.Id_PAI)
-            .OnDelete(DeleteBehavior.Restrict); 
-        
-        builder.Property(pessoa => pessoa.Id_MAE).ValueGeneratedOnAdd();
-
-        builder.Property(pessoa => pessoa.Id_PAI).ValueGeneratedOnAdd();
-        
         builder.HasOne(pessoa => pessoa.Rede)
             .WithOne()
             .HasForeignKey<Domain.SeedWorks.Pessoa>(pessoa => pessoa.ID_REDE)
-            .OnDelete(DeleteBehavior.Restrict); 
-        //    .HasForeignKey<Domain.SeedWorks.Pessoa>("ID_REDE");
+            .OnDelete(DeleteBehavior.Cascade); 
 
         builder.HasMany(pessoa => pessoa.Telefones)
             .WithOne(telefone => telefone.Pessoa)
             .HasForeignKey(telefone => telefone.ID_PESSOA)
             .OnDelete(DeleteBehavior.Cascade); 
         
-        builder.HasIndex(pessoa => new { pessoa.NR_CPF, pessoa.ID_REDE })
+         builder.HasIndex(pessoa => new { pessoa.NR_CPF, pessoa.ID_REDE })
             .IsUnique();
+        
+        builder.Ignore(pessoa => pessoa.Mae);
+        builder.Ignore(pessoa => pessoa.Pai);
+
 
     }
 }

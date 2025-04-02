@@ -7,4 +7,5 @@ public interface IRepository<T>
     Task<T> ObterPorId(Guid id);
     Task<List<T>> ObterTodos();
     Task Editar(T entity, CancellationToken cancellationToken);
+    
 }

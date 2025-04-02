@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Pessoa.Data.EF;
 using Pessoa.Data.EF.Repository;
 using Pessoa.Domain.Entity;
@@ -47,8 +48,16 @@ public class PessoaRepositoryTest
         var pessoas = _fixture.ListPessoas();
         
         var pessoaRepository = new PessoaRepository(dbContext);
-
-        await dbContext.Pessoas.AddRangeAsync(pessoas);
+        await dbContext.Rede.AddAsync(pessoas[0].Rede);
+        await dbContext.Pessoas.AddAsync(pessoas[0].Pai);
+        await dbContext.Pessoas.AddAsync(pessoas[0].Mae);
+    
+        await dbContext.Pessoas.AddAsync(pessoas[0]);
+        
+        await dbContext.Pessoas.AddAsync(pessoas[1].Pai);
+        await dbContext.Pessoas.AddAsync(pessoas[1].Mae);
+    
+        await dbContext.Pessoas.AddAsync(pessoas[1]);
         await dbContext.SaveChangesAsync(CancellationToken.None);
 
         var pessoasDb = await pessoaRepository.ObterTodos();
@@ -115,4 +124,28 @@ public class PessoaRepositoryTest
         Assert.Equal(pessoaUpdate.NM_NOME,dbPessoa.NM_NOME);
         Assert.Equal(pessoaUpdate.DT_NASCIMENTO.Date,dbPessoa.DT_NASCIMENTO.Date);
     }
+
+    
+    [Fact(DisplayName = nameof(ObterPeloCpf_DeveRetornarPessoa))]
+    [Trait("Data.EF", "Repository")]
+    public async Task ObterPeloCpf_DeveRetornarPessoa()
+    {
+        var dbContext = _fixture.CreateDbContext();
+        Domain.SeedWorks.Pessoa exemploPessoa = _fixture.GetExemploPessoa();
+        var pessoaRepository = new PessoaRepository(dbContext);
+        
+        await dbContext.Rede.AddAsync(exemploPessoa.Rede);
+        await dbContext.Pessoas.AddAsync(exemploPessoa.Pai);
+        await dbContext.Pessoas.AddAsync(exemploPessoa.Mae);
+        await dbContext.Pessoas.AddAsync(exemploPessoa);
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+
+        var pessoaDbDirect = await pessoaRepository.ObterPeloCpf(exemploPessoa.NR_CPF, exemploPessoa.ID_REDE);
+
+        Assert.NotNull(pessoaDbDirect);
+        Assert.Equal(exemploPessoa.Id, pessoaDbDirect.Id);
+        Assert.Equal(exemploPessoa.NM_NOME, pessoaDbDirect.NM_NOME);
+        Assert.Equal(exemploPessoa.NR_CPF, pessoaDbDirect.NR_CPF);
+    }
+
 }

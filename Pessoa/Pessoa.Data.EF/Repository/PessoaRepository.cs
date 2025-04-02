@@ -37,6 +37,12 @@ public class PessoaRepository : IPessoaRepository
         return pessoa;
     }
 
+    public async Task<Domain.SeedWorks.Pessoa> ObterPeloCpf(string cpf, Guid id_rede)
+    {
+        var pessoa = await _dbContext.Set<Domain.SeedWorks.Pessoa>().FirstOrDefaultAsync(p => p.NR_CPF == cpf && p.ID_REDE == id_rede);
+        return pessoa;
+    }
+
     public  async Task<List<Domain.SeedWorks.Pessoa>> ObterTodos()
     {
         var pessoas = await _dbContext.Set<Domain.SeedWorks.Pessoa>()
@@ -51,13 +57,4 @@ public class PessoaRepository : IPessoaRepository
          await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task InserirAluno(Aluno aluno, CancellationToken cancellationToken)
-    {
-       await Inserir(aluno.Pai,cancellationToken);
-       
-       await Inserir(aluno.Mae, cancellationToken);
-       
-       await Inserir(aluno,cancellationToken);
-       ;
-    }
 }
