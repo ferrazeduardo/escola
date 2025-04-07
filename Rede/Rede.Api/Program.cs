@@ -3,6 +3,7 @@ using  Rede.Application.DependencyInjection;
 using Rede.Api.DependencyInjection;
 using Rede.Api.Filters;
 using Rede.Api.Redes;
+using Rede.Data.EF;
 using Query = Rede.Api.Redes.Query;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services
     .AddApi(builder.Configuration)
     .ResolverDependencyInjectionCors()
     .AddApplication()
+    .AddDataEf(builder.Configuration)
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
