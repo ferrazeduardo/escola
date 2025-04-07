@@ -33,14 +33,13 @@ public class SaveAluno : IRequestHandler<SaveAlunoInput, SaveAlunoPayload>
         aluno.SetMae(mae);
         aluno.SetPai(pai);
 
-        // var paiJaExiste = await _pessoaRepository.ObterPeloCpf(pai.NR_CPF,);
-        // var maeJaExiste = await _pessoaRepository.ObterPeloCpf(mae.NR_CPF);
-        //
-        // if (paiJaExiste == null)
-        //     await _pessoaRepository.Inserir(aluno.Pai,cancellationToken);
-        //
-        // if(maeJaExiste == null)
-        //     await _pessoaRepository.Inserir(aluno.Mae,cancellationToken);
+        var paiJaExiste = await _pessoaRepository.ObterPeloCpf(pai.NR_CPF,request.id_rede);
+        var maeJaExiste = await _pessoaRepository.ObterPeloCpf(mae.NR_CPF,request.id_rede);
+        
+        if (paiJaExiste == null)
+            await _pessoaRepository.Inserir(aluno.Pai,cancellationToken);
+        if(maeJaExiste == null)
+             await _pessoaRepository.Inserir(aluno.Mae,cancellationToken);
         
         await _pessoaRepository.Inserir(aluno,cancellationToken);
 
