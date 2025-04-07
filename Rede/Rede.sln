@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Api", "Rede.Api\Rede.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Data.EF", "Rede.Data.EF\Rede.Data.EF.csproj", "{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.IntegrationTest", "Rede.IntegrationTest\Rede.IntegrationTest.csproj", "{FD0E31A7-7A46-4D01-A000-F8BFA75A7629}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.IntegrationTest", "Rede.IntegrationTest\Rede.IntegrationTest.csproj", "{E5337DE1-F35D-47C3-BC99-4105366F1CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,9 +38,9 @@ Global
 		{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD0E31A7-7A46-4D01-A000-F8BFA75A7629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD0E31A7-7A46-4D01-A000-F8BFA75A7629}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD0E31A7-7A46-4D01-A000-F8BFA75A7629}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD0E31A7-7A46-4D01-A000-F8BFA75A7629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

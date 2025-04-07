@@ -9,7 +9,7 @@ public class RedeConfiguration : IEntityTypeConfiguration<Rede>
     public void Configure(EntityTypeBuilder<Rede> builder)
     {
         builder.HasKey(rede => rede.Id);
-        builder.Property(pessoa => pessoa.Id).ValueGeneratedOnAdd();
+        builder.Property(pessoa => pessoa.Id).ValueGeneratedNever();
 
         builder.Property(rede => rede.DS_REDE)
             .HasMaxLength(100)

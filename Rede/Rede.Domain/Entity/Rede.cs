@@ -10,8 +10,6 @@ public class Rede : SeedWork.Entity
         NR_CNPJ = nrCnpj;
         DH_REGISTRO = DateTime.Now;
         US_REGISTRO = codigoUsuario;
-        Unidades = new List<Unidade>();
-        DiaVencimentos = new List<DiaVencimento>();
         SetDiaVencimento(diasVencimento);
         Ativar();
 
@@ -20,8 +18,6 @@ public class Rede : SeedWork.Entity
 
     public Rede()
     {
-        _unidades = new List<Unidade>();
-        _diasVencimento = new List<DiaVencimento>();
     }
     private void ValidacaoInserir()
     {
@@ -67,18 +63,12 @@ public class Rede : SeedWork.Entity
     public DateTime DH_REGISTRO { get; set; }
     public int US_REGISTRO { get; set; }
     public string ST_REDE { get; set; }
-    public List<Unidade> Unidades { get; set; }
-    public List<DiaVencimento> DiaVencimentos { get; set; }
-    // public IReadOnlyList<Unidade> Unidades 
-    //     => _unidades.AsReadOnly();
-
-    private List<Unidade> _unidades;
-
-
-    // public IReadOnlyList<DiaVencimento> DiasVencimentos
-    //     => _diasVencimento.AsReadOnly();
     
-    private List<DiaVencimento> _diasVencimento;
+    public ICollection<Unidade> Unidade { get; private set; } = new List<Unidade>();
+
+
+    public ICollection<DiaVencimento> DiaVencimentos { get; private set; } = new List<DiaVencimento>();
+    
 
     public void Ativar()
     {
@@ -92,19 +82,19 @@ public class Rede : SeedWork.Entity
     
     public void AddDiaVencimento(DiaVencimento diaVencimento)
     {
-        _diasVencimento.Add(diaVencimento);
+        DiaVencimentos.Add(diaVencimento);
     }
     
     public void SetDiaVencimento(List<DiaVencimento> diasVencimento) => DiaVencimentos = diasVencimento;
 
     public void RemoveVencimento(DiaVencimento diaVencimento)
     {
-        _diasVencimento.Remove(diaVencimento);
+        DiaVencimentos.Remove(diaVencimento);
     }
 
     public void RemoveAllDiasVencimentos()
     {
-        _diasVencimento.Clear();
+        DiaVencimentos.Clear();
     }
     
     public int QuantidadeDiasVencimentos() => DiaVencimentos.Count;
@@ -112,19 +102,19 @@ public class Rede : SeedWork.Entity
     
     public void AddUnidade(Unidade unidade)
     {
-        _unidades.Add(unidade);
+        Unidade.Add(unidade);
     }
     
-    public void SetUnidades(List<Unidade> unidades) => _unidades = unidades;
+    public void SetUnidades(List<Unidade> unidades) => Unidade = unidades;
 
     public void RemoveUnidade(Unidade unidade)
     {
-        _unidades.Remove(unidade);
+        Unidade.Remove(unidade);
     }
 
     public void RemoveAllUnidades()
     {
-        _unidades.Clear();
+        Unidade.Clear();
     }
 
 }
