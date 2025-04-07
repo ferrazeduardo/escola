@@ -1,6 +1,5 @@
 using Rede.Api;
 using  Rede.Application.DependencyInjection;
-using  Rede.MongoDb.DependencyInjection;
 using Rede.Api.DependencyInjection;
 using Rede.Api.Filters;
 using Rede.Api.Redes;
@@ -17,7 +16,6 @@ builder.Services
     .AddApi(builder.Configuration)
     .ResolverDependencyInjectionCors()
     .AddApplication()
-    .AddMongo()    
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()

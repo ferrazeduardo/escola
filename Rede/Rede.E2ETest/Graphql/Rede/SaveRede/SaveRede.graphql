@@ -1,5 +1,0 @@
-mutation SaveRede($input: SaveRedeInput!) {
-  saveRede(input: $input){
-     codigo
-  }
-}
