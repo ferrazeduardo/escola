@@ -34,5 +34,10 @@ public class RedeConfiguration : IEntityTypeConfiguration<Domain.Entity.Rede>
             .WithOne(vencimento => vencimento.Rede)
             .HasForeignKey(vencimento => vencimento.ID_REDE)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(x => x.Unidades)
+            .WithOne(unidade => unidade.Rede)
+            .HasForeignKey(unidade => unidade.ID_REDE)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

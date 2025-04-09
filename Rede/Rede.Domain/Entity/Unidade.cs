@@ -12,6 +12,8 @@ public List<Telefone> Telefones { get; set; }
 
 
     public string DS_COMPLMENTO { get; set; }
+    public Rede? Rede { get; private set; }
+    public int ID_REDE { get; set; }
 
     public void Ativar()
     {

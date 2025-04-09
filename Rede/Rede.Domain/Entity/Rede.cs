@@ -64,7 +64,7 @@ public class Rede : SeedWork.Entity
     public int US_REGISTRO { get; set; }
     public string ST_REDE { get; set; }
     
-    public ICollection<Unidade> Unidade { get; private set; } = new List<Unidade>();
+    public ICollection<Unidade> Unidades { get; private set; } = new List<Unidade>();
 
 
     public ICollection<DiaVencimento> DiaVencimentos { get; private set; } = new List<DiaVencimento>();
@@ -102,19 +102,19 @@ public class Rede : SeedWork.Entity
     
     public void AddUnidade(Unidade unidade)
     {
-        Unidade.Add(unidade);
+        Unidades.Add(unidade);
     }
     
-    public void SetUnidades(List<Unidade> unidades) => Unidade = unidades;
+    public void SetUnidades(List<Unidade> unidades) => Unidades = unidades;
 
     public void RemoveUnidade(Unidade unidade)
     {
-        Unidade.Remove(unidade);
+        Unidades.Remove(unidade);
     }
 
     public void RemoveAllUnidades()
     {
-        Unidade.Clear();
+        Unidades.Clear();
     }
 
 }
