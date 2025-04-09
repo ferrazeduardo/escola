@@ -9,11 +9,14 @@ public class AddDiaVencimentoTest
 {
     public readonly AddDiaVencimentoFixture _fixture;
     private readonly Mock<IRedeRepository> _redeRepositoryMock;
+    private readonly Mock<IDiaVencimentoRepository> _diaVencimentoRepositoryMock;
 
     public AddDiaVencimentoTest(AddDiaVencimentoFixture fixture)
     {
         _fixture = fixture;
         _redeRepositoryMock = _fixture.redeRepositoryMock();
+        _diaVencimentoRepositoryMock = _fixture.diaVencimentoRepositoryMock();
+        
     }
 
     [Fact(DisplayName = nameof(AddDiaVencimento))]
@@ -25,8 +28,8 @@ public class AddDiaVencimentoTest
         
         _redeRepositoryMock.Setup(r => r.ObterPorId(addDiaVencimentoInput.id_rede)).ReturnsAsync(rede);
 
-        // _redeRepositoryMock.Setup(r => r.AddDiaVencimento(addDiaVencimentoInput.id_rede, It.IsAny<DiaVencimento>()))
-        //     .Returns(Task.CompletedTask);
+        _diaVencimentoRepositoryMock.Setup(r => r.AddDiaVencimento(It.IsAny<DiaVencimento>(),CancellationToken.None))
+           .Returns(Task.CompletedTask);
 
         var response = new Rede.Application.UseCases.DiaVencimentoUseCase.AddDiaVencimento.AddDiaVencimento(_redeRepositoryMock.Object);
         

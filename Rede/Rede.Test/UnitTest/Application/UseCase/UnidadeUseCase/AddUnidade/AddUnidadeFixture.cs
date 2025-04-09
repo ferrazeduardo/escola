@@ -21,6 +21,7 @@ public class AddUnidadeFixture
     }
     
     public Mock<IRedeRepository> redeRepositoryMock () => new Mock<IRedeRepository>();
+    public Mock<IUnidadeRepository> unidadeRepositoryMock () => new Mock<IUnidadeRepository>();
 }
 
 [CollectionDefinition(nameof(AddUnidadeFixture))]

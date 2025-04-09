@@ -7,6 +7,7 @@ namespace Rede.Test.UnitTest.Application.UseCase.DiaVencimentoUseCase.AddDiaVenc
 public class AddDiaVencimentoFixture
 {
     public Mock<IRedeRepository> redeRepositoryMock () => new Mock<IRedeRepository>();
+    public Mock<IDiaVencimentoRepository> diaVencimentoRepositoryMock () => new Mock<IDiaVencimentoRepository>();
     
     public AddDiaVencimentoInput ObterAddDiaVencimentoInput()
     {
