@@ -7,7 +7,6 @@ namespace Pessoa.Data.EF.Repository;
 public class PessoaRepository : IPessoaRepository
 {
     private readonly PessoaDbContext _dbContext;
-    private  DbSet<Domain.SeedWorks.Pessoa> _pessoas => _dbContext.Set<Domain.SeedWorks.Pessoa>();
     private  DbSet<Telefone> _telefone => _dbContext.Set<Telefone>();
 
     public PessoaRepository(PessoaDbContext dbContext)

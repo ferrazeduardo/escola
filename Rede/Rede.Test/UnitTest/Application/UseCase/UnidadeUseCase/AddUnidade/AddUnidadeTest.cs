@@ -26,8 +26,8 @@ public class AddUnidadeTest
         
         _redeRepositoryMock.Setup(r => r.ObterPorId(addUnidadeInput.id_rede)).ReturnsAsync(rede);
 
-        _redeRepositoryMock.Setup(r => r.AddUnidade(addUnidadeInput.id_rede, It.IsAny<Unidade>()))
-            .Returns(Task.CompletedTask);
+        // _redeRepositoryMock.Setup(r => r.AddUnidade(addUnidadeInput.id_rede, It.IsAny<Unidade>()))
+        //     .Returns(Task.CompletedTask);
 
         var response = new Rede.Application.UseCases.UnidadeUseCase.AddUnidade.AddUnidade(_redeRepositoryMock.Object);
         

@@ -25,8 +25,8 @@ public class AddDiaVencimentoTest
         
         _redeRepositoryMock.Setup(r => r.ObterPorId(addDiaVencimentoInput.id_rede)).ReturnsAsync(rede);
 
-        _redeRepositoryMock.Setup(r => r.AddDiaVencimento(addDiaVencimentoInput.id_rede, It.IsAny<DiaVencimento>()))
-            .Returns(Task.CompletedTask);
+        // _redeRepositoryMock.Setup(r => r.AddDiaVencimento(addDiaVencimentoInput.id_rede, It.IsAny<DiaVencimento>()))
+        //     .Returns(Task.CompletedTask);
 
         var response = new Rede.Application.UseCases.DiaVencimentoUseCase.AddDiaVencimento.AddDiaVencimento(_redeRepositoryMock.Object);
         

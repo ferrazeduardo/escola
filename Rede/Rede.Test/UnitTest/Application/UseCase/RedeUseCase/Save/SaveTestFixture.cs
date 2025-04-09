@@ -1,6 +1,7 @@
 using Moq;
 using Rede.Application.UseCases.RedeUseCase.Save;
 using Rede.Domain.Entity;
+using Rede.Domain.Interfaces;
 using Rede.Domain.Interfaces.Repository;
 
 namespace Rede.Test.UnitTest.Application.UseCase.RedeUseCase.Inserir;
@@ -21,6 +22,7 @@ public class SaveTestFixture
     public Rede.Domain.Entity.Rede ObterRede() =>
         new Rede.Domain.Entity.Rede(razaoSocial:  "teste razao social",nrCnpj:"84949144000189",codigoUsuario:1,diasVencimento: ObterDiasVencimento());
 
+    
     public SaveRedeInput ObterInserirRedeCommand()
     {
         var save = new SaveRedeInput();
@@ -34,6 +36,8 @@ public class SaveTestFixture
     }
     
     public Mock<IRedeRepository> redeRepositoryMock () => new Mock<IRedeRepository>();
+    
+    public Mock<IUnitOfWork> unitOfWorkMock () => new Mock<IUnitOfWork>();
 }
 
 [CollectionDefinition(nameof(SaveTestFixture))]

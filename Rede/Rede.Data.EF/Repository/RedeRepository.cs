@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Rede.Domain.Entity;
 using Rede.Domain.Interfaces.Repository;
 
@@ -5,38 +6,51 @@ namespace Rede.Data.EF.Repository;
 
 public class RedeRepository : IRedeRepository
 {
-    public Task Inserir(Domain.Entity.Rede entity)
+    private readonly RedeDbContext _context;
+
+
+    public RedeRepository(RedeDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
+    }
+    
+    public async Task Inserir(Domain.Entity.Rede entity, CancellationToken cancellationToken)
+    {
+        await _context.Set<Domain.Entity.Rede>().AddAsync(entity, cancellationToken);
+        if (entity.Unidades.Count > 0)
+        {
+            await _context.Set<Unidade>().AddRangeAsync(entity.Unidades, cancellationToken);
+        }
+
+        if (entity.DiaVencimentos.Count > 0)
+        {
+            await _context.Set<DiaVencimento>().AddRangeAsync(entity.DiaVencimentos, cancellationToken);
+        }
     }
 
-    public Task Remove(Domain.Entity.Rede entity)
+    public async Task Remove(Domain.Entity.Rede entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+         _context.Rede.Remove(entity);
+         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public Task<Domain.Entity.Rede> ObterPorId(Guid id)
+    public async Task<Domain.Entity.Rede> ObterPorId(Guid id)
     {
-        throw new NotImplementedException();
+        var rede = await _context.Set<Domain.Entity.Rede>().FirstOrDefaultAsync(rede => rede.Id == id);
+        return rede;
     }
 
-    public Task<List<Domain.Entity.Rede>> ObterTodos()
+    public async Task<List<Domain.Entity.Rede>> ObterTodos()
     {
-        throw new NotImplementedException();
+        var redes = await _context.Set<Domain.Entity.Rede>().ToListAsync();
+        return redes;
     }
 
-    public Task Editar(Domain.Entity.Rede entity)
+    public async Task Editar(Domain.Entity.Rede entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _context.Set<Domain.Entity.Rede>().Update(entity);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public Task AddUnidade(Guid id, Unidade unidade)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task AddDiaVencimento(Guid redeId, DiaVencimento diaVencimento)
-    {
-        throw new NotImplementedException();
-    }
+   
 }

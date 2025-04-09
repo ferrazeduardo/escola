@@ -28,7 +28,7 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
         unidade.DS_COMPLMENTO = request.complemento;
         unidade.Ativar();
 
-        await _redeRepository.AddUnidade(rede.Id, unidade);
+    //    await _redeRepository.AddUnidade(rede.Id, unidade);
 
         AddUnidadePayload output = new();
         output.id_unidade = unidade.Id;

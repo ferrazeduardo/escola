@@ -25,7 +25,7 @@ public class AddDiaVencimento : IRequestHandler<AddDiaVencimentoInput, AddDiaVEn
         {
             DiaVencimento diaVencimento = new DiaVencimento();
             diaVencimento.Dia = dia;
-            await _redeRepository.AddDiaVencimento(rede.Id, diaVencimento);
+          //  await _redeRepository.AddDiaVencimento(rede.Id, diaVencimento);
             payload.vencimentos.Add(diaVencimento.Dia);
         }
         
