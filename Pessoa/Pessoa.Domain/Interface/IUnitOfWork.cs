@@ -1,4 +1,4 @@
-namespace Pessoa.Application.Interface;
+namespace Pessoa.Domain.Interface;
 
 public interface IUnitOfWork
 {

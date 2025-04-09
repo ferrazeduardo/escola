@@ -1,7 +1,7 @@
 using Bogus;
 using Moq;
-using Pessoa.Application.Interface;
 using Pessoa.Application.Interface.Repository;
+using Pessoa.Domain.Interface;
 
 namespace Pessoa.UnitTest.Base;
 

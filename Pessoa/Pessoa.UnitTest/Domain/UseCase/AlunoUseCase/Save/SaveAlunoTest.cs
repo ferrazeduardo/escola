@@ -1,8 +1,8 @@
 using Moq;
-using Pessoa.Application.Interface;
 using Pessoa.Application.Interface.Repository;
 using Pessoa.Application.UseCase.AlunoUseCase.Save;
 using Pessoa.Domain.Entity;
+using Pessoa.Domain.Interface;
 
 namespace Pessoa.UnitTest.Domain.UseCase.AlunoUseCase.Save;
 

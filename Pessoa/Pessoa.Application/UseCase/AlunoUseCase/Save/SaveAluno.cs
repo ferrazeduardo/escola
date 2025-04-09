@@ -2,6 +2,7 @@ using MediatR;
 using Pessoa.Application.Interface;
 using Pessoa.Application.Interface.Repository;
 using Pessoa.Domain.Entity;
+using Pessoa.Domain.Interface;
 
 namespace Pessoa.Application.UseCase.AlunoUseCase.Save;
 

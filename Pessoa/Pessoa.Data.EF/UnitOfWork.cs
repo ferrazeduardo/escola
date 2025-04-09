@@ -1,4 +1,4 @@
-using Pessoa.Application.Interface;
+using Pessoa.Domain.Interface;
 
 namespace Pessoa.Data.EF;
 

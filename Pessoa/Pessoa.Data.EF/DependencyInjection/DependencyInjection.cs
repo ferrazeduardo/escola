@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Pessoa.Application.Interface;
 using Pessoa.Application.Interface.Repository;
 using Pessoa.Data.EF.Repository;
+using Pessoa.Domain.Interface;
 
 namespace Pessoa.Data.EF.DependencyInjection;
 
