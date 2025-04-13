@@ -8,7 +8,8 @@ public class TelefoneConfiguration : IEntityTypeConfiguration<Telefone>
 {
     public void Configure(EntityTypeBuilder<Telefone> builder)
     {
-        builder.Property(x => x.ID_REDE)
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.ID_UNIDADE)
             .IsRequired();
             
         builder.Property(x => x.NR_TELEFONE)

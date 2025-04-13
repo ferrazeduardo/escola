@@ -39,6 +39,12 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
         
         builder.Property(x =>x.ID_REDE)
             .IsRequired();
+        
+        builder.HasMany(x => x.Telefones)
+            .WithOne(x => x.Unidade)
+            .HasForeignKey(x => x.ID_UNIDADE)
+            .OnDelete(DeleteBehavior.Cascade);
+            
 
     }
 }

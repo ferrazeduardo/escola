@@ -20,6 +20,8 @@ public class RedeRepository : IRedeRepository
         if (entity.Unidades.Count > 0)
         {
             await _context.Set<Unidade>().AddRangeAsync(entity.Unidades, cancellationToken);
+            ICollection<Telefone> Telefones = entity.Unidades.SelectMany(u => u.Telefones).ToList();
+            await _context.Set<Telefone>().AddRangeAsync(Telefones, cancellationToken);
         }
 
         if (entity.DiaVencimentos.Count > 0)

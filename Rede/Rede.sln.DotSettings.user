@@ -16,6 +16,10 @@
       &lt;TestId&gt;xUnit::FA29FDCD-656E-4572-8401-151125E8D760::net8.0::Rede.IntegrationTest.Repository.RedeRepositoryTest.Should_Insert_And_Get_Rede_Successfully&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::FA29FDCD-656E-4572-8401-151125E8D760::net8.0::Rede.IntegrationTest.Repository.RedeRepositoryTest.InserirRede&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::FA29FDCD-656E-4572-8401-151125E8D760::net8.0::Rede.IntegrationTest.Repository.RedeRepositoryTest&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E5337DE1-F35D-47C3-BC99-4105366F1CB0::net8.0::Rede.IntegrationTest.Data.EF.RedeRepository.RedeRepositoryTest.DeveInserirRedeComUnidadesETelefonesEDiaVencimentos&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E5337DE1-F35D-47C3-BC99-4105366F1CB0::net8.0::Rede.IntegrationTest.Data.EF.RedeRepository.RedeRepositoryTest.Remove_Should_Remove_Entity_And_SaveChanges&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E5337DE1-F35D-47C3-BC99-4105366F1CB0::net8.0::Rede.IntegrationTest.Data.EF.RedeRepository.RedeRepositoryTest.DeveObterUmaListaDeRedeComUnidadesEDiaVencimentos&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E5337DE1-F35D-47C3-BC99-4105366F1CB0::net8.0::Rede.IntegrationTest.Data.EF.RedeRepository.RedeRepositoryTest.DeveAlterarRedeComUnidadesEDiaVencimentos&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
     &lt;ProjectFile&gt;E6AD176B-7B4A-4442-9C9C-989645127F93/d:UnitTest/d:Application/d:UseCase/d:RedeUseCase/d:Obter/f:ObterTest.cs&lt;/ProjectFile&gt;
     &lt;ProjectFile&gt;E6AD176B-7B4A-4442-9C9C-989645127F93/d:UnitTest/d:Application/d:UseCase/d:RedeUseCase/d:Save/f:SaveTest.cs&lt;/ProjectFile&gt;

@@ -84,13 +84,17 @@ public class Rede : SeedWork.Entity
     {
         DiaVencimentos.Add(diaVencimento);
     }
-    
+
+  
     public void SetDiaVencimento(List<DiaVencimento> diasVencimento) => DiaVencimentos = diasVencimento;
+
 
     public void RemoveVencimento(DiaVencimento diaVencimento)
     {
         DiaVencimentos.Remove(diaVencimento);
     }
+
+
 
     public void RemoveAllDiasVencimentos()
     {
