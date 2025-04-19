@@ -1,4 +1,12 @@
 package com.ferrazeduardo.escola.materia.domain.DataTransferObject;
 
-public record MateriaInput(String descricao, int id_rede){
+import jakarta.validation.constraints.NotNull;
+
+import java.util.UUID;
+
+public record MateriaInput(
+        @NotNull
+        String descricao,
+        @NotNull
+        UUID id_rede){
 }
