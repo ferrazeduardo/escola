@@ -1,8 +1,9 @@
+using Rede.Domain.SeedWork;
 using Rede.Domain.Validation;
 
 namespace Rede.Domain.Entity;
 
-public class Rede : SeedWork.Entity
+public class Rede : AggregateRoot
 {
     public Rede(string razaoSocial, string nrCnpj,int codigoUsuario, List<DiaVencimento> diasVencimento)
     {
