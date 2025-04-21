@@ -11,7 +11,6 @@ import java.util.UUID;
 
 @Table(name = "Materia")
 @Entity(name = "Materia")
-@Getter
 @NoArgsConstructor
 //@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -26,6 +25,23 @@ public class Materia {
     }
     @Id
     private UUID id;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getST_MATERIA() {
+        return ST_MATERIA;
+    }
+
+    public int getID_REDE() {
+        return ID_REDE;
+    }
+
+    public String getDS_MATERIA() {
+        return DS_MATERIA;
+    }
+
     private String ST_MATERIA;
 
     private int ID_REDE;
