@@ -2,6 +2,9 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AFuture_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F13cbfe6856867dd1ed4e39575e46d816dae2a146a8ceec8f76b5897f5e0fe_003FFuture_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ATaskAwaiter_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F24276f5a960c41c7b74713aa84cb1cae4672f89e225b6dcd2fe9b297a3a39_003FTaskAwaiter_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ATestInvoker_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003F_002Econfig_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fc3ec25c53b94f51fa21da479c513e551efee2b5ae49a79934686d2bb714d46_003FTestInvoker_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/home/eduardo/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6aa842bc_002D4a7d_002D4276_002Db7f3_002D7dab8703f320/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AtivarTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Or&gt;
     &lt;TestAncestor&gt;
@@ -24,6 +27,8 @@
       &lt;TestId&gt;xUnit::E5337DE1-F35D-47C3-BC99-4105366F1CB0::net8.0::Rede.IntegrationTest.Data.EF.UnidadeRepository.UnidadeRepositoryTest.AddUnidade_ShouldAddEntityToDatabase&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Domain.Entity.SeedWork.AggregateRootTest.ClearEvent&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Domain.Entity.SeedWork.AggregateRootTest.AddEvent&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.DomainEventPublisherTest.Publish&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.DomainEventPublisherTest.NaoPublicarQuandoNaoHouverEventos&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
     &lt;ProjectFile&gt;E6AD176B-7B4A-4442-9C9C-989645127F93/d:UnitTest/d:Application/d:UseCase/d:RedeUseCase/d:Obter/f:ObterTest.cs&lt;/ProjectFile&gt;
     &lt;ProjectFile&gt;E6AD176B-7B4A-4442-9C9C-989645127F93/d:UnitTest/d:Application/d:UseCase/d:RedeUseCase/d:Save/f:SaveTest.cs&lt;/ProjectFile&gt;

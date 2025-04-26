@@ -1,3 +1,4 @@
+using Rede.Domain.Events;
 using Rede.Domain.SeedWork;
 using Rede.Domain.Validation;
 
@@ -15,6 +16,7 @@ public class Rede : AggregateRoot
         Ativar();
 
         ValidacaoInserir();
+        AddDomainEvent(new RedeSalvarEvent(razaoSocial,Id));
     }
 
     public Rede()
@@ -35,6 +37,8 @@ public class Rede : AggregateRoot
 
         ValidacaoDominio.Quando(QuantidadeDiasVencimentos() == 0, "Falta escolher um dia de vencimento");
         ValidacaoDominio.Quando(NaoPodeExistirDiaNegativo(), "Os dias de vencimento devem ser positivos");
+        
+        
     }
 
     private bool NaoPodeExistirDiaNegativo()
