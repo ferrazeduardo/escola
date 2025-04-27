@@ -3,6 +3,7 @@ package com.ferrazeduardo.escola.materia.domain.Entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,6 +45,9 @@ public class Materia {
 
     private String ST_MATERIA;
 
+    @NotBlank(message = "Rede de Ensino é obrigatório")
     private int ID_REDE;
+
+    @NotBlank(message = "matéria é obrigatorio")
     private String DS_MATERIA;
 }
