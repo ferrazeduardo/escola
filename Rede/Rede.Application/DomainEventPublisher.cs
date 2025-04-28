@@ -12,7 +12,6 @@ public class DomainEventPublisher : IDomainEventPublisher
 
     private readonly IServiceProvider _serviceProvider;
     
-    
     public async Task Publish<TDomainEvent>(TDomainEvent domainEvent,CancellationToken cancellationToken )
     where TDomainEvent : DomainEvent
     {
