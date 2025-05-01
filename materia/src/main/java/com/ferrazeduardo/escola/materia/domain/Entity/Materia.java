@@ -10,21 +10,22 @@ import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@Table(name = "Materia")
-@Entity(name = "Materia")
-@NoArgsConstructor
-//@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+
 public class Materia {
 
 
-    public Materia(String ST_MATERIA, int ID_REDE, String DS_MATERIA) {
-        this.ST_MATERIA = ST_MATERIA;
+    public Materia(UUID ID_REDE, String DS_MATERIA) {
         this.ID_REDE = ID_REDE;
         this.DS_MATERIA = DS_MATERIA;
         this.id = UUID.randomUUID();
+        MateriaAtiva();
+        Validacoes();
     }
-    @Id
+
+
+    public Materia(){
+
+    }
     private UUID id;
 
     public UUID getId() {
@@ -35,7 +36,7 @@ public class Materia {
         return ST_MATERIA;
     }
 
-    public int getID_REDE() {
+    public UUID getID_REDE() {
         return ID_REDE;
     }
 
@@ -43,11 +44,36 @@ public class Materia {
         return DS_MATERIA;
     }
 
+
+
+    public void MateriaAtiva(){
+        ST_MATERIA = "S";
+    }
+
+
+    public void MateriaDesativada(){
+        ST_MATERIA = "N";
+    }
+
     private String ST_MATERIA;
 
-    @NotBlank(message = "Rede de Ensino é obrigatório")
-    private int ID_REDE;
+    private UUID ID_REDE;
 
-    @NotBlank(message = "matéria é obrigatorio")
     private String DS_MATERIA;
+
+    public void Validacoes(){
+        if(ID_REDE == null)
+            throw  new IllegalArgumentException("id da rede não pode ser nulo");
+
+        if(DS_MATERIA == null)
+            throw  new IllegalArgumentException("descrição da matéria não pode ser nulo");
+
+        if(DS_MATERIA.length() > 50)
+            throw  new IllegalArgumentException("descrição da matéria não pode ter mais de 50 caracteres");
+
+        if(DS_MATERIA.length() == 0)
+            throw  new IllegalArgumentException("por favor, informar descrição da materia");
+
+
+    }
 }
