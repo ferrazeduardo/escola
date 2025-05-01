@@ -22,6 +22,10 @@ public class Materia {
         Validacoes();
     }
 
+    public Materia(String DS_MATERIA){
+        this.DS_MATERIA = DS_MATERIA;
+    }
+
 
     public Materia(){
 
@@ -44,6 +48,15 @@ public class Materia {
         return DS_MATERIA;
     }
 
+    public Rede getRede() {
+        return Rede;
+    }
+
+    public void setRede(Rede rede) {
+        Rede = rede;
+    }
+
+    private Rede Rede;
 
 
     public void MateriaAtiva(){
