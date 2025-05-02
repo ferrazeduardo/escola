@@ -1,24 +1,31 @@
 package com.ferrazeduardo.escola.materia.controller;
-import java.util.List;
 
+import com.ferrazeduardo.escola.materia.application.usecases.materia.save.MateriaOutput;
+import com.ferrazeduardo.escola.materia.application.usecases.materia.save.SaveMateria;
 import com.ferrazeduardo.escola.materia.domain.DataTransferObject.ListMateriaOutput;
-import com.ferrazeduardo.escola.materia.domain.DataTransferObject.MateriaInput;
+import com.ferrazeduardo.escola.materia.application.usecases.materia.save.MateriaInput;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/materia")
 public class MateriaController {
 
+    public final SaveMateria saveMateria;
+
+    public MateriaController(SaveMateria saveMateria) {
+        this.saveMateria = saveMateria;
+    }
+
     @PostMapping
     @Transactional
-    public MateriaInput SalvarMateria(@RequestBody @Valid MateriaInput materiaInput){
-        return materiaInput;
+    public MateriaOutput SalvarMateria(@RequestBody MateriaInput materiaInput){
+
+        var output = saveMateria.Handler(materiaInput);
+
+        return output;
     }
 
     //?size=1&page=2

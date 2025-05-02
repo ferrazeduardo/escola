@@ -12,8 +12,14 @@ import java.util.UUID;
 
 
 public class Materia {
+    private UUID id;
+    private Rede Rede;
 
+    private String ST_MATERIA;
 
+    private UUID ID_REDE;
+
+    private String DS_MATERIA;
     public Materia(UUID ID_REDE, String DS_MATERIA) {
         this.ID_REDE = ID_REDE;
         this.DS_MATERIA = DS_MATERIA;
@@ -30,7 +36,10 @@ public class Materia {
     public Materia(){
 
     }
-    private UUID id;
+
+    public Materia(UUID id, String dsMateria, String stMateria, UUID idRede) {
+
+    }
 
     public UUID getId() {
         return id;
@@ -56,7 +65,7 @@ public class Materia {
         Rede = rede;
     }
 
-    private Rede Rede;
+
 
 
     public void MateriaAtiva(){
@@ -68,11 +77,7 @@ public class Materia {
         ST_MATERIA = "N";
     }
 
-    private String ST_MATERIA;
 
-    private UUID ID_REDE;
-
-    private String DS_MATERIA;
 
     public void Validacoes(){
         if(ID_REDE == null)

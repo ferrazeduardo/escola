@@ -1,10 +1,7 @@
 package com.ferrazeduardo.escola.materia.application.usecases.materia.save;
 
-import com.ferrazeduardo.escola.materia.domain.DataTransferObject.MateriaInput;
 import com.ferrazeduardo.escola.materia.domain.Entity.Materia;
-import com.ferrazeduardo.escola.materia.domain.Interface.Repository.IMateriaRepository;
-
-import java.util.UUID;
+import com.ferrazeduardo.escola.materia.application.gateways.IMateriaRepository;
 
 public class SaveMateria {
 

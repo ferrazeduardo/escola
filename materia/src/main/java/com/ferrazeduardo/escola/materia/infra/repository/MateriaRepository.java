@@ -1,10 +1,9 @@
-package com.ferrazeduardo.escola.materia.domain.Interface.Repository;
+package com.ferrazeduardo.escola.materia.infra.repository;
 
 import com.ferrazeduardo.escola.materia.domain.Entity.Materia;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface IMateriaRepository {
-    void Inserir(Materia materia);
+public interface MateriaRepository extends JpaRepository<MateriaEntity, UUID> {
 }
