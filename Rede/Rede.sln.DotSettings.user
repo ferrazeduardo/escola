@@ -29,6 +29,7 @@
       &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Domain.Entity.SeedWork.AggregateRootTest.AddEvent&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.DomainEventPublisherTest.Publish&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.DomainEventPublisherTest.NaoPublicarQuandoNaoHouverEventos&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::E6AD176B-7B4A-4442-9C9C-989645127F93::net8.0::Rede.Test.UnitTest.Application.EventHandlers.SendToEnconderEventHandlerTest.HandleAsync&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
     &lt;ProjectFile&gt;E6AD176B-7B4A-4442-9C9C-989645127F93/d:UnitTest/d:Application/d:UseCase/d:RedeUseCase/d:Obter/f:ObterTest.cs&lt;/ProjectFile&gt;
     &lt;ProjectFile&gt;E6AD176B-7B4A-4442-9C9C-989645127F93/d:UnitTest/d:Application/d:UseCase/d:RedeUseCase/d:Save/f:SaveTest.cs&lt;/ProjectFile&gt;

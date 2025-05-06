@@ -15,6 +15,6 @@ public class SendNovaRedeEventHandler : IDomainEventHandler<RedeSalvarEvent>
 
     public async Task Handle(RedeSalvarEvent domainEvent, CancellationToken cancellationToken)
     {
-        _messageProducer.SendMessageAsync(domainEvent, cancellationToken);
+        await _messageProducer.SendMessageAsync(domainEvent, cancellationToken);
     }
 }
