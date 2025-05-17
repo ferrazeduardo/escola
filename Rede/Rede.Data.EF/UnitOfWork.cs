@@ -18,6 +18,19 @@ public class UnitOfWork : IUnitOfWork
     
     public async Task Commit(CancellationToken cancellationToken)
     {
+        var aggregateRoot = _context.ChangeTracker.Entries<AggregateRoot>()
+            .Where(entry => entry.Entity.Events.Any())
+            .Select(e => e.Entity);
+        
+        _logger.LogInformation("Commit: "+aggregateRoot.Count() + " agregados com eventos ");
+
+        var events = aggregateRoot.SelectMany(aggregateRoot => aggregateRoot.Events);
+        
+        _logger.LogInformation("Commit: "+events.Count() + "eventos ");
+
+        foreach (var @event in events)
+            await _publisher.Publish(@event, cancellationToken);
+            
         await _context.SaveChangesAsync(cancellationToken);
     }
 
