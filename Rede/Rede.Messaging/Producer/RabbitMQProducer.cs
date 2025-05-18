@@ -22,7 +22,6 @@ public class RabbitMQProducer : IMessageProducer
     {
         var routingKey = EventsMappeing.GetRoutingKey<T>();
         var @event = JsonSerializer.SerializeToUtf8Bytes(message);
-        _channel.ConfirmSelect();
         _channel.BasicPublish(
            exchange: _exchange,
            routingKey: routingKey,

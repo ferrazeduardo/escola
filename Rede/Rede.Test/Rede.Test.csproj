@@ -29,6 +29,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Rede.Application\Rede.Application.csproj" />
       <ProjectReference Include="..\Rede.Domain\Rede.Domain.csproj" />
+      <ProjectReference Include="..\Rede.Messaging\Rede.Messaging.csproj" />
     </ItemGroup>
 
 </Project>
