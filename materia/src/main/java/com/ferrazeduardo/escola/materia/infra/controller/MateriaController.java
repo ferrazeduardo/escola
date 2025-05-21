@@ -1,5 +1,8 @@
-package com.ferrazeduardo.escola.materia.controller;
+package com.ferrazeduardo.escola.materia.infra.controller;
 
+import com.ferrazeduardo.escola.materia.application.usecases.materia.listar.ListarMateria;
+import com.ferrazeduardo.escola.materia.application.usecases.materia.listar.ListarMateriaInput;
+import com.ferrazeduardo.escola.materia.application.usecases.materia.listar.ListarMateriaOutput;
 import com.ferrazeduardo.escola.materia.application.usecases.materia.save.MateriaOutput;
 import com.ferrazeduardo.escola.materia.application.usecases.materia.save.SaveMateria;
 import com.ferrazeduardo.escola.materia.domain.DataTransferObject.ListMateriaOutput;
@@ -14,12 +17,15 @@ import org.springframework.web.bind.annotation.*;
 public class MateriaController {
 
     public final SaveMateria saveMateria;
+    public final ListarMateria listarMateria;
 
-    public MateriaController(SaveMateria saveMateria) {
+    public MateriaController(SaveMateria saveMateria,ListarMateria listarMateria) {
+
         this.saveMateria = saveMateria;
+        this.listarMateria = listarMateria;
     }
 
-    @PostMapping
+    @PostMapping("/salvar")
     @Transactional
     public MateriaOutput SalvarMateria(@RequestBody MateriaInput materiaInput){
 
@@ -28,11 +34,9 @@ public class MateriaController {
         return output;
     }
 
-    //?size=1&page=2
-    //?sort=descricao
-    @GetMapping
-    public Page<ListMateriaOutput> ListMateria(Pageable paginacao){
+    @PostMapping("/listar")
+    public ListarMateriaOutput ListMateria(@RequestBody ListarMateriaInput listarMateriaInput){
 
-        return null;
+        return listarMateria.Handler(listarMateriaInput);
     }
 }

@@ -24,6 +24,7 @@ public class Materia {
         this.ID_REDE = ID_REDE;
         this.DS_MATERIA = DS_MATERIA;
         this.id = UUID.randomUUID();
+        this.setRede(new Rede(ID_REDE,"teste"));
         MateriaAtiva();
         Validacoes();
     }

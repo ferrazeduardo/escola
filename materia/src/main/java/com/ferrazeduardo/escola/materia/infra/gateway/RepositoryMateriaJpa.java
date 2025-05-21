@@ -6,6 +6,8 @@ import com.ferrazeduardo.escola.materia.infra.repository.MateriaEntity;
 import com.ferrazeduardo.escola.materia.infra.repository.MateriaRepository;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class RepositoryMateriaJpa implements IMateriaRepository {
 
@@ -24,7 +26,7 @@ public class RepositoryMateriaJpa implements IMateriaRepository {
     }
 
     @Override
-    public List<Materia> Listar(){
-        return null;
+    public List<Materia> Listar(UUID id_rede){
+        return repository.findAllById(id_rede).stream().map(u -> mapper.toDomain(u)).collect(Collectors.toList());
     }
 }
