@@ -5,11 +5,8 @@ import com.ferrazeduardo.escola.materia.application.usecases.materia.listar.List
 import com.ferrazeduardo.escola.materia.application.usecases.materia.listar.ListarMateriaOutput;
 import com.ferrazeduardo.escola.materia.application.usecases.materia.save.MateriaOutput;
 import com.ferrazeduardo.escola.materia.application.usecases.materia.save.SaveMateria;
-import com.ferrazeduardo.escola.materia.domain.DataTransferObject.ListMateriaOutput;
 import com.ferrazeduardo.escola.materia.application.usecases.materia.save.MateriaInput;
 import jakarta.transaction.Transactional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
