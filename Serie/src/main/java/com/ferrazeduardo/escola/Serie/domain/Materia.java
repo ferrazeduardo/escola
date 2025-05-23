@@ -1,9 +1,5 @@
 package com.ferrazeduardo.escola.Serie.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
 import java.util.UUID;
 
 public class Materia {
@@ -22,9 +18,7 @@ public class Materia {
         return ST_MATERIA;
     }
 
-    @Column(nullable = false,length = 50,unique = true)
     private String DS_MATERIA;
-    @Column(nullable = false,length = 1)
     private String ST_MATERIA;
 
     public Materia(String DS_MATERIA, String ST_MATERIA) {
@@ -32,7 +26,5 @@ public class Materia {
         this.ST_MATERIA = ST_MATERIA;
         this.Id  = UUID.randomUUID();
     }
-    @ManyToOne
-    @JoinColumn(name = "ID_SERIE", nullable = false)
     private Serie serie;
 }

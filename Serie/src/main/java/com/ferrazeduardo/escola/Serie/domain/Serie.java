@@ -1,15 +1,10 @@
 package com.ferrazeduardo.escola.Serie.domain;
-
-import jakarta.persistence.*;
-
 import java.math.BigDecimal;
-import java.rmi.server.UID;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
-@Table(name = "serie")
+
 public class Serie {
 
 
@@ -22,7 +17,6 @@ public class Serie {
         this.DT_FIM = DT_FIM;
         this.Id = UUID.randomUUID();
     }
-    @Id
     private UUID Id;
 
     public UUID getId() {
@@ -53,22 +47,14 @@ public class Serie {
         return DT_FIM;
     }
 
-    @Column(nullable = false)
     private int AA_MATRICULA;
-    @Column(nullable = false)
     private int QT_AVALIACAO;
-    @Column(nullable = false)
     private UUID ID_REDE;
-    @Column(nullable = false)
     private BigDecimal VL_MEDIA;
-    @Column(nullable = false)
     private Date DT_INICIO;
-    @Column(nullable = false)
     private Date DT_FIM;
 
-    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ValorSerie> valores;
 
-    @OneToMany(mappedBy = "materia",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Materia> materias;
 }
