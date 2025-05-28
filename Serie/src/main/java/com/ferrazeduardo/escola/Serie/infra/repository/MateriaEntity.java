@@ -1,8 +1,14 @@
-package com.ferrazeduardo.escola.Serie.domain;
+package com.ferrazeduardo.escola.Serie.infra.repository;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 import java.util.UUID;
 
-public class Materia {
+@Entity
+@Table(name = "materia")
+public class MateriaEntity {
+    @Id
     private UUID Id;
 
     public UUID getId() {
@@ -20,9 +26,13 @@ public class Materia {
     private String DS_MATERIA;
     private String ST_MATERIA;
 
-    public Materia(String DS_MATERIA, String ST_MATERIA) {
+    public MateriaEntity(String DS_MATERIA, String ST_MATERIA) {
         this.DS_MATERIA = DS_MATERIA;
         this.ST_MATERIA = ST_MATERIA;
         this.Id  = UUID.randomUUID();
+    }
+
+    public MateriaEntity(){
+
     }
 }

@@ -15,9 +15,5 @@ public class ValorSerie {
     private BigDecimal VL_SERIE;
     private String DS_TURNO;
 
-    public void setSerie(Serie serie) {
-        this.serie = serie;
-    }
 
-    private Serie serie;
 }
