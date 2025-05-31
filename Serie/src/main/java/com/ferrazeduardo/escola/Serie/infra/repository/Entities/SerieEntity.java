@@ -1,7 +1,5 @@
-package com.ferrazeduardo.escola.Serie.infra.repository;
+package com.ferrazeduardo.escola.Serie.infra.repository.Entities;
 
-import com.ferrazeduardo.escola.Serie.domain.Materia;
-import com.ferrazeduardo.escola.Serie.domain.ValorSerie;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -13,14 +11,14 @@ import java.util.UUID;
 @Entity
 @Table(name = "serie")
 public class SerieEntity {
-    public SerieEntity(int AA_MATRICULA, int QT_AVALIACAO, UUID ID_REDE, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
+    public SerieEntity(UUID id,int AA_MATRICULA, int QT_AVALIACAO, UUID ID_REDE, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
         this.AA_MATRICULA = AA_MATRICULA;
         this.QT_AVALIACAO = QT_AVALIACAO;
         this.ID_REDE = ID_REDE;
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
-        this.Id = UUID.randomUUID();
+        this.Id = id;
     }
 
     public SerieEntity(){

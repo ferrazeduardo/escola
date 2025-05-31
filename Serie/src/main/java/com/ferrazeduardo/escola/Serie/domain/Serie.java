@@ -17,6 +17,18 @@ public class Serie {
         this.DT_FIM = DT_FIM;
         this.Id = UUID.randomUUID();
     }
+
+
+    public Serie(UUID id,int AA_MATRICULA, int QT_AVALIACAO, UUID ID_REDE, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
+        this.AA_MATRICULA = AA_MATRICULA;
+        this.QT_AVALIACAO = QT_AVALIACAO;
+        this.ID_REDE = ID_REDE;
+        this.VL_MEDIA = VL_MEDIA;
+        this.DT_INICIO = DT_INICIO;
+        this.DT_FIM = DT_FIM;
+        this.Id = id;
+    }
+
     private UUID Id;
 
     public UUID getId() {

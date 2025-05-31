@@ -1,4 +1,4 @@
-package com.ferrazeduardo.escola.Serie.infra.repository;
+package com.ferrazeduardo.escola.Serie.infra.repository.Entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
