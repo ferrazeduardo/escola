@@ -1,7 +1,6 @@
 package com.ferrazeduardo.escola.Serie.infra.repository.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -18,17 +17,18 @@ public class SerieEntity {
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
-        this.Id = id;
+        this.id = id;
     }
 
     public SerieEntity(){
 
     }
     @Id
-    private UUID Id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public int getAA_MATRICULA() {
@@ -62,8 +62,9 @@ public class SerieEntity {
     private Date DT_INICIO;
     private Date DT_FIM;
 
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ValorSerieEntity> valores;
-
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MateriaEntity> materias;
 
 }

@@ -1,20 +1,55 @@
 package com.ferrazeduardo.escola.Serie.infra.repository.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 
 @Entity
 @Table(name = "valor")
-public class ValorSerieEntity {
-    public ValorSerieEntity(BigDecimal VL_SERIE, String DS_TURNO) {
-        this.VL_SERIE = VL_SERIE;
-        this.DS_TURNO = DS_TURNO;
+public class ValorSerieEntity implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column(name = "vl_serie", nullable = false)
+    private BigDecimal vlSerie;
+
+    @Column(name = "ds_turno", nullable = false)
+    private String dsTurno;
+
+    @ManyToOne
+    @JoinColumn(name = "serie_id")
+    private SerieEntity serie;
+
+
+    public ValorSerieEntity(BigDecimal vlSerie, String dsTurno) {
+        this.vlSerie = vlSerie;
+        this.dsTurno = dsTurno;
     }
 
-    private BigDecimal VL_SERIE;
-    private String DS_TURNO;
+    public ValorSerieEntity() {}
+
+    public UUID getId() {
+        return id;
+    }
+
+    public BigDecimal getVlSerie() {
+        return vlSerie;
+    }
+
+    public void setVlSerie(BigDecimal vlSerie) {
+        this.vlSerie = vlSerie;
+    }
+
+    public String getDsTurno() {
+        return dsTurno;
+    }
+
+    public void setDsTurno(String dsTurno) {
+        this.dsTurno = dsTurno;
+    }
 
 }

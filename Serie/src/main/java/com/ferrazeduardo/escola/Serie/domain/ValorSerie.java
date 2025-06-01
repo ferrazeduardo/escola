@@ -12,6 +12,7 @@ public class ValorSerie {
         this.DS_TURNO = DS_TURNO;
     }
 
+    private UUID id;
     private BigDecimal VL_SERIE;
     private String DS_TURNO;
 

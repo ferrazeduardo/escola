@@ -15,7 +15,6 @@ public class Serie {
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
-        this.Id = UUID.randomUUID();
     }
 
 
@@ -26,13 +25,13 @@ public class Serie {
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
-        this.Id = id;
+        this.id = id;
     }
 
-    private UUID Id;
+    private UUID id;
 
     public UUID getId() {
-        return Id;
+        return id;
     }
 
     public int getAA_MATRICULA() {
