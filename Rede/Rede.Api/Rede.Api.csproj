@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Rede.Application\Rede.Application.csproj" />
       <ProjectReference Include="..\Rede.Data.EF\Rede.Data.EF.csproj" />
+      <ProjectReference Include="..\Rede.Messaging\Rede.Messaging.csproj" />
     </ItemGroup>
 
 </Project>
