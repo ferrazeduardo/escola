@@ -54,7 +54,7 @@ public class RedeRepositoryTest
         var redeDb = await _context.Set<Domain.Entity.Rede>().FirstOrDefaultAsync(r => r.Id == rede.Id);
 
         await RedeRepository.Remove(redeDb,CancellationToken.None);
-  
+        await _context.SaveChangesAsync();
         var redeDbRemove = await _context.Set<Domain.Entity.Rede>().FirstOrDefaultAsync(r => r.Id == rede.Id);
 
         

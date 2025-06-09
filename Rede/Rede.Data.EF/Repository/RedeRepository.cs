@@ -33,7 +33,6 @@ public class RedeRepository : IRedeRepository
     public async Task Remove(Domain.Entity.Rede entity, CancellationToken cancellationToken)
     {
          _context.Rede.Remove(entity);
-         await _context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<Domain.Entity.Rede> ObterPorId(Guid id)
@@ -51,7 +50,6 @@ public class RedeRepository : IRedeRepository
     public async Task Editar(Domain.Entity.Rede entity, CancellationToken cancellationToken)
     {
         _context.Set<Domain.Entity.Rede>().Update(entity);
-        await _context.SaveChangesAsync(cancellationToken);
     }
 
    
