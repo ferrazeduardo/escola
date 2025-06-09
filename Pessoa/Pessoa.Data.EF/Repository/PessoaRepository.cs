@@ -27,7 +27,6 @@ public class PessoaRepository : IPessoaRepository
     public async  Task Remove(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
     {
          _dbContext.Set<Domain.SeedWorks.Pessoa>().Remove(entity);
-         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<Domain.SeedWorks.Pessoa> ObterPorId(Guid id)
@@ -53,7 +52,6 @@ public class PessoaRepository : IPessoaRepository
     public async  Task Editar(Domain.SeedWorks.Pessoa entity, CancellationToken cancellationToken)
     {
          _dbContext.Set<Domain.SeedWorks.Pessoa>().Update(entity);
-         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
 }

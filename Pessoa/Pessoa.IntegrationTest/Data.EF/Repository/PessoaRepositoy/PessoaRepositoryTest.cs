@@ -98,7 +98,8 @@ public class PessoaRepositoryTest
 
 
         await pessoaRepository.Remove(pessoa, CancellationToken.None);
-        
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+
         var dbPessoa = await dbContext.Pessoas.FindAsync(pessoa.Id);
         
         Assert.Null(dbPessoa);
@@ -118,7 +119,8 @@ public class PessoaRepositoryTest
         await dbContext.SaveChangesAsync(CancellationToken.None);
         
         await pessoaRepository.Editar(pessoaUpdate, CancellationToken.None);
-        
+        await dbContext.SaveChangesAsync(CancellationToken.None);
+
         var dbPessoa = await dbContext.Pessoas.FindAsync(pessoa.Id);
         
         Assert.Equal(pessoaUpdate.NM_NOME,dbPessoa.NM_NOME);
