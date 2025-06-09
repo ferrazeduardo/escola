@@ -14,10 +14,11 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
+        //configura
         services.Configure<RabbitMQConfiguration>(
             configuration.GetSection(RabbitMQConfiguration.ConfigurationSection));
         
-
+        //criação conexão do rabbitmq
         services.AddSingleton(sp =>
         {
             RabbitMQConfiguration config = sp
@@ -32,7 +33,9 @@ public static class DependencyInjection
             return factory.CreateConnection();
         });
 
+        //injetando a configuracao do canal
         services.AddSingleton<ChannelManager>();
+        //injetando o produtor
         services.AddTransient<IMessageProducer>(sp =>
         {
             var channelManager = sp.GetRequiredService<ChannelManager>();
