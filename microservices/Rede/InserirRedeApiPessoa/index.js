@@ -1,12 +1,7 @@
-require('dotenv').config();
-const startConsumer = require('./consumer');
+const { rabbitmqUrl, queueName } = require('./config/env');
+const startConsumer = require('./queue/consumer');
+const processMessage = require('./services/messageProcessor');
 
-const rabbitUrl = process.env.RABBITMQ_URL;
-const queueName = process.env.QUEUE_NAME;
-
-function processMessage(message) {
-  console.log(`[🛠️] Processando: ${message}`);
-  // Aqui você coloca sua lógica de negócio
-}
-
-startConsumer(rabbitUrl, queueName, processMessage);
+(async () => {
+  await startConsumer(rabbitmqUrl, queueName, processMessage);
+})();
