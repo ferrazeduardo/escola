@@ -15,8 +15,7 @@ async function startConsumer(rabbitUrl, queueName, onMessage) {
 
         try {
         //  await onMessage(content);
-         channel.nack(msg, false, false)
-          //channel.ack(msg);
+          channel.ack(msg);
         } catch (err) {
           console.error('[❌] Erro ao processar mensagem:', err);
           // Se quiser reprocessar depois, use channel.nack(msg, false, true);
