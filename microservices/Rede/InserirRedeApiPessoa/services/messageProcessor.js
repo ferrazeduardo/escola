@@ -1,6 +1,6 @@
 const db = require('../db/pgClient');
 
-async function processMessage(msg) {
+module.exports = async function processMessage(msg) {
   try {
     const data = JSON.parse(msg); // espera que a mensagem seja JSON
 
@@ -15,4 +15,3 @@ async function processMessage(msg) {
   }
 }
 
-module.exports = processMessage;
