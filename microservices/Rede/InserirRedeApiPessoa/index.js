@@ -1,7 +1,7 @@
 const { rabbitmqUrl, queueName } = require('./config/env');
 const startConsumer = require('./queue/consumer');
-const processMessage = require('./services/messageProcessor');
+const runConsumer = require('./app/runConsumer');
 
 (async () => {
-  await startConsumer(rabbitmqUrl, queueName, processMessage);
+    await runConsumer({ rabbitmqUrl, queueName, db });
 })();
