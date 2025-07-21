@@ -1,5 +1,6 @@
 package com.ferrazeduardo.escola.Serie.domain;
 
+import java.util.List;
 import java.util.UUID;
 
 public class Unidade {
@@ -30,4 +31,6 @@ public class Unidade {
 
     private UUID ID_UNIDADE;
     private  String DS_UNIDADE;
+
+    private List<Sala> salas;
 }

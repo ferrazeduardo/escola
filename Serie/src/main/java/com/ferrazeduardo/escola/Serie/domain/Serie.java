@@ -30,6 +30,16 @@ public class Serie {
 
     private UUID id;
 
+    public int getNr_sala() {
+        return nr_sala;
+    }
+
+    public void setNr_sala(int nr_sala) {
+        this.nr_sala = nr_sala;
+    }
+
+    private int nr_sala;
+
     public UUID getId() {
         return id;
     }
@@ -93,4 +103,5 @@ public class Serie {
 
     private List<Materia> materias;
     private Unidade unidade;
+    private Sala sala;
 }
