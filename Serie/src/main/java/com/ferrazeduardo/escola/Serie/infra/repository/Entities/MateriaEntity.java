@@ -19,11 +19,22 @@ public class MateriaEntity implements Serializable {
     @JoinColumn(name = "serie_id")
     private SerieEntity serie;
 
+    @OneToOne
+    @JoinColumn(name = "rede_id")
+    private RedeEntity rede;
+
 
     public MateriaEntity(String DS_MATERIA, String ST_MATERIA) {
         this.DS_MATERIA = DS_MATERIA;
         this.ST_MATERIA = ST_MATERIA;
     }
+
+    public MateriaEntity(UUID id ,String DS_MATERIA, String ST_MATERIA) {
+        this.DS_MATERIA = DS_MATERIA;
+        this.ST_MATERIA = ST_MATERIA;
+        this.id = id;
+    }
+
 
     public MateriaEntity() {}
 
@@ -46,4 +57,5 @@ public class MateriaEntity implements Serializable {
     public void setST_MATERIA(String ST_MATERIA) {
         this.ST_MATERIA = ST_MATERIA;
     }
+
 }

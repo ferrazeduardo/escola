@@ -5,13 +5,22 @@ import java.util.UUID;
 
 public class Materia {
     private UUID id;
-    private Rede Rede;
-
     private String ST_MATERIA;
-
     private UUID ID_REDE;
 
+    public Materia(UUID id, String ST_MATERIA, String DS_MATERIA) {
+        this.id = id;
+        this.ST_MATERIA = ST_MATERIA;
+        this.ID_REDE = ID_REDE;
+        this.DS_MATERIA = DS_MATERIA;
+    }
+
     private String DS_MATERIA;
+
+
+    private Rede Rede;
+
+
     public Materia(UUID ID_REDE, String DS_MATERIA) {
         this.ID_REDE = ID_REDE;
         this.DS_MATERIA = DS_MATERIA;
@@ -27,10 +36,6 @@ public class Materia {
 
 
     public Materia(){
-
-    }
-
-    public Materia(UUID id, String dsMateria, String stMateria, UUID idRede) {
 
     }
 
