@@ -3,6 +3,11 @@ package com.ferrazeduardo.escola.Serie.domain;
 import java.util.UUID;
 
 public class Sala {
+    public Sala(UUID id, String nrSala) {
+        this.id = id;
+        this.nr_sala = nrSala;
+    }
+
     public UUID getId() {
         return id;
     }
@@ -11,14 +16,14 @@ public class Sala {
         this.id = id;
     }
 
-    public int getNr_sala() {
+    public String getNr_sala() {
         return nr_sala;
     }
 
-    public void setNr_sala(int nr_sala) {
+    public void setNr_sala(String nr_sala) {
         this.nr_sala = nr_sala;
     }
 
     private UUID id;
-    private int nr_sala;
+    private String nr_sala;
 }

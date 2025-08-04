@@ -13,6 +13,25 @@ public class ValorSerie {
     }
 
     private UUID id;
+
+    public ValorSerie(BigDecimal vlSerie, String dsTurno, UUID id) {
+        this.id = id;
+        this.VL_SERIE = vlSerie;
+        this.DS_TURNO = dsTurno;
+    }
+
+    public BigDecimal getVL_SERIE() {
+        return VL_SERIE;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getDS_TURNO() {
+        return DS_TURNO;
+    }
+
     private BigDecimal VL_SERIE;
     private String DS_TURNO;
 

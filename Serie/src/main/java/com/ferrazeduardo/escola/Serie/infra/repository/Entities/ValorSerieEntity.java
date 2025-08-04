@@ -32,6 +32,12 @@ public class ValorSerieEntity implements Serializable {
 
     public ValorSerieEntity() {}
 
+    public ValorSerieEntity(BigDecimal vlSerie, String dsTurno, UUID id) {
+        this.id = id;
+        this.vlSerie = vlSerie;
+        this.dsTurno = dsTurno;
+    }
+
     public UUID getId() {
         return id;
     }
