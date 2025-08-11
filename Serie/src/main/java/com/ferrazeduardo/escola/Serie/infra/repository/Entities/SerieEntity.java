@@ -10,10 +10,18 @@ import java.util.UUID;
 @Entity
 @Table(name = "serie")
 public class SerieEntity {
-    public SerieEntity(UUID id,int AA_MATRICULA, int QT_AVALIACAO, UUID ID_UNIDADE, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
+    public SerieEntity(
+            UUID id,
+            int AA_MATRICULA,
+            int QT_AVALIACAO,
+            RedeEntity rede,          // <-- mudou aqui
+            BigDecimal VL_MEDIA,
+            Date DT_INICIO,
+            Date DT_FIM
+    ) {
         this.AA_MATRICULA = AA_MATRICULA;
         this.QT_AVALIACAO = QT_AVALIACAO;
-        this.ID_UNIDADE = ID_UNIDADE;
+        this.rede = rede;            // <-- mudou aqui
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
@@ -39,9 +47,7 @@ public class SerieEntity {
         return QT_AVALIACAO;
     }
 
-    public UUID getID_UNIDADE() {
-        return ID_UNIDADE;
-    }
+
 
     public BigDecimal getVL_MEDIA() {
         return VL_MEDIA;
@@ -55,16 +61,25 @@ public class SerieEntity {
         return DT_FIM;
     }
 
+    public RedeEntity getRede() {
+        return rede;
+    }
+
+
     private int AA_MATRICULA;
     private int QT_AVALIACAO;
     private BigDecimal VL_MEDIA;
     private Date DT_INICIO;
     private Date DT_FIM;
-    private UUID ID_UNIDADE;
 
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ValorSerieEntity> valores;
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MateriaEntity> materias;
+
+    @OneToOne
+    @JoinColumn(name = "id_rede")
+    private RedeEntity rede;
+
 
 }

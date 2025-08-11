@@ -8,20 +8,20 @@ import java.util.UUID;
 public class Serie {
 
 
-    public Serie(int AA_MATRICULA, int QT_AVALIACAO, UUID ID_UNIDADE, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
+    public Serie(int AA_MATRICULA, int QT_AVALIACAO, Rede rede, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
         this.AA_MATRICULA = AA_MATRICULA;
         this.QT_AVALIACAO = QT_AVALIACAO;
-        this.ID_UNIDADE = ID_UNIDADE;
+        this.rede = rede;
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
     }
 
 
-    public Serie(UUID id,int AA_MATRICULA, int QT_AVALIACAO, UUID ID_UNIDADE, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
+    public Serie(UUID id,int AA_MATRICULA, int QT_AVALIACAO, Rede rede, BigDecimal VL_MEDIA, Date DT_INICIO, Date DT_FIM) {
         this.AA_MATRICULA = AA_MATRICULA;
         this.QT_AVALIACAO = QT_AVALIACAO;
-        this.ID_UNIDADE = ID_UNIDADE;
+        this.rede = rede;
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
@@ -52,9 +52,6 @@ public class Serie {
         return QT_AVALIACAO;
     }
 
-    public UUID getID_UNIDADE() {
-        return ID_UNIDADE;
-    }
 
     public BigDecimal getVL_MEDIA() {
         return VL_MEDIA;
@@ -70,19 +67,18 @@ public class Serie {
 
     private int AA_MATRICULA;
     private int QT_AVALIACAO;
-    private UUID ID_UNIDADE;
     private BigDecimal VL_MEDIA;
     private Date DT_INICIO;
     private Date DT_FIM;
 
     private List<ValorSerie> valores;
 
-    public Unidade getUnidade() {
-        return unidade;
+    public Rede getRede() {
+        return rede;
     }
 
-    public void setUnidade(Unidade unidade) {
-        this.unidade = unidade;
+    public void setRede(Rede rede) {
+        this.rede = rede;
     }
 
     public List<Materia> getMaterias() {
@@ -102,6 +98,6 @@ public class Serie {
     }
 
     private List<Materia> materias;
-    private Unidade unidade;
+    private Rede rede;
     private Sala sala;
 }
