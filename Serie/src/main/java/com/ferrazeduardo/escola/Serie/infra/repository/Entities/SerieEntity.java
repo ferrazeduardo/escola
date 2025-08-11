@@ -65,6 +65,19 @@ public class SerieEntity {
         return rede;
     }
 
+    public List<ValorSerieEntity> getValores(){
+            return valores;
+    }
+
+
+    public List<MateriaEntity> GetMaterias(){
+        return materias;
+    }
+
+    public List<SerieUnidadeEntity> GetSeriesUnidades(){
+        return serieUnidade;
+    }
+
 
     private int AA_MATRICULA;
     private int QT_AVALIACAO;
@@ -81,5 +94,6 @@ public class SerieEntity {
     @JoinColumn(name = "id_rede")
     private RedeEntity rede;
 
-
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SerieUnidadeEntity> serieUnidade;
 }
