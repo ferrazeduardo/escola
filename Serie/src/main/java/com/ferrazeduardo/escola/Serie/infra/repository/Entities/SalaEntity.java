@@ -1,11 +1,11 @@
 package com.ferrazeduardo.escola.Serie.infra.repository.Entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
+@Entity
+@Table(name = "sala")
 public class SalaEntity {
 
     public SalaEntity(UUID id, String NR_SALA) {
@@ -26,4 +26,9 @@ public class SalaEntity {
     public UUID id;
 
     public String NR_SALA;
+
+    @ManyToOne
+    @JoinColumn(name = "id_unidade")
+    private UnidadeEntity unidade;
+
 }

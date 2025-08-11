@@ -12,6 +12,10 @@ public class Rede {
         setRZ_SOCIAL(razaoSOcial);
     }
 
+
+    public Rede(){}
+    public Rede(UUID id){this.setId(id);}
+
     public UUID getId() {
         return Id;
     }

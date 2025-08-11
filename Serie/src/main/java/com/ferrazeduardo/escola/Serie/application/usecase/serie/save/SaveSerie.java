@@ -1,6 +1,7 @@
 package com.ferrazeduardo.escola.Serie.application.usecase.serie.save;
 
 import com.ferrazeduardo.escola.Serie.application.gateways.ISerieRepository;
+import com.ferrazeduardo.escola.Serie.domain.Rede;
 import com.ferrazeduardo.escola.Serie.domain.Serie;
 
 public class SaveSerie {
@@ -13,7 +14,7 @@ public class SaveSerie {
 
 
     public SerieOutput Handler(SerieInput serieInput){
-        Serie serie = new Serie(serieInput.ano(),serieInput.quantidadeAvalicao(),serieInput.id_rede(),serieInput.valorMedia(),serieInput.dataInicio(),serieInput.DataFim());
+        Serie serie = new Serie(serieInput.ano(),serieInput.quantidadeAvalicao(),new Rede(serieInput.id_rede()),serieInput.valorMedia(),serieInput.dataInicio(),serieInput.DataFim());
 
         _serieRepository.Inserir(serie);
 

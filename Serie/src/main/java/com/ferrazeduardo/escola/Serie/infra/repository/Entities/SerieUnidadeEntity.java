@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.UUID;
 
+
+@Entity
+@Table(name = "serie_unidade")
 public class SerieUnidadeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

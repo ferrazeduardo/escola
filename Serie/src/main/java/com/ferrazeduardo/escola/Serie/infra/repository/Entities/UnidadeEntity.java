@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table(name = "unidade")
 public class UnidadeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -30,6 +32,6 @@ public class UnidadeEntity {
 
 
 
-    @OneToMany(mappedBy = "sala", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "unidade", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<SalaEntity> salas;
 }
