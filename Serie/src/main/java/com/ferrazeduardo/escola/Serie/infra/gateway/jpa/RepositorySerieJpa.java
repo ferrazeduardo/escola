@@ -1,7 +1,7 @@
 package com.ferrazeduardo.escola.Serie.infra.gateway.jpa;
 
 import com.ferrazeduardo.escola.Serie.application.gateways.ISerieRepository;
-import com.ferrazeduardo.escola.Serie.domain.Serie;
+import com.ferrazeduardo.escola.Serie.domain.entities.Serie;
 import com.ferrazeduardo.escola.Serie.infra.gateway.mappers.SerieEntityMapper;
 import com.ferrazeduardo.escola.Serie.infra.repository.Entities.SerieEntity;
 import com.ferrazeduardo.escola.Serie.infra.repository.SerieRepository;

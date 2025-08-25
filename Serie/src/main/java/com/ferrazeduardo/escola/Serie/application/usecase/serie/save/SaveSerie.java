@@ -1,8 +1,8 @@
 package com.ferrazeduardo.escola.Serie.application.usecase.serie.save;
 
 import com.ferrazeduardo.escola.Serie.application.gateways.ISerieRepository;
-import com.ferrazeduardo.escola.Serie.domain.Rede;
-import com.ferrazeduardo.escola.Serie.domain.Serie;
+import com.ferrazeduardo.escola.Serie.domain.entities.Rede;
+import com.ferrazeduardo.escola.Serie.domain.entities.Serie;
 
 public class SaveSerie {
 

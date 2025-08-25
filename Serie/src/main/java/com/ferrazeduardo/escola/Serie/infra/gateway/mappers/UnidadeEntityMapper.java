@@ -1,6 +1,6 @@
 package com.ferrazeduardo.escola.Serie.infra.gateway.mappers;
 
-import com.ferrazeduardo.escola.Serie.domain.Unidade;
+import com.ferrazeduardo.escola.Serie.domain.entities.Unidade;
 import com.ferrazeduardo.escola.Serie.infra.repository.Entities.UnidadeEntity;
 
 public class UnidadeEntityMapper {

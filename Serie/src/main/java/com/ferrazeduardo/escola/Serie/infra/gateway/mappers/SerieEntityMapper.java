@@ -1,7 +1,6 @@
 package com.ferrazeduardo.escola.Serie.infra.gateway.mappers;
 
-import com.ferrazeduardo.escola.Serie.domain.Serie;
-import com.ferrazeduardo.escola.Serie.infra.repository.Entities.RedeEntity;
+import com.ferrazeduardo.escola.Serie.domain.entities.Serie;
 import com.ferrazeduardo.escola.Serie.infra.repository.Entities.SerieEntity;
 
 public class SerieEntityMapper {

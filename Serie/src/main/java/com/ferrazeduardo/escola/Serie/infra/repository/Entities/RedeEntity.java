@@ -1,6 +1,5 @@
 package com.ferrazeduardo.escola.Serie.infra.repository.Entities;
 
-import com.ferrazeduardo.escola.Serie.domain.Rede;
 import jakarta.persistence.*;
 
 import java.util.UUID;

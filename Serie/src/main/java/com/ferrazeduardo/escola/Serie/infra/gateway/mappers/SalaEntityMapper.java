@@ -1,6 +1,6 @@
 package com.ferrazeduardo.escola.Serie.infra.gateway.mappers;
 
-import com.ferrazeduardo.escola.Serie.domain.Sala;
+import com.ferrazeduardo.escola.Serie.domain.entities.Sala;
 import com.ferrazeduardo.escola.Serie.infra.repository.Entities.SalaEntity;
 
 public class SalaEntityMapper {

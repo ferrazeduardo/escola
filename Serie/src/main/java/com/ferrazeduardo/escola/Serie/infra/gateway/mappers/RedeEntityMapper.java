@@ -1,6 +1,6 @@
 package com.ferrazeduardo.escola.Serie.infra.gateway.mappers;
 
-import com.ferrazeduardo.escola.Serie.domain.Rede;
+import com.ferrazeduardo.escola.Serie.domain.entities.Rede;
 import com.ferrazeduardo.escola.Serie.infra.repository.Entities.RedeEntity;
 
 public class RedeEntityMapper {

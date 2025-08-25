@@ -1,6 +1,4 @@
-package com.ferrazeduardo.escola.Serie.domain;
-
-import jakarta.persistence.*;
+package com.ferrazeduardo.escola.Serie.domain.entities;
 
 import java.math.BigDecimal;
 import java.util.UUID;

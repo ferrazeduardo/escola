@@ -1,9 +1,7 @@
 package com.ferrazeduardo.escola.Serie.infra.gateway.mappers;
 
-import com.ferrazeduardo.escola.Serie.domain.Materia;
+import com.ferrazeduardo.escola.Serie.domain.entities.Materia;
 import com.ferrazeduardo.escola.Serie.infra.repository.Entities.MateriaEntity;
-
-import java.util.UUID;
 
 public class MateriaEntityMapper {
 

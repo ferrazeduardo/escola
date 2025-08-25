@@ -1,6 +1,5 @@
-package com.ferrazeduardo.escola.Aula.domain.entity;
+package com.ferrazeduardo.escola.Serie.domain.entities;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.UUID;
 
@@ -17,6 +16,5 @@ public class Horario {
         HoraInicio = horaInicio;
     }
 
-
-
+    public Horario(){}
 }

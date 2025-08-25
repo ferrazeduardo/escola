@@ -1,4 +1,4 @@
-package com.ferrazeduardo.escola.Serie.domain;
+package com.ferrazeduardo.escola.Serie.domain.entities;
 
 import java.util.List;
 import java.util.UUID;
