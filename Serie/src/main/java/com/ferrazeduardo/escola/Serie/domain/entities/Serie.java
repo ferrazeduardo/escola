@@ -101,4 +101,11 @@ public class Serie {
     private List<Materia> materias;
     private Rede rede;
     private Sala sala;
+    private List<Aula> aulas;
+
+    private List<Aula> getAulas(){
+        return aulas;
+    }
+
+
 }
