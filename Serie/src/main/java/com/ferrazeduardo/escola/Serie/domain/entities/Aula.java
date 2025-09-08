@@ -19,6 +19,20 @@ public class Aula {
         this.diaSemana = diaSemana;
     }
 
+    public Aula(UUID id
+            , String DS_AULA
+            , Horario horario
+            , Sala sala
+            , Materia materia
+            , DiaSemana diaSemana) {
+        Id = id;
+        this.horario = horario;
+        this.DS_AULA = DS_AULA;
+        this.sala = sala;
+        this.materia = materia;
+        this.diaSemana = diaSemana;
+    }
+
     public Aula(){}
 
     private UUID Id;
