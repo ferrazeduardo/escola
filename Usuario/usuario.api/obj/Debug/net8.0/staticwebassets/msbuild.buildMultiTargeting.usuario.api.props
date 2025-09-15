@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/usuario.api.props" />
-</Project>
