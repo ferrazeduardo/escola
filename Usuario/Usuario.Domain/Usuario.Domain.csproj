@@ -6,4 +6,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Events\" />
+      <Folder Include="Exception\" />
+      <Folder Include="Interface\" />
+      <Folder Include="SeedWork\" />
+      <Folder Include="Validation\" />
+    </ItemGroup>
+
 </Project>
