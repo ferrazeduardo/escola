@@ -1,6 +1,6 @@
 namespace Usuario.Domain.Entity;
 
-public class Usuario
+public class Usuario : SeedWork.Entity
 {
     public Usuario(Guid id, string nmUsuario, DateTime dtNascimento, string nrCpf)
     {
@@ -10,7 +10,6 @@ public class Usuario
         NR_CPF = nrCpf;
     }
 
-    private  Guid Id { get; set; }
     private string NM_USUARIO { get; set; }
     private DateTime DT_NASCIMENTO { get; set; }
     private string NR_CPF { get; set; }

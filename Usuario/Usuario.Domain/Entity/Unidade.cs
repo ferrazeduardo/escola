@@ -1,7 +1,6 @@
 namespace Usuario.Domain.Entity;
 
-public class Unidade
+public class Unidade : SeedWork.Entity
 {
-    public Guid Id { get; set; }
     public string DS_UNIDADE { get; set; }
 }

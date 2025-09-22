@@ -1,7 +1,6 @@
 namespace Usuario.Domain.Entity;
 
-public class Perfil
+public class Perfil : SeedWork.Entity
 {
-    public Guid Id { get; set; }
     public string DS_PERFIL { get; set; }
 }
