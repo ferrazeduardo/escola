@@ -2,7 +2,7 @@ namespace Usuario.Domain.Entity;
 
 public class Usuario : SeedWork.Entity
 {
-    public Usuario(Guid id, string nmUsuario, DateTime dtNascimento, string nrCpf)
+    public Usuario(int id, string nmUsuario, DateTime dtNascimento, string nrCpf)
     {
         Id = id;
         NM_USUARIO = nmUsuario;
@@ -10,9 +10,11 @@ public class Usuario : SeedWork.Entity
         NR_CPF = nrCpf;
     }
 
-    private string NM_USUARIO { get; set; }
-    private DateTime DT_NASCIMENTO { get; set; }
-    private string NR_CPF { get; set; }
+    public string NM_USUARIO { get; private set; }
+    public DateTime DT_NASCIMENTO { get; private set; }
+    public string NR_CPF { get; private set; }
+    public string SEG_SENHA {get; private set;}
+    public string SALT { get;  private set; }
     
-    public ICollection<PerfilUnidade> PerfilUnidades { get; private set; } = new List<PerfilUnidade>();
+    public ICollection<PerfilUnidade> PerfilUnidades { get; private set; } = [];
 }
