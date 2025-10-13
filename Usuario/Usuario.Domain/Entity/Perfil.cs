@@ -14,6 +14,6 @@ public class Perfil : SeedWork.Entity
     }
 
     public string DS_PERFIL { get; set; }
-
+    public ICollection<PerfilUnidade> PerfilUnidades { get; set; } = [];
     public ICollection<Unidade> Unidades { get; set; } = [];
 }

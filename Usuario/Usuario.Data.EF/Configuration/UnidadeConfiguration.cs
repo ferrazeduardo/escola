@@ -17,7 +17,8 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
         builder.HasMany(x => x.Perfis)
         .WithMany(x => x.Unidades)
         .UsingEntity<PerfilUnidade>(
-            r => r.HasOne<Unidade>().WithMany(e => e.Perfis)
+            r => r.HasOne(pt => pt.Perfil).WithMany(t => t.PerfilUnidades).HasForeignKey(pt => pt.id_perfil),
+            l => l.HasOne(pt => pt.Unidade).WithMany(p => p.PerfilUnidades).HasForeignKey(pt => pt.id_unidade)
         );
     }
 }
