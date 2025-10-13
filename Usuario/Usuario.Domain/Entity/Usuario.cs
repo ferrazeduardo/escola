@@ -10,11 +10,17 @@ public class Usuario : SeedWork.Entity
         NR_CPF = nrCpf;
     }
 
+    public Usuario()
+    {
+        
+    }
+
     public string NM_USUARIO { get; private set; }
     public DateTime DT_NASCIMENTO { get; private set; }
     public string NR_CPF { get; private set; }
     public string SEG_SENHA {get; private set;}
-    public string SALT { get;  private set; }
+    public string SALT { get; private set; }
     
-    public ICollection<PerfilUnidade> PerfilUnidades { get; private set; } = [];
+    public List<Unidade> Unidades { get; set; }
+    
 }

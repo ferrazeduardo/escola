@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Usuario.Domain.Entity;
 
 namespace Usuario.Data.EF.Configuration;
 
@@ -17,6 +18,10 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
 
         builder.Property(x => x.SEG_SENHA).IsRequired();
         builder.Property(x => x.SALT).IsRequired();
-        
+
+        builder.HasMany(e => e.Unidades)
+         .WithOne()
+         .HasForeignKey("id_unidade");
+
     }
 }
