@@ -14,10 +14,12 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
 
         builder.Property(x => x.NM_USUARIO).HasMaxLength(100).IsRequired();
         builder.Property(x => x.DT_NASCIMENTO).IsRequired();
-        builder.Property(x => x.NR_CPF).IsRequired().IsUnicode();
-
-        builder.Property(x => x.SEG_SENHA).IsRequired();
-        builder.Property(x => x.SALT).IsRequired();
+        builder.Property(x => x.NR_CPF).HasMaxLength(11).IsRequired();
+        builder.HasIndex(x => x.NR_CPF).IsUnique(true);
+        builder.Property(x => x.SEG_SENHA).HasMaxLength(50).IsRequired();
+        builder.Property(x => x.DS_EMAIL).HasMaxLength(50).IsRequired();
+        builder.HasIndex(x => x.DS_EMAIL).IsUnique(true);
+        builder.Property(x => x.SALT).HasMaxLength(100).IsRequired();
 
         builder.HasMany(e => e.Unidades)
          .WithOne()
