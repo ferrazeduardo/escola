@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Usuario.Domain.Validation;
 
 namespace Usuario.Domain.Entity;
@@ -36,13 +37,25 @@ public class Usuario : SeedWork.Entity
     public DateTime DT_NASCIMENTO { get; private set; }
     public string NR_CPF { get; private set; }
     public string SEG_SENHA { get; private set; }
-    public string SALT { get; private set; }
+    public byte[] SALT { get; private set; }
     public string DS_EMAIL { get; set; }
 
-    public void SetSalt(string salt)
+    public void SetSalt()
     {
+        var salt = new byte[16];
+        using var rng = RandomNumberGenerator.Create();
+        rng.GetBytes(salt);
         SALT = salt;
     }
+
+    public void HashSenha()
+    {
+        int iterations = 100_000;
+        using var pbkdf2 = new Rfc2898DeriveBytes(SEG_SENHA, SALT, iterations, HashAlgorithmName.SHA256);
+        var hash = pbkdf2.GetBytes(32); // 256 bits
+        SEG_SENHA = Convert.ToBase64String(hash);
+    }
+
 
     public List<Unidade> Unidades { get; set; }
 

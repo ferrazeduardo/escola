@@ -17,11 +17,13 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
     public async Task<UsuarioSaveOutput> Handle(UsuarioSaveInput request, CancellationToken cancellationToken)
     {
         domain.Usuario usuario = new(request.nome, request.dataNascimento, request.cpf, request.email, request.senha);
-
-        await _usuarioRepository.Inserir(usuario, cancellationToken);
+        usuario.SetSalt();
+        usuario.HashSenha();
+        int codigo = await _usuarioRepository.Inserir(usuario, cancellationToken);
 
         UsuarioSaveOutput usuarioSaveOutput = new();
-
+        usuarioSaveOutput.codigo = codigo;
         return usuarioSaveOutput;
     }
+    
 }
