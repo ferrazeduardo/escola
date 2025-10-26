@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Pessoa.Application.DependencyInjection;
+namespace Usuario.Application.DependencyInjection;
 
 public static class DependencyInjection
 {
