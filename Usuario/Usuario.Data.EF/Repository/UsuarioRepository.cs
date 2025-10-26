@@ -19,11 +19,9 @@ public class UsuarioRepository : IUsuarioRepository
         _dbContext.Set<AppDomain.Usuario>().Update(entity);
     }
 
-    public async Task<int> Inserir(Domain.Entity.Usuario entity, CancellationToken cancellationToken)
+    public async Task Inserir(Domain.Entity.Usuario entity, CancellationToken cancellationToken)
     {
         await _dbContext.Set<AppDomain.Usuario>().AddAsync(entity, cancellationToken);
-        await _dbContext.SaveChangesAsync();
-        return entity.Id;
     }
 
     public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro)
