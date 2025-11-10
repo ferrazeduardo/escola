@@ -5,13 +5,13 @@ namespace Serie.Domain.Entity;
 
 public class Materia : SeedWorks.Entity
 {
-    private String ST_MATERIA;
+    public String ST_MATERIA{ get; private set; }
 
    
-    private String DS_MATERIA;
+    public String DS_MATERIA{ get; private set; }
 
 
-    private Rede Rede;
+    public Rede Rede { get; private set; }
 
 
     public Materia( String DS_MATERIA,Rede rede) {

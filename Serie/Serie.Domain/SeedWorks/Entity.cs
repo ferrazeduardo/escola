@@ -20,4 +20,9 @@ public class Entity
     {
         return Id.GetHashCode();
     }
+
+    public void setId(Guid id)
+    {
+        Id = id;
+    }
 }
