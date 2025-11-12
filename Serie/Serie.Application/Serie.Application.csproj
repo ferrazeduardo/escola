@@ -14,5 +14,9 @@
     <PackageReference Include="MediatR" Version="13.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="../Serie.Domain/Serie.Domain.csproj" />
+  </ItemGroup>
+
 
 </Project>
