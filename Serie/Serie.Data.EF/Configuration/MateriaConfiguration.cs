@@ -25,6 +25,14 @@ public class MateriaConfiguration : IEntityTypeConfiguration<Materia>
 
         builder.HasMany(x => x.Rede)
         .WithMany(x => x.Materias)
-        .UsingEntity(j => j.ToTable("MateriaRede"));
+         .UsingEntity<Dictionary<string, object>>(
+        "MATERIA_REDE",
+        j => j.HasOne<Rede>()
+              .WithMany()
+              .HasForeignKey("ID_REDE"),
+        j => j.HasOne<Materia>()
+              .WithMany()
+              .HasForeignKey("ID_MATERIA")
+    );
     }
 }
