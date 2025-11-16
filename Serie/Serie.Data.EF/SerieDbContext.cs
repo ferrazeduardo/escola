@@ -25,5 +25,7 @@ public class SerieDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new MateriaConfiguration());
+        modelBuilder.ApplyConfiguration(new HorarioConfiguration());
+        modelBuilder.ApplyConfiguration(new SalaConfiguration());
     }
 }
