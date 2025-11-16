@@ -40,7 +40,6 @@ public class Rede
         this.Unidades = unidades;
     }
 
-    public ICollection<Materia> Materias { get;  set; } = [];
-    public ICollection<MateriaRede> MateriaRedes { get;  set; } = [];
+    public ICollection<Materia> Materias { get; private  set; } = [];
   
 }

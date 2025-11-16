@@ -10,8 +10,7 @@ public class Materia : SeedWorks.Entity
    
     public String DS_MATERIA{ get; private set; }
 
-    public ICollection<MateriaRede> MateriaRedes { get;  set; } = [];
-    public ICollection<Rede> Rede { get;  set; } = [];
+    public ICollection<Rede> Rede { get; private set; } = [];
 
 
     public Materia( String DS_MATERIA,Rede rede) {

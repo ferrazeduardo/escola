@@ -16,11 +16,15 @@ public class MateriaConfiguration : IEntityTypeConfiguration<Materia>
 
         builder.Property(x => x.ST_MATERIA).HasMaxLength(1).IsRequired();
 
+        // builder.HasMany(x => x.Rede)
+        // .WithMany(x => x.Materias)
+        // .UsingEntity<MateriaRede>(
+        //     r => r.HasOne(pt => pt.Rede).WithMany(t => t.MateriaRedes).HasForeignKey(pt => pt.ID_REDE),
+        //     l => l.HasOne(pt => pt.Materia).WithMany(t => t.MateriaRedes).HasForeignKey(pt => pt.ID_MATERIA)
+        // );
+
         builder.HasMany(x => x.Rede)
         .WithMany(x => x.Materias)
-        .UsingEntity<MateriaRede>(
-            r => r.HasOne(pt => pt.Rede).WithMany(t => t.MateriaRedes).HasForeignKey(pt => pt.ID_REDE),
-            l => l.HasOne(pt => pt.Materia).WithMany(t => t.MateriaRedes).HasForeignKey(pt => pt.ID_MATERIA)
-        );
+        .UsingEntity(j => j.ToTable("MateriaRede"));
     }
 }
