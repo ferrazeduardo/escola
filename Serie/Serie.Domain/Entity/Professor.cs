@@ -7,21 +7,21 @@ public class Professor : SeedWorks.Entity
     public Professor(Guid id, String nome, ICollection<Materia> materia)
     {
         this.setId(id);
-        this.nome = nome;
-        this.materia = materia;
+        this.NM_PROFESSOR = nome;
+        this.Materias = materia;
     }
 
     public String getNome()
     {
-        return nome;
+        return NM_PROFESSOR;
     }
 
     public ICollection<Materia> getMateria()
     {
-        return materia;
+        return Materias;
     }
 
-    public String nome { get; private set; }
-    public ICollection<Materia> materia { get; private set; } = [];
+    public String NM_PROFESSOR { get; private set; }
+    public ICollection<Materia> Materias { get; private set; } = [];
 
 }

@@ -11,7 +11,7 @@ public class Materia : SeedWorks.Entity
     public String DS_MATERIA{ get; private set; }
 
     public ICollection<Rede> Rede { get; private set; } = [];
-
+    public ICollection<Professor> Professor { get; private set; } = [];
 
     public Materia( String DS_MATERIA,Rede rede) {
         this.DS_MATERIA = DS_MATERIA;

@@ -26,13 +26,13 @@ public class MateriaConfiguration : IEntityTypeConfiguration<Materia>
         builder.HasMany(x => x.Rede)
         .WithMany(x => x.Materias)
          .UsingEntity<Dictionary<string, object>>(
-        "MATERIA_REDE",
+        "MateriaRede",
         j => j.HasOne<Rede>()
               .WithMany()
               .HasForeignKey("ID_REDE"),
         j => j.HasOne<Materia>()
               .WithMany()
               .HasForeignKey("ID_MATERIA")
-    );
+        );
     }
 }

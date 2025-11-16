@@ -65,7 +65,6 @@ public class Serie : SeedWorks.Entity
     public DateTime DT_INICIO { get; private set; }
     public DateTime DT_FIM { get; private set; }
 
-    public ICollection<ValorSerie> valores;
 
     public Rede getRede() {
         return rede;
@@ -82,9 +81,7 @@ public class Serie : SeedWorks.Entity
 
   
 
-    public void setValores(List<ValorSerie> valores) {
-        this.valores = valores;
-    }
+   
 
     public ICollection<Materia> materias { get; private set; } = [];
     public Rede rede { get; private set; }

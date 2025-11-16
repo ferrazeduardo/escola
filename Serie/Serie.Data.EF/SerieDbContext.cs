@@ -15,7 +15,6 @@ public class SerieDbContext : DbContext
     public DbSet<Rede> redes => Set<Rede>();
     public DbSet<Sala> salas => Set<Sala>();
     public DbSet<Unidade> unidades => Set<Unidade>();
-    public DbSet<ValorSerie> valorSeries => Set<ValorSerie>();
 
     public SerieDbContext(DbContextOptions<SerieDbContext> options) : base(options)
     {
@@ -27,5 +26,6 @@ public class SerieDbContext : DbContext
         modelBuilder.ApplyConfiguration(new MateriaConfiguration());
         modelBuilder.ApplyConfiguration(new HorarioConfiguration());
         modelBuilder.ApplyConfiguration(new SalaConfiguration());
+        modelBuilder.ApplyConfiguration(new ProfessorConfiguration());
     }
 }
