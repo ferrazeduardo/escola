@@ -35,8 +35,12 @@ public class Rede
     public Guid Id { get; private set; }
     public String RZ_SOCIAL { get; private set; }
 
-    public void AddUnidadesRange(ICollection<Unidade> unidades){
+    public void AddUnidadesRange(ICollection<Unidade> unidades)
+    {
         this.Unidades = unidades;
     }
+
+    public ICollection<Materia> Materias { get;  set; } = [];
+    public ICollection<MateriaRede> MateriaRedes { get;  set; } = [];
   
 }

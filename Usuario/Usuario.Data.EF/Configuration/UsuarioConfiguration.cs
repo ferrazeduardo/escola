@@ -23,7 +23,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
 
         builder.HasMany(e => e.Unidades)
          .WithOne()
-         .HasForeignKey("id_unidade")
+         .HasForeignKey("ID_UNIDADE")
          .OnDelete(DeleteBehavior.Cascade);
 
     }
