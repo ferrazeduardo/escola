@@ -27,5 +27,6 @@ public class SerieDbContext : DbContext
         modelBuilder.ApplyConfiguration(new HorarioConfiguration());
         modelBuilder.ApplyConfiguration(new SalaConfiguration());
         modelBuilder.ApplyConfiguration(new ProfessorConfiguration());
+        modelBuilder.ApplyConfiguration(new UnidadeConfiguration());
     }
 }

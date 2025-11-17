@@ -13,6 +13,9 @@ public class SalaConfiguration : IEntityTypeConfiguration<Sala>
         builder.Property(x => x.Id).ValueGeneratedNever();
 
         builder.Property(x => x.NR_SALA).HasMaxLength(10).IsRequired();
-        
+
+        builder.HasOne(x => x.Unidade)
+        .WithMany(x => x.Salas)
+        .HasPrincipalKey("ID_UNIDADE");
     }
 }

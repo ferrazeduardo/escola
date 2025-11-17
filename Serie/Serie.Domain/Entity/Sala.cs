@@ -14,4 +14,5 @@ public class Sala : SeedWorks.Entity
     }
 
     public String NR_SALA { get; private set; }
+    public Unidade Unidade { get; private set; }
 }
