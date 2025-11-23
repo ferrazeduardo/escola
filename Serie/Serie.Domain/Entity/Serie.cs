@@ -86,7 +86,8 @@ public class Serie : SeedWorks.Entity
     public ICollection<Materia> materias { get; private set; } = [];
     public Rede rede { get; private set; }
     public Sala sala { get; private set; }
-    public ICollection<Aula> aulas { get; private set; }
+    public ICollection<ValorSerie> ValorSeries { get; private set; } = [];
+    public ICollection<Aula> aulas { get; private set; } = [];
 
   
 }
