@@ -50,6 +50,7 @@ public class Horario : SeedWorks.Entity
 
     public String ST_HORARIO { get; private set; }
     public String LT_TURNO { get; private set; }
+    public Aula Aula { get; set; }
 
     public Horario() { }
 

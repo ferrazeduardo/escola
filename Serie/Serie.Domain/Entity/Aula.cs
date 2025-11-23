@@ -11,7 +11,8 @@ public class Aula : SeedWorks.Entity
             , Horario horario
             , Sala sala
             , Materia materia
-            , DiaSemana diaSemana) {
+            , DiaSemana diaSemana)
+    {
         this.horario = horario;
         this.DS_AULA = DS_AULA;
         this.sala = sala;
@@ -24,7 +25,8 @@ public class Aula : SeedWorks.Entity
             , Horario horario
             , Sala sala
             , Materia materia
-            , DiaSemana diaSemana) {
+            , DiaSemana diaSemana)
+    {
         this.setId(id);
         this.horario = horario;
         this.DS_AULA = DS_AULA;
@@ -33,36 +35,42 @@ public class Aula : SeedWorks.Entity
         this.diaSemana = diaSemana;
     }
 
-    public Aula(){}
+    public Aula() { }
 
-    public String DS_AULA{ get; private set; }
+    public String DS_AULA { get; private set; }
 
-    
-    public String getDS_AULA() {
+
+    public String getDS_AULA()
+    {
         return DS_AULA;
     }
 
 
 
-    public Horario getHorario() {
+    public Horario getHorario()
+    {
         return horario;
     }
 
-    public Horario horario{ get; private set; }
+    public Horario horario { get; private set; }
 
-    public Sala sala{ get; private set; }
+    public Sala sala { get; private set; }
+    public Serie Serie { get; set; }
 
-    public Sala getSala() {
+    public Sala getSala()
+    {
         return sala;
     }
 
-    public Materia getMateria() {
+    public Materia getMateria()
+    {
         return materia;
     }
 
     public Materia materia { get; private set; }
-    public DiaSemana diaSemana{ get; private set; }
-    public DiaSemana getDiaSemana() {
+    public DiaSemana diaSemana { get; private set; }
+    public DiaSemana getDiaSemana()
+    {
         return diaSemana;
     }
 
