@@ -31,7 +31,7 @@ public class Unidade
     public String DS_UNIDADE { get; private set; }
 
     public ICollection<Sala> Salas { get; private set; } = [];
-
+    public Rede Rede { get; private set; } 
     public void AddSala(Sala sala)
     {
         Salas.Add(sala);
