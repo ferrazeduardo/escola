@@ -41,5 +41,5 @@ public class Rede
     }
 
     public ICollection<Materia> Materias { get; private  set; } = [];
-  
+    public Serie Serie { get; set; }
 }

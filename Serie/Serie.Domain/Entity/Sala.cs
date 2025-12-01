@@ -16,4 +16,5 @@ public class Sala : SeedWorks.Entity
     public String NR_SALA { get; private set; }
     public Unidade Unidade { get; private set; }
     public ICollection<Aula> Aulas { get; private set; } = [];
+    public ICollection<Serie> Series { get; private set; }
 }

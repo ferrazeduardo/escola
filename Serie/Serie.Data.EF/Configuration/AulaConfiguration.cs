@@ -19,7 +19,7 @@ public class AulaConfiguration : IEntityTypeConfiguration<Aula>
         .HasPrincipalKey("ID_AULA");
 
         builder.HasOne(x => x.Serie)
-        .WithMany(x => x.aulas)
+        .WithMany(x => x.Aulas)
         .HasPrincipalKey("ID_SERIE");
 
         builder.HasOne(x => x.sala)

@@ -8,7 +8,7 @@ public class Serie : SeedWorks.Entity
     public Serie(int AA_MATRICULA, int QT_AVALIACAO, Rede rede, Decimal VL_MEDIA, DateTime DT_INICIO, DateTime DT_FIM) {
         this.AA_MATRICULA = AA_MATRICULA;
         this.QT_AVALIACAO = QT_AVALIACAO;
-        this.rede = rede;
+        this.Rede = rede;
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
@@ -18,7 +18,7 @@ public class Serie : SeedWorks.Entity
     public Serie(Guid id,int AA_MATRICULA, int QT_AVALIACAO, Rede rede, Decimal VL_MEDIA, DateTime DT_INICIO, DateTime DT_FIM) {
         this.AA_MATRICULA = AA_MATRICULA;
         this.QT_AVALIACAO = QT_AVALIACAO;
-        this.rede = rede;
+        this.Rede = rede;
         this.VL_MEDIA = VL_MEDIA;
         this.DT_INICIO = DT_INICIO;
         this.DT_FIM = DT_FIM;
@@ -67,27 +67,27 @@ public class Serie : SeedWorks.Entity
 
 
     public Rede getRede() {
-        return rede;
+        return Rede;
     }
 
     public void setRede(Rede rede) {
-        this.rede = rede;
+        this.Rede = rede;
     }
 
 
     public void setMaterias(List<Materia> materias) {
-        this.materias = materias;
+        this.Materias = materias;
     }
 
   
 
    
 
-    public ICollection<Materia> materias { get; private set; } = [];
-    public Rede rede { get; private set; }
-    public Sala sala { get; private set; }
+    public ICollection<Materia> Materias { get; private set; } = [];
+    public Rede Rede { get; private set; }
+    public ICollection<Sala> Salas { get; private set; }
     public ICollection<ValorSerie> ValorSeries { get; private set; } = [];
-    public ICollection<Aula> aulas { get; private set; } = [];
+    public ICollection<Aula> Aulas { get; private set; } = [];
 
   
 }
