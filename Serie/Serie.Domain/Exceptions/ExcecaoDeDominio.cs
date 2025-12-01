@@ -17,6 +17,6 @@ public class ExcecaoDeDominio : Exception
     public void HaError(bool erro,String mensagem)
     {
         if (erro)
-            throw new Exception(mensagem);
+            throw new ExcecaoDeDominio(mensagem);
     }
 }
