@@ -21,10 +21,12 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
         builder.HasIndex(x => x.DS_EMAIL).IsUnique(true);
         builder.Property(x => x.SALT).HasMaxLength(100).IsRequired();
 
-        builder.HasMany(e => e.Unidades)
-         .WithOne()
-         .HasForeignKey("ID_UNIDADE")
-         .OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(e => e.perfilUnidades)
+        .WithMany(e => e.usuarios)
+        .UsingEntity<PerfilUnidadeUsuario>(
+            l => l.HasOne(e => e.PerfilUnidade).WithMany(e => e.perfilUnidadeUsuarios).HasForeignKey(e => e.ID_PERFIL_UNIDADE),
+            r => r.HasOne(e => e.Usuario).WithMany(e => e.perfilUnidadeUsuarios).HasForeignKey(e => e.ID_USUARIO)
+        );
 
     }
 }
