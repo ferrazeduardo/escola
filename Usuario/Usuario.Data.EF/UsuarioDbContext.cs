@@ -10,6 +10,7 @@ public class UsuarioDbContext : DbContext
     public DbSet<Usuario.Domain.Entity.Usuario> usuarios => Set<Usuario.Domain.Entity.Usuario>();
     public DbSet<Usuario.Domain.Entity.Unidade> unidades => Set<Usuario.Domain.Entity.Unidade>();
     public DbSet<Usuario.Domain.Entity.Perfil> perfis => Set<Usuario.Domain.Entity.Perfil>();
+    public DbSet<Usuario.Domain.Entity.PerfilUnidade> perfilUnidades => Set<Usuario.Domain.Entity.PerfilUnidade>();
 
     public UsuarioDbContext(DbContextOptions<UsuarioDbContext> options) : base(options)
     {
