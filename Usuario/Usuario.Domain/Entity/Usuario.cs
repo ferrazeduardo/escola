@@ -57,6 +57,7 @@ public class Usuario : SeedWork.Entity
     }
 
 
-    public List<Unidade> Unidades { get; set; }
+    public ICollection<PerfilUnidadeUsuario> perfilUnidadeUsuarios { get; private set; } = [];
+    public ICollection<PerfilUnidade> perfilUnidades { get; private set; } = [];
 
 }

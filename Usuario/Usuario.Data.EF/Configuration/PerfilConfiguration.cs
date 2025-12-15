@@ -13,6 +13,13 @@ public class PerfilConfiguration : IEntityTypeConfiguration<Usuario.Domain.Entit
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
         builder.Property(x => x.DS_PERFIL).HasMaxLength(100);
-   
+
+        builder.HasMany(x => x.Unidades)
+        .WithMany(e => e.Perfis)
+        .UsingEntity<PerfilUnidade>(
+            l => l.HasOne<Unidade>( e => e.Unidade).WithMany(e => e.PerfilUnidades).HasForeignKey(e => e.ID_UNIDADE),
+            r => r.HasOne<Perfil>(e => e.Perfil).WithMany(e => e.PerfilUnidades).HasForeignKey(e => e.ID_PERFIL)    
+        );
+
     }
 }
