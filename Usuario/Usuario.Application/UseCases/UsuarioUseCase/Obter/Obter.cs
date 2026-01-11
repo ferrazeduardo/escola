@@ -19,13 +19,13 @@ public class Obter : IRequestHandler<ObterInput, ObterOutput>
     public async Task<ObterOutput> Handle(ObterInput request, CancellationToken cancellationToken)
     {
 
-        IDictionary<bool,Expression<Func<AppDomain.Usuario,bool>>> dict = new Dictionary<bool,Expression<Func<AppDomain.Usuario,bool>>>
+        IDictionary<bool, Expression<Func<AppDomain.Usuario, bool>>> dict = new Dictionary<bool, Expression<Func<AppDomain.Usuario, bool>>>
         {
             { request.id > 0, x => x.Id == request.id },
             { String.IsNullOrEmpty(request.cpf) is false,  x => x.NR_CPF == request.cpf }
         };
 
-        var func = dict.FirstOrDefault(x => x.Key).Value;
+        var func = dict.FirstOrDefault(x => x.Key).Value ?? throw new Exception("Filtro inválido");
 
         AppDomain.Usuario usuario = await _usuarioRepository.Obter(func);
 
