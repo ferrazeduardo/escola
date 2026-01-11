@@ -16,7 +16,7 @@ namespace Usuario.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("save")]
         public async Task<IActionResult> Save([FromBody] UsuarioSaveInput usuarioSaveInput)
         {
             var response = await _mediator.Send(usuarioSaveInput);

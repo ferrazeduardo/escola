@@ -11,8 +11,8 @@ export class UsuarioService {
     private apiBase: ApibaseService
   ) { }
 
-  cadastrar(param: any) {
-    const uri: string = '/usuario/cadastrar';
+  save(param: any) {
+    const uri: string = '5151/usuario/save';
     return this.apiBase.post(`${this.baseApiPath + uri}`, undefined, param);
   }
 }

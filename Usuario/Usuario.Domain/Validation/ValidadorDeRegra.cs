@@ -25,7 +25,7 @@ public class ValidadorDeRegra
 
     public void DispararExcecaoSeExistir()
     {
-        if(string.IsNullOrEmpty(Mensagens))
+        if(string.IsNullOrEmpty(Mensagens) is false)
            throw new ExcecaoDeDominio(Mensagens);
     }
 }
