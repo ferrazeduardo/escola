@@ -26,7 +26,7 @@ public class UsuarioRepository : IUsuarioRepository
 
     public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro)
     {
-        return await _dbContext.Set<AppDomain.Usuario>().FindAsync(filtro);
+        return await _dbContext.Set<AppDomain.Usuario>().FirstOrDefaultAsync(filtro);
     }
 
     public async Task<List<Domain.Entity.Usuario>> ObterTodos()
