@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="row align-items-end">
+    <div class="col-md-8 mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" [(ngModel)]="nomeUsuario" placeholder="Digite o nome do usuário" />
+    </div>
+
+    <div class="col-md-4 mb-3 d-grid">
+      <button class="btn btn-primary" (click)="pesquisar()">
+        Pesquisar
+      </button>
+    </div>
+  </div>
+</div>
+
+@if (usuarios && usuarios!.length > 0) {
+<div class="container mt-4">
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Data Nascimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td>{{ u.id }}</td>
+        <td>{{ u.nome }}</td>
+        <td>{{ u.cpf }}</td>
+        <td>{{ u.dataNascimento | date:'dd/MM/yyyy' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container mt-4" *ngIf="usuarios?.length === 0">
+  <div class="alert alert-info">
+    Nenhum usuário encontrado.
+  </div>
+</div>
+}
