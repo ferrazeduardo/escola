@@ -36,8 +36,6 @@ export class CadastrarComponent implements OnInit {
 
     const usuario = this.form.value;
 
-    console.log('UsuarioSaveInput:', usuario);
-
     this._usuarioService.save(usuario).subscribe({
       next: (response: any) => {
         alert('Usuario cadastrado com sucesso!');

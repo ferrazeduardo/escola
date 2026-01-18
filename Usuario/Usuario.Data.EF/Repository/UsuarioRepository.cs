@@ -27,7 +27,17 @@ public class UsuarioRepository : IUsuarioRepository
 
     public async Task<List<AppDomain.Usuario>> Listar(Expression<Func<AppDomain.Usuario, bool>> filtro)
     {
-        return await _dbContext.Set<AppDomain.Usuario>().Where(filtro)?.ToListAsync();
+        try
+        {
+
+            return await _dbContext.Set<AppDomain.Usuario>().Where(filtro)?.ToListAsync();
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        return null;
     }
 
     public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro)

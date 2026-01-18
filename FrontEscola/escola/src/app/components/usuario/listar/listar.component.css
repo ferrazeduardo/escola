@@ -1,0 +1,13 @@
+.compact-field .mat-mdc-form-field-infix {
+  min-height: 40px;        /* altura mais próxima do botão */
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.compact-field .mat-mdc-text-field-wrapper {
+  height: 40px;
+}
+
+button[matButton] {
+  height: 40px;
+}

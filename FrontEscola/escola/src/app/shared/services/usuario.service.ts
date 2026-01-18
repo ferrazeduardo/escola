@@ -15,4 +15,9 @@ export class UsuarioService {
     const uri: string = '5151/usuario/save';
     return this.apiBase.post(`${this.baseApiPath + uri}`, undefined, param);
   }
+
+  listar(param: any) {
+    const uri: string = '5151/usuario/listar';
+    return this.apiBase.post(`${this.baseApiPath + uri}`, undefined, param);
+  }
 }
