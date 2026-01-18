@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Usuario.Application.UseCases.UsuarioUseCase.Listar;
 using Usuario.Application.UseCases.UsuarioUseCase.Obter;
 using Usuario.Application.UseCases.UsuarioUseCase.Save;
 
@@ -28,7 +29,14 @@ namespace Usuario.Api.Controllers
         [HttpPost("obter")]
         public async Task<IActionResult> Obter([FromBody] ObterInput obter)
         {
-             var response = await _mediator.Send(obter);
+            var response = await _mediator.Send(obter);
+            return Ok(response);
+        }
+
+        [HttpPost("listar")]
+        public async Task<IActionResult> Listar([FromBody] ListarInput listar)
+        {
+            var response = await _mediator.Send(listar);
             return Ok(response);
         }
     }

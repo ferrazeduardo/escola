@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Usuario.Domain.Interface.Repository;
+using Usuario.Domain.SeedWork;
 using AppDomain = Usuario.Domain.Entity;
 
 namespace Usuario.Data.EF.Repository;
@@ -24,6 +25,11 @@ public class UsuarioRepository : IUsuarioRepository
         await _dbContext.Set<AppDomain.Usuario>().AddAsync(entity, cancellationToken);
     }
 
+    public async Task<List<AppDomain.Usuario>> Listar(Expression<Func<AppDomain.Usuario, bool>> filtro)
+    {
+        return await _dbContext.Set<AppDomain.Usuario>().Where(filtro)?.ToListAsync();
+    }
+
     public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro)
     {
         return await _dbContext.Set<AppDomain.Usuario>().FirstOrDefaultAsync(filtro);
@@ -38,4 +44,5 @@ public class UsuarioRepository : IUsuarioRepository
     {
         _dbContext.Set<AppDomain.Usuario>().Remove(entity);
     }
+
 }
