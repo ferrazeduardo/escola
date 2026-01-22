@@ -1,14 +1,20 @@
-<div class="container mt-4">
-  <div class="row align-items-end">
-    <div class="col-md-8 mb-3">
-      <label class="form-label">Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="nomeUsuario" placeholder="Digite o nome do usuário" />
+<div class="row">
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Pesquisar</span>
     </div>
+    <div class="card-body">
+      <div class="col-md-12 mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" class="form-control" [(ngModel)]="nomeUsuario" placeholder="Digite o nome do usuário" />
+      </div>
 
-    <div class="col-md-4 mb-3 d-grid">
-      <button class="btn btn-primary" (click)="pesquisar()">
+      <button class="btn btn-success me-3" (click)="pesquisar()">
         Pesquisar
       </button>
+      <a class="btn btn-primary" routerLink="/usuario/cadastrar">
+        Novo
+      </a>
     </div>
   </div>
 </div>
@@ -25,19 +31,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let u of usuarios">
+      @for (u of usuarios; track $index) {
+      <tr>
         <td>{{ u.id }}</td>
         <td>{{ u.nome }}</td>
         <td>{{ u.cpf }}</td>
         <td>{{ u.dataNascimento | date:'dd/MM/yyyy' }}</td>
       </tr>
+      }
+
     </tbody>
   </table>
 </div>
-
-<div class="container mt-4" *ngIf="usuarios?.length === 0">
+@if (usuarios && usuarios.length === 0) {
+<div class="container mt-4">
   <div class="alert alert-info">
     Nenhum usuário encontrado.
   </div>
 </div>
+}
 }
