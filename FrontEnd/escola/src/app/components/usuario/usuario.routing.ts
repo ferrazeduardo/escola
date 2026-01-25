@@ -8,10 +8,15 @@ export const usuarioRoutes: Routes = [
         .then(m => m.CadastrarComponent)
   },
   {
+    path: 'editar/:id',
+    loadComponent: () =>
+      import('./cadastrar/cadastrar.component')
+        .then(m => m.CadastrarComponent)
+  },
+  {
     path: 'listar',
     loadComponent: () =>
       import('./listar/listar.component')
         .then(m => m.ListarComponent)
   }
 ];
-  

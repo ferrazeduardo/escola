@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ApibaseService } from './apibase.service';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,6 @@ export class UsuarioService {
 
   listar(param: any) {
     const uri: string = '5151/usuario/listar';
-    return this.apiBase.post(`${this.baseApiPath + uri}`, undefined, param);
+    return this.apiBase.post<Usuario[]>(`${this.baseApiPath + uri}`, undefined, param);
   }
 }
