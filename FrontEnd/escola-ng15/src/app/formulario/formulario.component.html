@@ -1,0 +1,13 @@
+<input [(ngModel)]="nome" placeholder="Nome">
+<button (click)="buscar()">Buscar</button>
+
+<table border="1" *ngIf="usuarios.length">
+  <tr>
+    <th>ID</th>
+    <th>Nome</th>
+  </tr>
+  <tr *ngFor="let u of usuarios">
+    <td>{{u.id}}</td>
+    <td>{{u.nome}}</td>
+  </tr>
+</table>
