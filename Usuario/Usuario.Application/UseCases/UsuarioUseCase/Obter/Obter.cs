@@ -33,7 +33,9 @@ public class Obter : IRequestHandler<ObterInput, ObterOutput>
         {
             Id = usuario.Id,
             Nome = usuario.NM_USUARIO,
-            Email = usuario.DS_EMAIL
+            Email = usuario.DS_EMAIL,
+            cpf = usuario.NR_CPF,
+            dataNascimento = usuario.DT_NASCIMENTO,
         };
     }
 }
