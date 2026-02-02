@@ -4,7 +4,7 @@ namespace Rede.Domain.SeedWork;
 public abstract class Entity
 {
     
-    [BsonGuidRepresentation(GuidRepresentation.Standard)] public Guid Id { get; protected set; }
+    public Guid Id { get; protected set; }
     
     protected Entity() =>
         Id = Guid.NewGuid();
