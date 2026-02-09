@@ -1,18 +1,21 @@
 import { useState } from "react";
-import {saveUsuario} from "../../api/usuario.api";
+import { listarUsuarios } from "../../api/usuario.api";
 import type { Usuario } from "../../models/iusuario";
-
+import { useNavigate } from 'react-router-dom';
 
 export function Usuarios() {
   const [nome, setNome] = useState('');
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
+  const navigate = useNavigate();
 
   async function buscar() {
-    // const response = await api.post<Usuario[]>('/usuario/listar', {
-    //   nome,
-    // });
+    const response = await listarUsuarios(nome);
 
-    // setUsuarios(response.data);
+    setUsuarios(response.data);
+  }
+
+  function editar(id: number) {
+    navigate(`/usuarios/editar/${id}`);
   }
 
   return (
@@ -32,13 +35,26 @@ export function Usuarios() {
         </button>
       </div>
 
-      <ul>
-        {usuarios.map(usuario => (
-          <li key={usuario.id}>
-            {usuario.id} - {usuario.nome}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          {usuarios.map(usuario => (
+            <tr key={usuario.id}>
+              <td>{usuario.id}</td>
+              <td>{usuario.nome}</td>
+              <td>{usuario.cpf}</td>
+              <td><button onClick={() => editar(usuario.id)}></button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

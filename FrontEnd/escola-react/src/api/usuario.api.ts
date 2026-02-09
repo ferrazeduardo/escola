@@ -8,3 +8,9 @@ export const listarUsuarios = (nome?: string) =>
 
 export const saveUsuario = (param: Usuario) =>
   api.post('/usuario/save', param)
+
+export const obterUsuario = (param: number) =>
+  api.post('/usuario/obter', param)
+
+export const editUsuario = (param: Usuario) => 
+  api.put('/usuario/editar')
