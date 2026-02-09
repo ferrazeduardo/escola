@@ -108,28 +108,32 @@ export function Create() {
                         }
                     />
                 </div>
-                <div>
-                    <label>Login</label>
-                    <input
-                        type="text"
-                        placeholder="Login"
-                        value={usuario?.login || ''}
-                        onChange={(e) =>
-                            setUsuario({ ...usuario, login: e.target.value })
-                        }
-                    />
-                </div>
-                <div>
-                    <label>Login</label>
-                    <input
-                        type="text"
-                        placeholder="Senha"
-                        value={usuario?.senha || ''}
-                        onChange={(e) =>
-                            setUsuario({ ...usuario, senha: e.target.value })
-                        }
-                    />
-                </div>
+                {!id && (
+                    <>
+                        <div>
+                            <label>Login</label>
+                            <input
+                                type="text"
+                                placeholder="Login"
+                                value={usuario?.login || ''}
+                                onChange={(e) =>
+                                    setUsuario({ ...usuario, login: e.target.value })
+                                }
+                            />
+                        </div>
+                        <div>
+                            <label>Senha</label>
+                            <input
+                                type="text"
+                                placeholder="Senha"
+                                value={usuario?.senha || ''}
+                                onChange={(e) =>
+                                    setUsuario({ ...usuario, senha: e.target.value })
+                                }
+                            />
+                        </div>
+                    </>
+                )}
                 <button>Salvar</button>
             </div>
         </form>
