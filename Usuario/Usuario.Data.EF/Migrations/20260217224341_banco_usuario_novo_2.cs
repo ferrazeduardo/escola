@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Usuario.Data.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class remover_tabelas : Migration
+    public partial class banco_usuario_novo_2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

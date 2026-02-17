@@ -12,8 +12,8 @@ using Usuario.Data.EF;
 namespace Usuario.Data.EF.Migrations
 {
     [DbContext(typeof(UsuarioDbContext))]
-    [Migration("20260217152001_remover_tabelas")]
-    partial class remover_tabelas
+    [Migration("20260217224341_banco_usuario_novo_2")]
+    partial class banco_usuario_novo_2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
