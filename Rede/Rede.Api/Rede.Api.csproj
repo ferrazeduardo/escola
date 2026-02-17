@@ -8,14 +8,18 @@
 
     <ItemGroup>
         <PackageReference Include="HotChocolate.AspNetCore" Version="15.0.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Rede.Application\Rede.Application.csproj" />
       <ProjectReference Include="..\Rede.Data.EF\Rede.Data.EF.csproj" />
       <ProjectReference Include="..\Rede.Messaging\Rede.Messaging.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controller/" />
     </ItemGroup>
 
 </Project>
