@@ -2,15 +2,15 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import type { Rede } from "../../models/irede";
 
-export function Create() {
+export function CreateRede() {
     const [rede, setRede] = useState<Rede>({
         cnpj: '',
         razaoSocial: '',
         diasVencimentoRede: []
     });
-
-    const dias = Array.from({length: 20}, (_, i) => i + 1) ;
-
+    const [loading, setLoading] = useState(false);
+    const dias = Array.from({ length: 20 }, (_, i) => i + 1);
+ 
     return (
         <form>
             <div>

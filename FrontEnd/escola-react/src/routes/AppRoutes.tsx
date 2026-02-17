@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Usuarios } from '../pages/Usuarios/Usuarios';
 // import { PrivateRoute } from '../components/PrivateRoute';
 import { Create } from '../pages/Usuarios/Create';
+import { CreateRede } from '../pages/Rede/CreateRede';
 
 export const AppRoutes = () => (
     <Routes>
@@ -22,6 +23,11 @@ export const AppRoutes = () => (
         <Route path='/usuarios/editar/:id'
             element={
                 <Create />
+            } />
+
+        <Route path='/rede'
+            element={
+                <CreateRede />
             } />
     </Routes>
 );
