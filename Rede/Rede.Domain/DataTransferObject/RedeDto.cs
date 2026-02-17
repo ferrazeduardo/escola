@@ -5,7 +5,7 @@ namespace Rede.Domain.DataTransferObject;
 
 public class RedeDto
 {
-    public Guid id { get; set; }
+    public int id { get; set; }
     public string razaoSocial { get; set; }
     public string cnpj { get; set; }
     public string status { get; set; }

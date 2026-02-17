@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Usuario.Data.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUser : Migration
+    public partial class remover_tabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,7 +26,7 @@ namespace Usuario.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "unidades",
+                name: "Unidade",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -35,7 +35,7 @@ namespace Usuario.Data.EF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_unidades", x => x.Id);
+                    table.PrimaryKey("PK_Unidade", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,15 +69,15 @@ namespace Usuario.Data.EF.Migrations
                 {
                     table.PrimaryKey("PK_perfilUnidades", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_perfilUnidades_perfis_ID_PERFIL",
-                        column: x => x.ID_PERFIL,
-                        principalTable: "perfis",
+                        name: "FK_perfilUnidades_Unidade_ID_UNIDADE",
+                        column: x => x.ID_UNIDADE,
+                        principalTable: "Unidade",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_perfilUnidades_unidades_ID_UNIDADE",
-                        column: x => x.ID_UNIDADE,
-                        principalTable: "unidades",
+                        name: "FK_perfilUnidades_perfis_ID_PERFIL",
+                        column: x => x.ID_PERFIL,
+                        principalTable: "perfis",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -147,10 +147,10 @@ namespace Usuario.Data.EF.Migrations
                 name: "usuarios");
 
             migrationBuilder.DropTable(
-                name: "perfis");
+                name: "Unidade");
 
             migrationBuilder.DropTable(
-                name: "unidades");
+                name: "perfis");
         }
     }
 }

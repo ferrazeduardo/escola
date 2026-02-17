@@ -96,7 +96,7 @@ namespace Usuario.Data.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("unidades");
+                    b.ToTable("Unidade", (string)null);
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.Usuario", b =>

@@ -35,7 +35,7 @@ public class RedeRepository : IRedeRepository
          _context.Rede.Remove(entity);
     }
 
-    public async Task<Domain.Entity.Rede> ObterPorId(Guid id)
+    public async Task<Domain.Entity.Rede> ObterPorId(int id)
     {
         var rede = await _context.Set<Domain.Entity.Rede>().FirstOrDefaultAsync(rede => rede.Id == id);
         return rede;

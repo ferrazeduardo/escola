@@ -9,7 +9,7 @@ public class DiaVencimentoConfiguration : IEntityTypeConfiguration<DiaVencimento
     public void Configure(EntityTypeBuilder<DiaVencimento> builder)
     {
         // Define a chave primária
-        builder.HasAlternateKey(x => new { x.ID_REDE, x.Dia });
+        // builder.HasAlternateKey(x => new { x.ID_REDE, x.Dia });
 
         // Configuração da propriedade Dia
         builder.Property(x => x.Dia)
@@ -18,5 +18,11 @@ public class DiaVencimentoConfiguration : IEntityTypeConfiguration<DiaVencimento
 
         // Opcional: Definir o nome da tabela explicitamente
         builder.ToTable("DiaVencimento");
+
+        
+        builder.HasOne(x => x.Rede)
+            .WithMany(x => x.DiaVencimentos)
+            .HasConstraintName("ID_REDE")
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

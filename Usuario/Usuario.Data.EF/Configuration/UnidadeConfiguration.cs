@@ -9,6 +9,8 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
 {
     public void Configure(EntityTypeBuilder<Unidade> builder)
     {
+        builder.ToTable("Unidade");
+
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
 

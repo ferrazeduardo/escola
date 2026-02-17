@@ -8,6 +8,8 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
 {
     public void Configure(EntityTypeBuilder<Unidade> builder)
     {
+        builder.ToTable("Unidade");
+
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
@@ -22,7 +24,7 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
         builder.Property(x => x.NR_CEP)
             .HasMaxLength(8)
             .IsRequired();
-        
+
         builder.Property(x => x.ST_UNIDADE)
             .HasMaxLength(1)
             .IsRequired();
@@ -32,19 +34,19 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
 
         builder.Property(x => x.US_REGISTRO)
             .IsRequired();
-        
+
         builder.Property(x => x.DS_COMPLMENTO)
             .HasMaxLength(100)
             .IsRequired();
-        
-        builder.Property(x =>x.ID_REDE)
-            .IsRequired();
-        
-        builder.HasMany(x => x.Telefones)
-            .WithOne(x => x.Unidade)
-            .HasForeignKey(x => x.ID_UNIDADE)
-            .OnDelete(DeleteBehavior.Cascade);
-            
 
+
+
+        builder.HasOne(x => x.Rede)
+                .WithMany(x => x.Unidades)
+                .HasConstraintName("ID_REDE")
+                .OnDelete(DeleteBehavior.Cascade);
     }
 }
+
+//dotnet ef migrations add [NomeDaMigração]   
+//dotnet ef database update   

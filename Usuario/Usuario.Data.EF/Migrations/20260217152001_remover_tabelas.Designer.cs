@@ -12,8 +12,8 @@ using Usuario.Data.EF;
 namespace Usuario.Data.EF.Migrations
 {
     [DbContext(typeof(UsuarioDbContext))]
-    [Migration("20260105014129_AddUser")]
-    partial class AddUser
+    [Migration("20260217152001_remover_tabelas")]
+    partial class remover_tabelas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,7 +99,7 @@ namespace Usuario.Data.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("unidades");
+                    b.ToTable("Unidade", (string)null);
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.Usuario", b =>

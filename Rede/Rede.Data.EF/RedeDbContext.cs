@@ -22,5 +22,6 @@ public class RedeDbContext  : DbContext
         modelBuilder.ApplyConfiguration(new RedeConfiguration());
         modelBuilder.ApplyConfiguration(new TelefoneConfiguration());
         modelBuilder.ApplyConfiguration(new UnidadeConfiguration());
+        modelBuilder.ApplyConfiguration(new DiaVencimentoConfiguration());
     }
 }

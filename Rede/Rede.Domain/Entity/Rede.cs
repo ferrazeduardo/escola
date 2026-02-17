@@ -16,7 +16,7 @@ public class Rede : AggregateRoot
         Ativar();
 
         ValidacaoInserir();
-        AddDomainEvent(new RedeSalvarEvent(razaoSocial,Id));
+        // AddDomainEvent(new RedeSalvarEvent(razaoSocial,Id));
     }
 
     public Rede()

@@ -30,14 +30,6 @@ public class RedeConfiguration : IEntityTypeConfiguration<Domain.Entity.Rede>
         builder.Property(x => x.DH_REGISTRO)
             .IsRequired();
 
-        builder.HasMany(x => x.DiaVencimentos)
-            .WithOne(vencimento => vencimento.Rede)
-            .HasForeignKey(vencimento => vencimento.ID_REDE)
-            .OnDelete(DeleteBehavior.Cascade);
 
-        builder.HasMany(x => x.Unidades)
-            .WithOne(unidade => unidade.Rede)
-            .HasForeignKey(unidade => unidade.ID_REDE)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

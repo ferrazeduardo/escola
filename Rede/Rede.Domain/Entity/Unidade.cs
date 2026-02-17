@@ -25,7 +25,6 @@ public class Unidade : SeedWork.Entity
         US_REGISTRO = usuarioRegistro;
         DH_REGISTRO = DateTime.Now;
         Rede = rede;
-        ID_REDE = rede.Id;
         DS_COMPLMENTO = dsComplmento;
         ST_UNIDADE = "S"; // Assumindo que a unidade inicia ativa
     }
@@ -49,7 +48,6 @@ public class Unidade : SeedWork.Entity
 
     public string DS_COMPLMENTO { get; set; }
     public Rede? Rede { get; private set; }
-    public Guid ID_REDE { get; set; }
 
     public void Ativar()
     {
