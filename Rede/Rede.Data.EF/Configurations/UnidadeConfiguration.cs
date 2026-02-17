@@ -9,7 +9,7 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
     public void Configure(EntityTypeBuilder<Unidade> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Id).ValueGeneratedNever();
+        builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
         builder.Property(x => x.DS_ENDERECO)
             .HasMaxLength(200)
