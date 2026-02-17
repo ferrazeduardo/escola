@@ -9,13 +9,7 @@ export function Create() {
         diasVencimentoRede: []
     });
 
-    let dias: number[] = [];
-
-    function listarDias() {
-        for (let i = 1; i <= 20; i++) {
-            dias.push(i)
-        }
-    }
+    const dias = Array.from({length: 20}, (_, i) => i + 1) ;
 
     return (
         <form>
