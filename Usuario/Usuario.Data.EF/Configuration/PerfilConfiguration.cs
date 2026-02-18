@@ -9,6 +9,7 @@ public class PerfilConfiguration : IEntityTypeConfiguration<Usuario.Domain.Entit
 {
     public void Configure(EntityTypeBuilder<Perfil> builder)
     {
+         builder.ToTable("Perfil");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
 

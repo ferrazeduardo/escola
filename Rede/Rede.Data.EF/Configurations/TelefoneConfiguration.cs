@@ -18,7 +18,8 @@ public class TelefoneConfiguration : IEntityTypeConfiguration<Telefone>
 
         builder.HasOne(x => x.Unidade)
         .WithMany(x => x.Telefones)
-        .HasConstraintName("ID_UNIDADE")
+        .HasForeignKey("ID_UNIDADE")
+        .HasConstraintName("FK_UNIDADE_TELEFONE")
         .OnDelete(DeleteBehavior.Cascade);
 
     }

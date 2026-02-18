@@ -9,6 +9,7 @@ public class PerfilUnidadeUsuarioConfuguration : IEntityTypeConfiguration<Perfil
 {
     public void Configure(EntityTypeBuilder<PerfilUnidadeUsuario> builder)
     {
+        builder.ToTable("PerfilUnidadeUsuario");
         builder.Property(e => e.ID_PERFIL_UNIDADE).IsRequired().HasColumnName("ID_PERFIL_UNIDADE");
         builder.Property(e => e.ID_USUARIO).IsRequired().HasColumnName("ID_USUARIO");
     }

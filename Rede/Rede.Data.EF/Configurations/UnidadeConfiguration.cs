@@ -43,7 +43,8 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
 
         builder.HasOne(x => x.Rede)
                 .WithMany(x => x.Unidades)
-                .HasConstraintName("ID_REDE")
+                .HasForeignKey("ID_REDE")
+                .HasConstraintName("FK_REDE_UNIDADE")
                 .OnDelete(DeleteBehavior.Cascade);
     }
 }

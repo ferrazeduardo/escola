@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Rede.Data.EF;
@@ -11,9 +12,11 @@ using Rede.Data.EF;
 namespace Rede.Data.EF.Migrations
 {
     [DbContext(typeof(RedeDbContext))]
-    partial class RedeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260218143915_chave_estrangeira_nas_tabelas")]
+    partial class chave_estrangeira_nas_tabelas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

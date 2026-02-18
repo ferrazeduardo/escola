@@ -22,7 +22,8 @@ public class DiaVencimentoConfiguration : IEntityTypeConfiguration<DiaVencimento
         
         builder.HasOne(x => x.Rede)
             .WithMany(x => x.DiaVencimentos)
-            .HasConstraintName("ID_REDE")
+            .HasForeignKey("ID_REDE")
+            .HasConstraintName("FK_REDE_DIAVENCIMENTO")
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

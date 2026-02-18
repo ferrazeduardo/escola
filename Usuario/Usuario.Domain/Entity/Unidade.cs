@@ -12,6 +12,7 @@ public class Unidade : SeedWork.Entity
 
     }
     public string DS_UNIDADE { get; private set; }
-    public ICollection<PerfilUnidade> PerfilUnidades { get; set; } = [];
+    public ICollection<PerfilUnidade> PerfilUnidades { get; private set; } = [];
     public ICollection<Perfil> Perfis { get; private set; } = [];
+    public Rede Rede { get; private set; }
 }
