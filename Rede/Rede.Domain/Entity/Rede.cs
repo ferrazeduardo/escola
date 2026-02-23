@@ -10,7 +10,7 @@ public class Rede : AggregateRoot
     {
         RZ_SOCIAL = razaoSocial;
         NR_CNPJ = nrCnpj;
-        DH_REGISTRO = DateTime.Now;
+        DH_REGISTRO = DateTime.UtcNow;
         US_REGISTRO = codigoUsuario;
         SetDiaVencimento(diasVencimento);
         Ativar();

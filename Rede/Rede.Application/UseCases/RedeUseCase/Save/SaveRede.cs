@@ -23,7 +23,7 @@ public class SaveRede : IRequestHandler<SaveRedeInput, SaveRedePayload>
         Domain.Entity.Rede rede = new(request.razaoSocial,request.cnpj,request.codigoUsuario,diasVencimento);
         
         await _redeRepository.Inserir(rede,cancellationToken);
-        _unitOfWork.Commit(cancellationToken);
+        await _unitOfWork.Commit(cancellationToken);
         SaveRedePayload payload = new();
         payload.codigo = rede.Id;
         

@@ -13,10 +13,13 @@ public class DiaVencimento : SeedWork.Entity
     }
     public int Dia { get; set; }
 
-    public Rede Rede { get; private set; }
+    public Rede Rede { get; private set; } = new();
     
     
     
-    
+    public void SetRede(Rede rede)
+    {
+        Rede = rede;
+    }
     
 }
