@@ -23,6 +23,11 @@ public class UsuarioRepository : IUsuarioRepository
     public async Task Inserir(Domain.Entity.Usuario entity, CancellationToken cancellationToken)
     {
         await _dbContext.Set<AppDomain.Usuario>().AddAsync(entity, cancellationToken);
+
+        foreach (var item in entity.redes)
+        {
+            await _dbContext.Set<AppDomain.Rede>().AddAsync(item, cancellationToken);
+        }
     }
 
     public async Task<List<AppDomain.Usuario>> Listar(Expression<Func<AppDomain.Usuario, bool>> filtro)
