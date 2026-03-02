@@ -29,5 +29,12 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
             r => r.HasOne(e => e.Usuario).WithMany(e => e.perfilUnidadeUsuarios).HasForeignKey(e => e.ID_USUARIO)
         );
 
+        builder.HasMany(e => e.redes)
+        .WithMany(e => e.usuarios)
+        .UsingEntity<UsuarioRede>(
+            l => l.HasOne(e => e.rede).WithMany(e => e.usuarioRedes).HasForeignKey(e => e.ID_REDE),
+            r => r.HasOne(e => e.usuario).WithMany(e => e.usuarioRedes).HasForeignKey(e => e.ID_USUARIO)
+        );
+
     }
 }

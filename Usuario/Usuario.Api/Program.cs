@@ -1,6 +1,7 @@
 using Usuario.Api.Middlewares;
 using Usuario.Application.DependencyInjection;
 using Usuario.Data.EF.DependencyInjection;
+using Usuario.Infra.Http.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services
         .AddApplication()
+        .AddInfraHttp()
         .AddDataEf(builder.Configuration);
 
 builder.Services.AddCors(options =>

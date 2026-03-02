@@ -59,5 +59,13 @@ public class Usuario : SeedWork.Entity
 
     public ICollection<PerfilUnidadeUsuario> perfilUnidadeUsuarios { get; private set; } = [];
     public ICollection<PerfilUnidade> perfilUnidades { get; private set; } = [];
+    public ICollection<Rede> redes { get; private set; } = [];
+    public ICollection<UsuarioRede> usuarioRedes { get; private set; } = [];
+
+
+    public void AddRede(Rede rede)
+    {
+        redes.Add(rede);
+    }
 
 }
