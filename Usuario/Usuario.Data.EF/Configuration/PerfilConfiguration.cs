@@ -15,11 +15,11 @@ public class PerfilConfiguration : IEntityTypeConfiguration<Usuario.Domain.Entit
 
         builder.Property(x => x.DS_PERFIL).HasMaxLength(100);
 
-        builder.HasMany(x => x.Unidades)
-        .WithMany(e => e.Perfis)
-        .UsingEntity<PerfilUnidade>(
-            l => l.HasOne<Unidade>( e => e.Unidade).WithMany(e => e.PerfilUnidades).HasForeignKey(e => e.ID_UNIDADE),
-            r => r.HasOne<Perfil>(e => e.Perfil).WithMany(e => e.PerfilUnidades).HasForeignKey(e => e.ID_PERFIL)    
+        builder.HasMany(x => x.usuarioRedes)
+        .WithMany(e => e.perfis)
+        .UsingEntity<PerfilUsuarioRede>(
+            l => l.HasOne<UsuarioRede>( e => e.UsuarioRede).WithMany(e => e.perfilUsuarioRedes).HasForeignKey(e => e.ID_USUARIO_REDE),
+            r => r.HasOne<Perfil>(e => e.Perfil).WithMany(e => e.perfilUsuarioRedes).HasForeignKey(e => e.ID_PERFIL)    
         );
 
     }
