@@ -12,13 +12,11 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
 {
     private IUsuarioRepository _usuarioRepository;
     private IUnitOfWork _unitOfWork;
-    private IRedeClient _redeClient;
 
-    public UsuarioSave(IUsuarioRepository usuarioRepository, IUnitOfWork unitOfWork, IRedeClient redeClient)
+    public UsuarioSave(IUsuarioRepository usuarioRepository, IUnitOfWork unitOfWork)
     {
         _usuarioRepository = usuarioRepository;
         _unitOfWork = unitOfWork;
-        _redeClient = redeClient;
     }
 
     public async Task<UsuarioSaveOutput> Handle(UsuarioSaveInput request, CancellationToken cancellationToken)
@@ -27,9 +25,6 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
         usuario.SetSalt();
         usuario.HashSenha();
 
-        Rede rede = await _redeClient.ObterRede(request.id_rede);
-        usuario.AddRede(rede);
-        
         await _usuarioRepository.Inserir(usuario, cancellationToken);
 
         await _unitOfWork.Commit(cancellationToken);
