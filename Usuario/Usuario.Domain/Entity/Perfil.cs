@@ -1,3 +1,5 @@
+using Usuario.Domain.Validation;
+
 namespace Usuario.Domain.Entity;
 
 public class Perfil : SeedWork.Entity
@@ -7,10 +9,18 @@ public class Perfil : SeedWork.Entity
 
     }
 
-    public Perfil(int id, string nome)
+    public Perfil(string nome)
     {
-        Id = id;
         DS_PERFIL = nome;
+        Validacao();
+    }
+
+
+    public void Validacao()
+    {
+        ValidadorDeRegra.Novo()
+        .Quando(DS_PERFIL.Length > 50, "")
+        .DispararExcecaoSeExistir();
     }
 
     public string DS_PERFIL { get; set; }

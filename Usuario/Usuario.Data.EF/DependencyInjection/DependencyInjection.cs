@@ -13,7 +13,8 @@ public static class DependencyInjection
     public static IServiceCollection AddDataEf(this IServiceCollection services, IConfiguration configuration)
     {
 
-        services.AddScoped<IUsuarioRepository,UsuarioRepository>();
+        services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        services.AddScoped<IPerfilRepository, PerfilRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<UsuarioDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
