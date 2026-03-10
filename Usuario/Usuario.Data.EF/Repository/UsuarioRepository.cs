@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Usuario.Domain.Entity;
 using Usuario.Domain.Interface.Repository;
 using Usuario.Domain.SeedWork;
 using AppDomain = Usuario.Domain.Entity;
@@ -44,5 +45,6 @@ public class UsuarioRepository : IUsuarioRepository
     {
         _dbContext.Set<AppDomain.Usuario>().Remove(entity);
     }
+
 
 }

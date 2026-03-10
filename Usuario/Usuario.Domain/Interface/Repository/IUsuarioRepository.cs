@@ -1,4 +1,5 @@
 using System;
+using Usuario.Domain.Entity;
 using Usuario.Domain.SeedWork;
 using domain = Usuario.Domain.Entity;
 
