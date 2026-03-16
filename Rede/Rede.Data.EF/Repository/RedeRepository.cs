@@ -37,13 +37,13 @@ public class RedeRepository : IRedeRepository
 
     public async Task<Domain.Entity.Rede> ObterPorId(int id)
     {
-        var rede = await _context.Set<Domain.Entity.Rede>().FirstOrDefaultAsync(rede => rede.Id == id);
+        var rede = await _context.Set<Domain.Entity.Rede>().AsNoTracking().FirstOrDefaultAsync(rede => rede.Id == id);
         return rede;
     }
 
     public async Task<List<Domain.Entity.Rede>> ObterTodos()
     {
-        var redes = await _context.Set<Domain.Entity.Rede>().ToListAsync();
+        var redes = await _context.Set<Domain.Entity.Rede>().AsNoTracking().ToListAsync();
         return redes;
     }
 

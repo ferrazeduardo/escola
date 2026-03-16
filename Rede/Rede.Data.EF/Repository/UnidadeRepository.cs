@@ -11,9 +11,29 @@ public class UnidadeRepository : IUnidadeRepository
     {
         _context = context;
     }
-    
-    public async Task AddUnidade(Unidade unidade,CancellationToken cancellationToken)
+
+    public Task Editar(Unidade entity, CancellationToken cancellationToken)
     {
-        await _context.Set<Unidade>().AddAsync(unidade,cancellationToken);
+        throw new NotImplementedException();
+    }
+
+    public async Task Inserir(Unidade entity, CancellationToken cancellationToken)
+    {
+        await _context.Set<Unidade>().AddAsync(entity, cancellationToken);
+    }
+
+    public Task<Unidade> ObterPorId(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<List<Unidade>> ObterTodos()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task Remove(Unidade entity, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 }

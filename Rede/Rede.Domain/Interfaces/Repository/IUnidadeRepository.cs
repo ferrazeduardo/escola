@@ -3,7 +3,6 @@ using Rede.Domain.SeedWork;
 
 namespace Rede.Domain.Interfaces.Repository;
 
-public interface IUnidadeRepository
+public interface IUnidadeRepository : IRepository<Unidade>
 {
-    Task AddUnidade(Unidade unidade,CancellationToken cancellationToken);
 }
