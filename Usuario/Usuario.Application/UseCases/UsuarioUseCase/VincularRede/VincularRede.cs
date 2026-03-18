@@ -10,22 +10,21 @@ namespace Usuario.Application.UseCases.UsuarioUseCase.VincularRede;
 
 public class VincularRede : IRequestHandler<VincularRedeInput, VincularRedeOutput>
 {
+  private IUsuarioRepository _usuarioRepository;
     private IUnitOfWork _unitOfWork;
     private IRedeClient _redeClient;
     private IRedeRepository _redeRepository;
-    private IUsuarioRedeRepository _usuarioRedeRepository;
 
     public VincularRede(
+        IUsuarioRepository usuarioRepository,
         IUnitOfWork unitOfWork,
         IRedeClient redeClient,
-        IRedeRepository redeRepository,
-        IUsuarioRedeRepository usuarioRedeRepository
-        )
+        IRedeRepository redeRepository)
     {
+        _usuarioRepository = usuarioRepository;
         _unitOfWork = unitOfWork;
         _redeClient = redeClient;
         _redeRepository = redeRepository;
-        _usuarioRedeRepository = usuarioRedeRepository;
     }
 
     public async Task<VincularRedeOutput> Handle(VincularRedeInput request, CancellationToken cancellationToken)
@@ -34,15 +33,9 @@ public class VincularRede : IRequestHandler<VincularRedeInput, VincularRedeOutpu
 
         NotFoundException.IsNull(rede, "Rede não existe");
 
+        var usuario = await _usuarioRepository.Obter(x => x.Id == request.id_usuario);
         await _redeRepository.Inserir(rede, cancellationToken);
-
-        UsuarioRede usuarioRede = new UsuarioRede
-        {
-            ID_USUARIO = request.id_usuario,
-            ID_REDE = request.id_rede
-        };
-
-        await _usuarioRedeRepository.Inserir(usuarioRede, cancellationToken);
+        usuario.AddRede(rede);
 
         await _unitOfWork.Commit(cancellationToken);
 
