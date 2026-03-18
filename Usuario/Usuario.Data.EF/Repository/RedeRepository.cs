@@ -36,7 +36,7 @@ public class RedeRepository : IRedeRepository
         throw new NotImplementedException();
     }
 
-    public Task<Rede> Obter(Expression<Func<Rede, bool>> filtro)
+    public Task<Rede> Obter(Expression<Func<Rede, bool>> filtro, bool rastrear = true)
     {
         throw new NotImplementedException();
     }

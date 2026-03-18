@@ -28,7 +28,7 @@ public class PerfilRepository : IPerfilRepository
         throw new NotImplementedException();
     }
 
-    public Task<Perfil> Obter(Expression<Func<Perfil, bool>> filtro)
+    public Task<Perfil> Obter(Expression<Func<Perfil, bool>> filtro, bool rastrear = true)
     {
         throw new NotImplementedException();
     }

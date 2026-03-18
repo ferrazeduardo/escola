@@ -33,7 +33,7 @@ public class VincularRede : IRequestHandler<VincularRedeInput, VincularRedeOutpu
 
         NotFoundException.IsNull(rede, "Rede não existe");
 
-        var usuario = await _usuarioRepository.Obter(x => x.Id == request.id_usuario);
+        var usuario = await _usuarioRepository.Obter(x => x.Id == request.id_usuario,false);
         await _redeRepository.Inserir(rede, cancellationToken);
         usuario.AddRede(rede);
 

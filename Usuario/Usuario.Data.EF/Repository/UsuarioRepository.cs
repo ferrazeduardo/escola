@@ -31,9 +31,14 @@ public class UsuarioRepository : IUsuarioRepository
         return await _dbContext.Set<AppDomain.Usuario>().AsNoTracking().Where(filtro)?.ToListAsync();
     }
 
-    public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro)
+    public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro, bool rastrear = true)
     {
-        return await _dbContext.Set<AppDomain.Usuario>().AsNoTracking().FirstOrDefaultAsync(filtro);
+        var query = _dbContext.Set<AppDomain.Usuario>().Include(x => x.redes).AsQueryable();
+
+        if (!rastrear)
+            query = query.AsNoTracking();
+
+        return await _dbContext.Set<AppDomain.Usuario>().FirstOrDefaultAsync(filtro);
     }
 
     public async Task<List<Domain.Entity.Usuario>> ObterTodos()
