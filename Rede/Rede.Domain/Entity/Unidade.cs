@@ -23,10 +23,10 @@ public class Unidade : SeedWork.Entity
         NR_CEP = cep;
         NR_UNIDADE = numeroUnidade;
         US_REGISTRO = usuarioRegistro;
-        DH_REGISTRO = DateTime.Now;
+        DH_REGISTRO = DateTime.UtcNow;
         Rede = rede;
         DS_COMPLMENTO = dsComplmento;
-        ST_UNIDADE = "S"; // Assumindo que a unidade inicia ativa
+        Ativar();
     }
 
     public Unidade()
@@ -37,6 +37,10 @@ public class Unidade : SeedWork.Entity
     public void AddTelefone(Telefone telefone)
     {
         Telefones.Add(telefone);
+    }
+    public void AddTelefoneRange(List<Telefone> telefone)
+    {
+        ((List<Telefone>)Telefones).AddRange(telefone);
     }
     
     public void RemoveTelefone(Telefone telefone)

@@ -4,6 +4,7 @@ import { Usuarios } from '../pages/Usuarios/Usuarios';
 // import { PrivateRoute } from '../components/PrivateRoute';
 import { Create } from '../pages/Usuarios/Create';
 import { CreateRede } from '../pages/Rede/CreateRede';
+import { CreateUnidade } from '../pages/Unidade/Create';
 
 export const AppRoutes = () => (
     <Routes>
@@ -28,6 +29,11 @@ export const AppRoutes = () => (
         <Route path='/rede'
             element={
                 <CreateRede />
+            } />
+
+        <Route path='/unidade'
+            element={
+                <CreateUnidade />
             } />
     </Routes>
 );

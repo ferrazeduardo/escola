@@ -22,7 +22,7 @@ public class UnidadeRepository : IUnidadeRepository
         await _context.Set<Unidade>().AddAsync(entity, cancellationToken);
     }
 
-    public Task<Unidade> ObterPorId(int id)
+    public Task<Unidade> ObterPorId(int id,bool rastreavel = false)
     {
         throw new NotImplementedException();
     }

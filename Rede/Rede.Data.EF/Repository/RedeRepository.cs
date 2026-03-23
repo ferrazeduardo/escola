@@ -35,9 +35,14 @@ public class RedeRepository : IRedeRepository
          _context.Rede.Remove(entity);
     }
 
-    public async Task<Domain.Entity.Rede> ObterPorId(int id)
+    public async Task<Domain.Entity.Rede> ObterPorId(int id, bool rastreavel = false)
     {
-        var rede = await _context.Set<Domain.Entity.Rede>().AsNoTracking().FirstOrDefaultAsync(rede => rede.Id == id);
+        var redeQuery =  _context.Set<Domain.Entity.Rede>().Include(x => x.Unidades).AsQueryable();
+
+        if(rastreavel)
+            redeQuery = redeQuery.AsNoTracking();
+
+        var rede = await redeQuery.FirstOrDefaultAsync(rede => rede.Id == id);
         return rede;
     }
 

@@ -15,6 +15,7 @@ public static class DependencyInjection
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IRedeRepository, RedeRepository>();
+        services.AddScoped<IUnidadeRepository, UnidadeRepository>();
         return services;
     }
 }

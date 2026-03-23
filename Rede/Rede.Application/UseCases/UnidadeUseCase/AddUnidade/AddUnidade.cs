@@ -16,7 +16,7 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
         _redeRepository = redeRepository;
         _unidadeRepository = unidadeRepository;
         _unitOfWork = unitOfWork;
-    }
+    }   
 
     public async Task<AddUnidadePayload> Handle(AddUnidadeInput request, CancellationToken cancellationToken)
     {
@@ -24,16 +24,20 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
 
         if (rede is null) throw new Exception("Rede não existe");
 
-        Unidade unidade = new Unidade();
-        unidade.DS_ENDERECO = request.endereco;
-        unidade.NR_CEP = request.cep;
-        unidade.DH_REGISTRO = DateTime.Now;
-        unidade.US_REGISTRO = request.codigoUsuario;
-        unidade.NR_UNIDADE = request.numeroUnidade;
-        unidade.DS_COMPLMENTO = request.complemento;
-        unidade.Ativar();
+        Unidade unidade = new Unidade(
+            endereco: request.endereco,
+            cep: request.cep,
+            numeroUnidade: request.numeroUnidade,
+            usuarioRegistro: request.usuarioRegistro,
+            dsComplmento: request.complemento,
+            rede: rede
+        );
 
-        await _unidadeRepository.Inserir(unidade, cancellationToken);
+        List<Telefone> telefones = request.telefones.Select(GerarListaTelefone()).ToList();
+
+
+        unidade.AddTelefoneRange(telefones);
+        rede.AddUnidade(unidade);
 
         await _unitOfWork.Commit(cancellationToken);
 
@@ -41,5 +45,13 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
         output.id_unidade = unidade.Id;
 
         return output;
+    }
+
+    private static Func<string, Telefone> GerarListaTelefone()
+    {
+        return t => new Telefone
+        {
+            NR_TELEFONE = t
+        };
     }
 }
