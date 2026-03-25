@@ -5,6 +5,7 @@ import { Usuarios } from '../pages/Usuarios/Usuarios';
 import { Create } from '../pages/Usuarios/Create';
 import { CreateRede } from '../pages/Rede/CreateRede';
 import { CreateUnidade } from '../pages/Unidade/Create';
+import { CreatePerfil } from '../pages/Perfil/CreatePerfil';
 
 export const AppRoutes = () => (
     <Routes>
@@ -34,6 +35,10 @@ export const AppRoutes = () => (
         <Route path='/unidade'
             element={
                 <CreateUnidade />
+            } />
+        <Route path='/perfil'
+            element={
+                <CreatePerfil />
             } />
     </Routes>
 );
