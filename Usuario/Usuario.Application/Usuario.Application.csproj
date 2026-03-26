@@ -19,6 +19,7 @@
       <Folder Include="UseCases/PerfilUseCase/Save/" />
       <Folder Include="UseCases/UsuarioUseCase/Listar/" />
       <Folder Include="UseCases/UsuarioUseCase/Obter/" />
+      <Folder Include="UseCases/UsuarioUseCase/VincularPerfil/" />
       <Folder Include="UseCases/UsuarioUseCase/VincularRede/" />
     </ItemGroup>
 </Project>

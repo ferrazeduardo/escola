@@ -33,7 +33,12 @@ public class UsuarioRepository : IUsuarioRepository
 
     public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro, bool rastrear = true)
     {
-        var query = _dbContext.Set<AppDomain.Usuario>().Include(x => x.redes).AsQueryable();
+        var query = _dbContext.Set<AppDomain.Usuario>()
+                        .Include(x => x.redes)
+                        .Include(x => x.usuarioRedes)
+                        .ThenInclude(x => x.perfilUsuarioRedes)
+                        .ThenInclude(ur => ur.Perfil)
+                        .AsQueryable();
 
         if (!rastrear)
             query = query.AsNoTracking();

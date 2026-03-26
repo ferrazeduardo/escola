@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Usuario.Application.UseCases.UsuarioUseCase.Listar;
 using Usuario.Application.UseCases.UsuarioUseCase.Obter;
 using Usuario.Application.UseCases.UsuarioUseCase.Save;
+using Usuario.Application.UseCases.UsuarioUseCase.VincularPerfil;
 
 namespace Usuario.Api.Controllers
 {
@@ -37,6 +38,13 @@ namespace Usuario.Api.Controllers
         public async Task<IActionResult> Listar([FromBody] ListarInput listar)
         {
             var response = await _mediator.Send(listar);
+            return Ok(response);
+        }
+
+        [HttpPost("vincular/perfil")]
+        public async Task<IActionResult> VIncularPerfil([FromBody] VincularPerfilInput vincularPerfilInput)
+        {
+                        var response = await _mediator.Send(vincularPerfilInput);
             return Ok(response);
         }
     }

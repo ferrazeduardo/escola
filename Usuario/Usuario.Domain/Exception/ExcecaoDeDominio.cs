@@ -10,7 +10,7 @@ public class ExcecaoDeDominio : System.Exception
     }
     
 
-    public void HaError(bool temErro, string mensagem)
+    public static void HaError(bool temErro, string mensagem)
     {
         if (temErro)
             throw new System.Exception(mensagem);

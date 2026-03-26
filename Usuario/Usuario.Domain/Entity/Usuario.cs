@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using Usuario.Domain.Exception;
 using Usuario.Domain.Validation;
 
 namespace Usuario.Domain.Entity;
@@ -66,4 +67,20 @@ public class Usuario : SeedWork.Entity
         redes.Add(rede);
     }
 
+    public void addPerfil(Perfil perfil, int id_rede)
+    {
+        var usuarioRede = usuarioRedes.First(us => us.ID_REDE == id_rede && us.ID_USUARIO == Id);
+
+        var jaExiste = usuarioRede.perfilUsuarioRedes.Any(p => p.ID_PERFIL == perfil.Id);
+
+        ExcecaoDeDominio.HaError(jaExiste,"Perfil já vinculado");
+
+        usuarioRede.perfilUsuarioRedes.Add(new PerfilUsuarioRede
+        {
+            ID_PERFIL = perfil.Id,
+            Perfil = perfil,
+            ID_USUARIO_REDE = usuarioRede.Id,
+            UsuarioRede = usuarioRede
+        });
+    }
 }
