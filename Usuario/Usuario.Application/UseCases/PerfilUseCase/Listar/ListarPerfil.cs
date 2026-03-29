@@ -17,12 +17,17 @@ public class ListarPerfil : IRequestHandler<ListarPerfilInput, List<ListarPerfil
     {
         var perfis = await _perfilRepository.ObterTodos();
 
-        List<ListarPerfilOutput> output =  perfis.Select(p => new ListarPerfilOutput
+        List<ListarPerfilOutput> output =  perfis.Select(MapearParaListarPerfilOutput()).ToList();
+
+        return output;
+    }
+
+    public Func<Domain.Entity.Perfil, ListarPerfilOutput> MapearParaListarPerfilOutput()
+    {
+        return p => new ListarPerfilOutput
         {
             id = p.Id,
             descricao = p.DS_PERFIL
-        }).ToList();
-
-        return output;
+        };
     }
 }
