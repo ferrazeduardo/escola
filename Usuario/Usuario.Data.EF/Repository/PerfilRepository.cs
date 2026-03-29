@@ -41,7 +41,7 @@ public class PerfilRepository : IPerfilRepository
 
     public Task<List<Perfil>> ObterTodos()
     {
-        throw new NotImplementedException();
+       return _usuarioDbContext.Set<AppDomain.Perfil>().AsNoTracking().ToListAsync();
     }
 
     public Task Remove(Perfil entity, CancellationToken cancellationToken)

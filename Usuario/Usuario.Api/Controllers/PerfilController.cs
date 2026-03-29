@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Usuario.Application.UseCases.PerfilUseCase.Listar;
 using Usuario.Application.UseCases.PerfilUseCase.Save;
 
 namespace Usuario.Api.Controllers
@@ -20,6 +21,13 @@ namespace Usuario.Api.Controllers
         public async Task<IActionResult> Save([FromBody] PerfilSaveInput perfilSaveInput)
         {
             var response = await _mediator.Send(perfilSaveInput);
+            return Ok(response);
+        }
+
+        [HttpPost("listar/todos")]
+        public async Task<IActionResult> ListarTodos()
+        {
+            var response = await _mediator.Send(new ListarPerfilInput());
             return Ok(response);
         }
     }
