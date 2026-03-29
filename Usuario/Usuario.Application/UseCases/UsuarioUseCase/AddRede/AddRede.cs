@@ -34,7 +34,7 @@ public class AddRede : IRequestHandler<AddRedeInput, AddRedeOutput>
         NotFoundException.IsNull(rede, "Rede não existe");
 
         var usuario = await _usuarioRepository.Obter(x => x.Id == request.id_usuario);
-        await _redeRepository.Inserir(rede, cancellationToken);
+        // await _redeRepository.Inserir(rede, cancellationToken);
         usuario.AddRede(rede);
 
         await _unitOfWork.Commit(cancellationToken);
