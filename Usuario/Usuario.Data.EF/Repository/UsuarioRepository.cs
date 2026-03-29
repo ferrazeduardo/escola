@@ -43,7 +43,7 @@ public class UsuarioRepository : IUsuarioRepository
         if (!rastrear)
             query = query.AsNoTracking();
 
-        return await _dbContext.Set<AppDomain.Usuario>().FirstOrDefaultAsync(filtro);
+        return await query.FirstOrDefaultAsync(filtro);
     }
 
     public async Task<List<Domain.Entity.Usuario>> ObterTodos()

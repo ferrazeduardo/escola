@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore;
 using Usuario.Domain.Entity;
 using Usuario.Domain.Interface.Repository;
 using AppDomain = Usuario.Domain.Entity;
@@ -20,7 +21,7 @@ public class PerfilRepository : IPerfilRepository
 
     public async Task Inserir(Perfil entity, CancellationToken cancellationToken)
     {
-        await _usuarioDbContext.Set<AppDomain.Perfil>().AddAsync(entity,cancellationToken);
+        await _usuarioDbContext.Set<AppDomain.Perfil>().AddAsync(entity, cancellationToken);
     }
 
     public Task<List<Perfil>> Listar(Expression<Func<Perfil, bool>> filtro)
@@ -28,9 +29,14 @@ public class PerfilRepository : IPerfilRepository
         throw new NotImplementedException();
     }
 
-    public Task<Perfil> Obter(Expression<Func<Perfil, bool>> filtro, bool rastrear = true)
+    public async Task<Perfil> Obter(Expression<Func<Perfil, bool>> filtro, bool rastrear = true)
     {
-        throw new NotImplementedException();
+        var query = _usuarioDbContext.Set<AppDomain.Perfil>().AsQueryable();
+
+        if (!rastrear)
+            query = query.AsNoTracking();
+
+        return await query.FirstOrDefaultAsync(filtro);
     }
 
     public Task<List<Perfil>> ObterTodos()
