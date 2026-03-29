@@ -1,10 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Usuario.Application.UseCases.UsuarioUseCase.AddPerfil;
+using Usuario.Application.UseCases.UsuarioUseCase.AddRede;
 using Usuario.Application.UseCases.UsuarioUseCase.Listar;
 using Usuario.Application.UseCases.UsuarioUseCase.Obter;
 using Usuario.Application.UseCases.UsuarioUseCase.Save;
-using Usuario.Application.UseCases.UsuarioUseCase.VincularPerfil;
 
 namespace Usuario.Api.Controllers
 {
@@ -41,10 +42,17 @@ namespace Usuario.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("vincular/perfil")]
-        public async Task<IActionResult> VIncularPerfil([FromBody] VincularPerfilInput vincularPerfilInput)
+        [HttpPost("add/perfil")]
+        public async Task<IActionResult> VIncularPerfil([FromBody] AddPerfilInput addPerfilInput)
         {
-                        var response = await _mediator.Send(vincularPerfilInput);
+            var response = await _mediator.Send(addPerfilInput);
+            return Ok(response);
+        }
+
+        [HttpPost("add/rede")]
+        public async Task<IActionResult> VincularRede([FromBody] AddRedeInput addRedeInput)
+        {
+            var response = await _mediator.Send(addRedeInput);
             return Ok(response);
         }
     }

@@ -1,9 +1,9 @@
 using System;
 using MediatR;
 
-namespace Usuario.Application.UseCases.UsuarioUseCase.VincularPerfil;
+namespace Usuario.Application.UseCases.UsuarioUseCase.AddPerfil;
 
-public class VincularPerfilInput : IRequest<VincularPerfilOutput>
+public class AddPerfilInput : IRequest<AddPerfilOutput>
 {
     public int id_usuario { get; set; }
     public int id_rede { get; set; }

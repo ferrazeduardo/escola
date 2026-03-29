@@ -6,16 +6,16 @@ using Usuario.Domain.Interface;
 using Usuario.Domain.Interface.HttpClients;
 using Usuario.Domain.Interface.Repository;
 
-namespace Usuario.Application.UseCases.UsuarioUseCase.VincularRede;
+namespace Usuario.Application.UseCases.UsuarioUseCase.AddRede;
 
-public class VincularRede : IRequestHandler<VincularRedeInput, VincularRedeOutput>
+public class AddRede : IRequestHandler<AddRedeInput, AddRedeOutput>
 {
   private IUsuarioRepository _usuarioRepository;
     private IUnitOfWork _unitOfWork;
     private IRedeClient _redeClient;
     private IRedeRepository _redeRepository;
 
-    public VincularRede(
+    public AddRede(
         IUsuarioRepository usuarioRepository,
         IUnitOfWork unitOfWork,
         IRedeClient redeClient,
@@ -27,7 +27,7 @@ public class VincularRede : IRequestHandler<VincularRedeInput, VincularRedeOutpu
         _redeRepository = redeRepository;
     }
 
-    public async Task<VincularRedeOutput> Handle(VincularRedeInput request, CancellationToken cancellationToken)
+    public async Task<AddRedeOutput> Handle(AddRedeInput request, CancellationToken cancellationToken)
     {
         Rede rede = await _redeClient.ObterRede(request.id_rede);
 
@@ -39,6 +39,6 @@ public class VincularRede : IRequestHandler<VincularRedeInput, VincularRedeOutpu
 
         await _unitOfWork.Commit(cancellationToken);
 
-        return new VincularRedeOutput();
+        return new AddRedeOutput();
     }
 }
