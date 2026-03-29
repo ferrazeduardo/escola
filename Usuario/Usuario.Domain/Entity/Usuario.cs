@@ -9,7 +9,7 @@ public class Usuario : SeedWork.Entity
     public Usuario(string nmUsuario, DateTime dtNascimento, string nrCpf, string dsEmail, string segSenha)
     {
         NM_USUARIO = nmUsuario;
-        DT_NASCIMENTO = dtNascimento;
+        DT_NASCIMENTO = DateTime.SpecifyKind(dtNascimento, DateTimeKind.Utc);
         NR_CPF = nrCpf;
         DS_EMAIL = dsEmail;
         SEG_SENHA = segSenha;
