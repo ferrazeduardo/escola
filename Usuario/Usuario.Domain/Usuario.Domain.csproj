@@ -10,6 +10,7 @@
       <Folder Include="DataTransferObject/" />
       <Folder Include="Events\" />
       <Folder Include="Interface/HttpClients/" />
+      <Folder Include="Interface/SearchRepository/" />
       <Folder Include="Interface\" />
     </ItemGroup>
 

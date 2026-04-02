@@ -1,9 +1,14 @@
 using System;
 using MediatR;
+using Usuario.Application.UseCases.Common;
+using Usuario.Domain.Interface.SearchRepository;
 
 namespace Usuario.Application.UseCases.UsuarioUseCase.Listar;
 
-public class ListarInput : IRequest<List<ListarOutput>>
+public class ListarInput : PaginetedListInput, IRequest<ListarOutput>
 {
-    public string nome { get; set; }
+    public ListarInput(int pagina, int quantidade, string pesquisa, string ordernadacao, SearchOrder order) : base(pagina, quantidade, pesquisa, ordernadacao, order)
+    {
+    }
+
 }

@@ -1,10 +1,11 @@
 using System.Security.Cryptography;
 using Usuario.Domain.Exception;
+using Usuario.Domain.SeedWork;
 using Usuario.Domain.Validation;
 
 namespace Usuario.Domain.Entity;
 
-public class Usuario : SeedWork.Entity
+public class Usuario : AggregationRoot
 {
     public Usuario(string nmUsuario, DateTime dtNascimento, string nrCpf, string dsEmail, string segSenha)
     {

@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Usuario.Domain.Entity;
 using Usuario.Domain.Interface.Repository;
+using Usuario.Domain.Interface.SearchRepository;
 using Usuario.Domain.SeedWork;
 using AppDomain = Usuario.Domain.Entity;
 
@@ -56,5 +57,17 @@ public class UsuarioRepository : IUsuarioRepository
         _dbContext.Set<AppDomain.Usuario>().Remove(entity);
     }
 
+    public async Task<SearchOutput<AppDomain.Usuario>> Search(SearchInput input, CancellationToken cancellationToken)
+    {
+        var query = _dbContext.Set<AppDomain.Usuario>().AsNoTracking();
+        query = input.Order == SearchOrder.Desc ? query.OrderByDescending(x => x.NM_USUARIO) : query.OrderBy(x => x.NM_USUARIO);
 
+        if (!String.IsNullOrEmpty(input.Pesquisa))
+            query = query.Where(x => x.NM_USUARIO.Contains(input.Pesquisa));
+
+        var total = await query.CountAsync(cancellationToken);
+        var items = await query.Skip((input.Pagina - 1) * input.Quantidade).Take(input.Quantidade).ToListAsync(cancellationToken);
+        return new SearchOutput<AppDomain.Usuario>(input.Pagina, input.Quantidade, total, items);
+
+    }
 }

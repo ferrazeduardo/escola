@@ -15,9 +15,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="UseCases/Common/" />
       <Folder Include="UseCases/PerfilUseCase/" />
       <Folder Include="UseCases/PerfilUseCase/Listar/" />
       <Folder Include="UseCases/PerfilUseCase/Save/" />
+      <Folder Include="UseCases/UsuarioUseCase/Common/" />
       <Folder Include="UseCases/UsuarioUseCase/Listar/" />
       <Folder Include="UseCases/UsuarioUseCase/Obter/" />
     </ItemGroup>

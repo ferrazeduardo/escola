@@ -1,11 +1,12 @@
 using System;
+using Usuario.Application.UseCases.Common;
+using Usuario.Application.UseCases.UsuarioUseCase.Common;
 
 namespace Usuario.Application.UseCases.UsuarioUseCase.Listar;
 
-public class ListarOutput
+public class ListarOutput : PaginetedListOutput<List<UsuarioOutput>>
 {
-    public int id { get; set; }
-    public string nome { get; set; }
-    public string cpf { get; set; }
-    public DateTime dataNascimento { get; set; }
+    public ListarOutput(int pagina, int quantidade, int total, List<UsuarioOutput> items) : base(pagina, quantidade, total, items)
+    {
+    }
 }

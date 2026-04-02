@@ -1,0 +1,21 @@
+using System;
+
+namespace Usuario.Domain.Interface.SearchRepository;
+
+public class SearchInput
+{
+    public SearchInput(int pagina, int quantidade, string pesquisa, string ordenacao, SearchOrder order)
+    {
+        Pagina = pagina;
+        Quantidade = quantidade;
+        Pesquisa = pesquisa;
+        Ordenacao = ordenacao;
+        Order = order;
+    }
+
+    public int Pagina { get; set; }
+    public int Quantidade { get; set; }
+    public string Pesquisa { get; set; }
+    public string Ordenacao { get; set; }
+    public SearchOrder Order { get; set; }
+}

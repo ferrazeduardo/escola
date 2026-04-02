@@ -1,10 +1,12 @@
 using System;
 using MediatR;
+using Usuario.Application.UseCases.UsuarioUseCase.Common;
 using Usuario.Domain.Interface.Repository;
+using Usuario.Domain.Interface.SearchRepository;
 
 namespace Usuario.Application.UseCases.UsuarioUseCase.Listar;
 
-public class Listar : IRequestHandler<ListarInput, List<ListarOutput>>
+public class Listar : IRequestHandler<ListarInput, ListarOutput>
 {
     private IUsuarioRepository _usuarioRepository;
 
@@ -13,18 +15,24 @@ public class Listar : IRequestHandler<ListarInput, List<ListarOutput>>
         _usuarioRepository = usuarioRepository;
     }
 
-    public async Task<List<ListarOutput>> Handle(ListarInput request, CancellationToken cancellationToken)
+    public async Task<ListarOutput> Handle(ListarInput request, CancellationToken cancellationToken)
     {
-        var usuarios = await _usuarioRepository.Listar((i) => i.NM_USUARIO == request.nome);
 
-        List<ListarOutput> listarOutputs = usuarios.Select(MapearParaListarOutput()).ToList();
+        var usuarios = await _usuarioRepository.Search(new SearchInput(request.pagina,request.quantidade,request.pesquisa,request.ordernadacao,request.order),cancellationToken);
+
+        ListarOutput listarOutputs = new(
+            usuarios.paginaAtual,
+            usuarios.Quantidade,
+            usuarios.Total,
+            usuarios.Itens.Select(MapearParaListarOutput()).ToList()
+        );
 
         return listarOutputs;
     }
 
-    private  Func<Domain.Entity.Usuario, ListarOutput> MapearParaListarOutput()
+    private  Func<Domain.Entity.Usuario, UsuarioOutput> MapearParaListarOutput()
     {
-        return u => new ListarOutput
+        return u => new UsuarioOutput
         {
             id = u.Id,
             nome = u.NM_USUARIO,

@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using MediatR;
+using Usuario.Application.UseCases.UsuarioUseCase.Common;
 using Usuario.Domain.Interface.Repository;
 using AppDomain = Usuario.Domain.Entity;
 
@@ -28,14 +29,9 @@ public class Obter : IRequestHandler<ObterInput, ObterOutput>
         var func = dict.FirstOrDefault(x => x.Key).Value ?? throw new Exception("Filtro inválido");
 
         AppDomain.Usuario usuario = await _usuarioRepository.Obter(func);
-
-        return new ObterOutput
-        {
-            Id = usuario.Id,
-            Nome = usuario.NM_USUARIO,
-            Email = usuario.DS_EMAIL,
-            cpf = usuario.NR_CPF,
-            dataNascimento = usuario.DT_NASCIMENTO,
-        };
+        var output = new ObterOutput();
+        output.From(usuario);
+        return output;
+        
     }
 }
