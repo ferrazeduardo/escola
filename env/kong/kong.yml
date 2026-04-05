@@ -1,0 +1,22 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: api_usuario_service
+    host: localhost
+    port: 5151
+    protocol: http
+    routes:
+       - name: usuario_routes
+         paths:
+          -  /usuarios
+         strip_path: true
+  - name: api_rede_service
+    host: localhost
+    port: 5281
+    protocol: http
+    routes:
+        - name: rede_routes
+          paths:
+            - /redes
+          strip_path: true
