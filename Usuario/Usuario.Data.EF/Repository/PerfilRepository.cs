@@ -16,7 +16,8 @@ public class PerfilRepository : IPerfilRepository
     }
     public Task Editar(Perfil entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _usuarioDbContext.Set<AppDomain.Perfil>().Update(entity);
+        return Task.CompletedTask;
     }
 
     public async Task Inserir(Perfil entity, CancellationToken cancellationToken)
@@ -24,9 +25,15 @@ public class PerfilRepository : IPerfilRepository
         await _usuarioDbContext.Set<AppDomain.Perfil>().AddAsync(entity, cancellationToken);
     }
 
-    public Task<List<Perfil>> Listar(Expression<Func<Perfil, bool>> filtro)
+    public Task<List<Perfil>> Listar(Expression<Func<Perfil, bool>> filtro, bool rastrear = true)
     {
-        throw new NotImplementedException();
+        var query = _usuarioDbContext.Set<AppDomain.Perfil>().Where(filtro);
+
+        if (!rastrear)
+            query = query.AsNoTracking();
+
+
+        return query.ToListAsync();
     }
 
     public async Task<Perfil> Obter(Expression<Func<Perfil, bool>> filtro, bool rastrear = true)
@@ -41,11 +48,12 @@ public class PerfilRepository : IPerfilRepository
 
     public Task<List<Perfil>> ObterTodos()
     {
-       return _usuarioDbContext.Set<AppDomain.Perfil>().AsNoTracking().ToListAsync();
+        return _usuarioDbContext.Set<AppDomain.Perfil>().AsNoTracking().ToListAsync();
     }
 
     public Task Remove(Perfil entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _usuarioDbContext.Set<AppDomain.Perfil>().Remove(entity);
+        return Task.CompletedTask;
     }
 }
