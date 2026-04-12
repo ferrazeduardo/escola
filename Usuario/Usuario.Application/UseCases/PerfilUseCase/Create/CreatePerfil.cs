@@ -4,20 +4,20 @@ using Usuario.Domain.Entity;
 using Usuario.Domain.Interface;
 using Usuario.Domain.Interface.Repository;
 
-namespace Usuario.Application.UseCases.PerfilUseCase.Save;
+namespace Usuario.Application.UseCases.PerfilUseCase.Create;
 
-public class PerfilSave : IRequestHandler<PerfilSaveInput, PerfilSaveOutput>
+public class CreatePerfil : IRequestHandler<CreatePerfilInput, CreatePerfilOutput>
 {
     private IPerfilRepository _perfilRepository;
     private IUnitOfWork _unitOfWork;
 
-    public PerfilSave(IPerfilRepository perfilRepository, IUnitOfWork unitOfWork)
+    public CreatePerfil(IPerfilRepository perfilRepository, IUnitOfWork unitOfWork)
     {
         _perfilRepository = perfilRepository;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<PerfilSaveOutput> Handle(PerfilSaveInput request, CancellationToken cancellationToken)
+    public async Task<CreatePerfilOutput> Handle(CreatePerfilInput request, CancellationToken cancellationToken)
     {
         Perfil perfil = new(request.descricao);
 
@@ -25,7 +25,7 @@ public class PerfilSave : IRequestHandler<PerfilSaveInput, PerfilSaveOutput>
 
         await _unitOfWork.Commit(cancellationToken);
 
-        PerfilSaveOutput perfilSaveOutput = new();
+        CreatePerfilOutput perfilSaveOutput = new();
         perfilSaveOutput.id = perfil.Id;
 
         return perfilSaveOutput;

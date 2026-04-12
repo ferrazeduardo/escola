@@ -2,9 +2,9 @@ using System;
 using Usuario.Application.UseCases.Common;
 using Usuario.Domain.Entity;
 
-namespace Usuario.Application.UseCases.PerfilUseCase.Listar;
+namespace Usuario.Application.UseCases.PerfilUseCase.List;
 
-public class ListarPerfilOutput
+public class ListPerfilOutput
 {
     public List<PerfilModalOutput> perfis { get; set; }
 

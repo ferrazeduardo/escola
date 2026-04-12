@@ -1,9 +1,9 @@
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Usuario.Application.UseCases.PerfilUseCase.Create;
 using Usuario.Application.UseCases.PerfilUseCase.Get;
-using Usuario.Application.UseCases.PerfilUseCase.Listar;
-using Usuario.Application.UseCases.PerfilUseCase.Save;
+using Usuario.Application.UseCases.PerfilUseCase.List;
+using Usuario.Application.UseCases.PerfilUseCase.Update;
 
 namespace Usuario.Api.Controllers
 {
@@ -18,23 +18,30 @@ namespace Usuario.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpPost("save")]
-        public async Task<IActionResult> Save([FromBody] PerfilSaveInput perfilSaveInput)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] CreatePerfilInput createPerfilInput,CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(perfilSaveInput);
+            var response = await _mediator.Send(createPerfilInput, cancellationToken);
             return Ok(response);
         }
 
         [HttpPost("list")]
-        public async Task<IActionResult> ListarTodos()
+        public async Task<IActionResult> ListarTodos(CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new ListarPerfilInput());
+            var response = await _mediator.Send(new ListPerfilInput(), cancellationToken);
             return Ok(response);
         }
         [HttpPost("get")]
-        public async Task<IActionResult> Get([FromQuery] GetPerfilInput getPerfilInput)
+        public async Task<IActionResult> Get([FromQuery] GetPerfilInput getPerfilInput, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(getPerfilInput);
+            var response = await _mediator.Send(getPerfilInput, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpPost("update")]
+        public async Task<IActionResult> Update([FromBody] UpdatePerfilInput updatePerfilInput, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(updatePerfilInput, cancellationToken);
             return Ok(response);
         }
     }
