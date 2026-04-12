@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Usuario.Application.UseCases.PerfilUseCase.Listar;
 
-public class ListarPerfilInput : IRequest<List<ListarPerfilOutput>>
+public class ListarPerfilInput : IRequest<ListarPerfilOutput>
 {
-
+    
 }

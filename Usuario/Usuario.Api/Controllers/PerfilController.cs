@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Usuario.Application.UseCases.PerfilUseCase.Get;
 using Usuario.Application.UseCases.PerfilUseCase.Listar;
 using Usuario.Application.UseCases.PerfilUseCase.Save;
 
@@ -24,10 +25,16 @@ namespace Usuario.Api.Controllers
             return Ok(response);
         }
 
-        [HttpPost("listar/todos")]
+        [HttpPost("list")]
         public async Task<IActionResult> ListarTodos()
         {
             var response = await _mediator.Send(new ListarPerfilInput());
+            return Ok(response);
+        }
+        [HttpPost("get")]
+        public async Task<IActionResult> Get([FromQuery] GetPerfilInput getPerfilInput)
+        {
+            var response = await _mediator.Send(getPerfilInput);
             return Ok(response);
         }
     }

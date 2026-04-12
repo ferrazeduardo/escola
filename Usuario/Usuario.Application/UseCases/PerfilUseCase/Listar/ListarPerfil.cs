@@ -4,7 +4,7 @@ using Usuario.Domain.Interface.Repository;
 
 namespace Usuario.Application.UseCases.PerfilUseCase.Listar;
 
-public class ListarPerfil : IRequestHandler<ListarPerfilInput, List<ListarPerfilOutput>>
+public class ListarPerfil : IRequestHandler<ListarPerfilInput, ListarPerfilOutput>
 {
     private IPerfilRepository _perfilRepository;
 
@@ -13,21 +13,15 @@ public class ListarPerfil : IRequestHandler<ListarPerfilInput, List<ListarPerfil
         _perfilRepository = perfilRepository;
     }
 
-    public async Task<List<ListarPerfilOutput>> Handle(ListarPerfilInput request, CancellationToken cancellationToken)
+    public async Task<ListarPerfilOutput> Handle(ListarPerfilInput request, CancellationToken cancellationToken)
     {
         var perfis = await _perfilRepository.ObterTodos();
 
-        List<ListarPerfilOutput> output =  perfis.Select(MapearParaListarPerfilOutput()).ToList();
+        ListarPerfilOutput output = new();
+
 
         return output;
     }
 
-    public Func<Domain.Entity.Perfil, ListarPerfilOutput> MapearParaListarPerfilOutput()
-    {
-        return p => new ListarPerfilOutput
-        {
-            id = p.Id,
-            descricao = p.DS_PERFIL
-        };
-    }
+    
 }
