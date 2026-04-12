@@ -27,9 +27,14 @@ public class UsuarioRepository : IUsuarioRepository
         await _dbContext.Set<AppDomain.Usuario>().AddAsync(entity, cancellationToken);
     }
 
-    public async Task<List<AppDomain.Usuario>> Listar(Expression<Func<AppDomain.Usuario, bool>> filtro)
+    public async Task<List<AppDomain.Usuario>> Listar(Expression<Func<AppDomain.Usuario, bool>> filtro, bool rastrear = true)
     {
-        return await _dbContext.Set<AppDomain.Usuario>().AsNoTracking().Where(filtro)?.ToListAsync();
+        var query = _dbContext.Set<AppDomain.Usuario>().Where(filtro);
+
+        if(!rastrear)
+            query = query.AsNoTracking();
+
+        return await query.ToListAsync();
     }
 
     public async Task<Domain.Entity.Usuario> Obter(Expression<Func<Domain.Entity.Usuario, bool>> filtro, bool rastrear = true)
