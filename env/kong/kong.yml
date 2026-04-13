@@ -3,7 +3,7 @@ _transform: true
 
 services:
   - name: api_usuario_service
-    host: localhost
+    host: host.docker.internal
     port: 5151
     protocol: http
     routes:
@@ -12,7 +12,7 @@ services:
           -  /usuarios
          strip_path: true
   - name: api_rede_service
-    host: localhost
+    host: host.docker.internal
     port: 5281
     protocol: http
     routes:

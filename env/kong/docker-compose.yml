@@ -16,6 +16,8 @@ services:
       KONG_DECLARATIVE_CONFIG: "/usr/local/kong/declarative/kong.yml"
     volumes:
       - ./kong.yml:/usr/local/kong/declarative/kong.yml
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   escola:

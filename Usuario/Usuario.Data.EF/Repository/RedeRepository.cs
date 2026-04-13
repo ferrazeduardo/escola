@@ -31,7 +31,7 @@ public class RedeRepository : IRedeRepository
         }
     }
 
-    public Task<List<Rede>> Listar(Expression<Func<Rede, bool>> filtro)
+    public Task<List<Rede>> Listar(Expression<Func<Rede, bool>> filtro, bool rastrear = true)
     {
         throw new NotImplementedException();
     }

@@ -6,7 +6,7 @@ namespace Usuario.Application.UseCases.UsuarioUseCase.Obter;
 public class ObterOutput
 {
 
-    public UsuarioOutput usuario { get; set; }
+    public UsuarioOutput usuario { get; set; } = new();
 
     internal void From(Domain.Entity.Usuario usuarioD)
     {
