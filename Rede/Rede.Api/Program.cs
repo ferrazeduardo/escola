@@ -2,7 +2,6 @@ using Rede.Api;
 using  Rede.Application.DependencyInjection;
 using Rede.Api.DependencyInjection;
 using Rede.Data.EF;
-using Rede.Messaging.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +14,6 @@ builder.Services
     .AddApi(builder.Configuration)
     .ResolverDependencyInjectionCors()
     .AddApplication()
-    .AddRabbitMQ(builder.Configuration)
     .AddDataEf(builder.Configuration)
     .AddGraphQLServer();
 
