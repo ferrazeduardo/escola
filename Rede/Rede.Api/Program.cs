@@ -2,6 +2,7 @@ using Rede.Api;
 using  Rede.Application.DependencyInjection;
 using Rede.Api.DependencyInjection;
 using Rede.Data.EF;
+using Rede.Api.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,14 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add(typeof(GlobalErrorHandlingMiddleware)));
 builder.Services
     .AddApi(builder.Configuration)
     .ResolverDependencyInjectionCors()
     .AddApplication()
-    .AddDataEf(builder.Configuration)
-    .AddGraphQLServer();
-
+    .AddDataEf(builder.Configuration);
 
 var app = builder.Build();
 

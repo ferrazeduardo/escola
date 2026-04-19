@@ -1,5 +1,6 @@
 using MediatR;
 using Rede.Domain.Entity;
+using Rede.Domain.Exception;
 using Rede.Domain.Interfaces;
 using Rede.Domain.Interfaces.Repository;
 
@@ -16,13 +17,13 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
         _redeRepository = redeRepository;
         _unidadeRepository = unidadeRepository;
         _unitOfWork = unitOfWork;
-    }   
+    }
 
     public async Task<AddUnidadePayload> Handle(AddUnidadeInput request, CancellationToken cancellationToken)
     {
         Domain.Entity.Rede rede = await _redeRepository.ObterPorId(request.id_rede);
 
-        if (rede is null) throw new Exception("Rede não existe");
+        NotFounException.Object(rede, "Rede não existe");
 
         Unidade unidade = new Unidade(
             endereco: request.endereco,
