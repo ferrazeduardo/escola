@@ -3,7 +3,7 @@ using Rede.Domain.Entity;
 using Rede.Domain.Interfaces;
 using Rede.Domain.Interfaces.Repository;
 
-namespace Rede.Application.UseCases.UnidadeUseCase.AddUnidade;
+namespace Rede.Application.UseCases.RedeUseCase.AddUnidade;
 
 public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
 {

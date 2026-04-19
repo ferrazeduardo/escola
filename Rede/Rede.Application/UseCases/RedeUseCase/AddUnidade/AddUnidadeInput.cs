@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Rede.Application.UseCases.UnidadeUseCase.AddUnidade;
+namespace Rede.Application.UseCases.RedeUseCase.AddUnidade;
 
 public class AddUnidadeInput : IRequest<AddUnidadePayload>
 {

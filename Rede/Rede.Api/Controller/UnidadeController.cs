@@ -1,7 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Rede.Application.UseCases.UnidadeUseCase.AddUnidade;
 
 namespace Rede.Api.Controller
 {
@@ -17,11 +16,6 @@ namespace Rede.Api.Controller
         }
 
 
-        [HttpPost("vincular")]
-        public async Task<IActionResult> AddUnidade([FromBody] AddUnidadeInput addUnidadeInput)
-        {
-            var response = await _mediator.Send(addUnidadeInput);
-            return Ok(response);
-        }
+     
     }
 }
