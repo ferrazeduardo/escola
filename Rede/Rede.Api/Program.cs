@@ -1,11 +1,8 @@
 using Rede.Api;
 using  Rede.Application.DependencyInjection;
 using Rede.Api.DependencyInjection;
-using Rede.Api.Filters;
-using Rede.Api.Redes;
 using Rede.Data.EF;
 using Rede.Messaging.DependencyInjection;
-using Query = Rede.Api.Redes.Query;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,10 +17,7 @@ builder.Services
     .AddApplication()
     .AddRabbitMQ(builder.Configuration)
     .AddDataEf(builder.Configuration)
-    .AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddMutationType<Mutation>()
-    .AddErrorFilter<GraphqlErrorFilter>();
+    .AddGraphQLServer();
 
 
 var app = builder.Build();
@@ -42,7 +36,6 @@ app.UseCors(options =>
     
 app.UseHttpsRedirection();
 app.MapControllers();
-// app.MapGraphQL();
 app.Run();
 
 public partial class Program { }
