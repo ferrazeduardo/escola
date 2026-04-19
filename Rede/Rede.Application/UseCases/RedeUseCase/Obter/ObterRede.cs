@@ -30,11 +30,7 @@ public class ObterRede : IRequestHandler<ObterRedeInput, ObterRedeOutput>
             numero = u.NR_UNIDADE,
             cep = u.NR_CEP
         }).ToList();
-        obterRedePayload.DiaVencimentos = rede.DiaVencimentos?.Select(d => new DiaVencimentoDto
-        {
-            dia = d.Dia
-        }).ToList();
-        
+       
         return obterRedePayload;
     }
 }

@@ -7,31 +7,13 @@ namespace Rede.Data.EF;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly RedeDbContext _context;
-    private readonly IDomainEventPublisher _publisher;
-    private readonly ILogger<UnitOfWork> _logger;
-    public UnitOfWork(RedeDbContext context,IDomainEventPublisher publisher,ILogger<UnitOfWork> logger)
+    public UnitOfWork(RedeDbContext context)
     {
         _context = context;
-        _publisher = publisher;
-        _logger = logger;
     }
     
     public async Task Commit(CancellationToken cancellationToken)
     {
-        // “Me traga todas as entidades que herdam de AggregateRoot”
-        // var aggregateRoot = _context.ChangeTracker.Entries<AggregateRoot>()
-        //     .Where(entry => entry.Entity.Events.Any())
-        //     .Select(e => e.Entity);
-        
-        // _logger.LogInformation("Commit: "+aggregateRoot.Count() + " agregados com eventos ");
-
-        //“Pegue todos os eventos gerados pelos Aggregates modificados”
-        // var events = aggregateRoot.SelectMany(aggregateRoot => aggregateRoot.Events);
-        // _logger.LogInformation("Commit: "+events.Count() + "eventos ");
-
-        // foreach (var @event in events)
-        //     await _publisher.Publish(@event, cancellationToken);
-            
         await _context.SaveChangesAsync(cancellationToken);
     }
 

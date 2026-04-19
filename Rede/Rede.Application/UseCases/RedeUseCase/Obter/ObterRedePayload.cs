@@ -10,6 +10,5 @@ public class ObterRedeOutput
     public string cnpj { get; set; }
     public string status { get; set; }
     public List<UnidadeDto>? Unidades { get; set; }
-    public List<DiaVencimentoDto>? DiaVencimentos { get; set; }
    
 }

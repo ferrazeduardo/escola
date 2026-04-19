@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Rede.Domain.Entity;
 using Rede.Domain.Interfaces.Repository;
 
@@ -14,7 +15,8 @@ public class UnidadeRepository : IUnidadeRepository
 
     public Task Editar(Unidade entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _context.Set<Unidade>().Update(entity);
+        return Task.CompletedTask;
     }
 
     public async Task Inserir(Unidade entity, CancellationToken cancellationToken)
@@ -22,18 +24,24 @@ public class UnidadeRepository : IUnidadeRepository
         await _context.Set<Unidade>().AddAsync(entity, cancellationToken);
     }
 
-    public Task<Unidade> ObterPorId(int id,bool rastreavel = false)
+    public Task<Unidade> ObterPorId(int id, bool rastreavel = false)
     {
-        throw new NotImplementedException();
+        var query = _context.Set<Unidade>().AsQueryable();
+
+        if (!rastreavel)
+            query = query.AsNoTracking();
+
+        return query.FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public Task<List<Unidade>> ObterTodos()
     {
-        throw new NotImplementedException();
+        return _context.Set<Unidade>().ToListAsync();
     }
 
     public Task Remove(Unidade entity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        _context.Set<Unidade>().Remove(entity);
+        return Task.CompletedTask;
     }
 }

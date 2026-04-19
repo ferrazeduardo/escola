@@ -18,9 +18,7 @@ public class SaveRede : IRequestHandler<SaveRedeInput, SaveRedePayload>
     
     public async Task<SaveRedePayload> Handle(SaveRedeInput request, CancellationToken cancellationToken)
     {
-        var diasVencimento = DiasVencimento(request);
-        
-        Domain.Entity.Rede rede = new(request.razaoSocial,request.cnpj,request.codigoUsuario,diasVencimento);
+        Domain.Entity.Rede rede = new(request.razaoSocial,request.cnpj,request.codigoUsuario);
         
         await _redeRepository.Inserir(rede,cancellationToken);
         await _unitOfWork.Commit(cancellationToken);
@@ -30,12 +28,5 @@ public class SaveRede : IRequestHandler<SaveRedeInput, SaveRedePayload>
         return payload;
     }
 
-    private static List<DiaVencimento> DiasVencimento(SaveRedeInput request)
-    {
-        var diasVencimento = request.diasVencimentoRede.Select(dia => new DiaVencimento()
-        {
-            Dia = dia
-        }).ToList();
-        return diasVencimento;
-    }
+   
 }
