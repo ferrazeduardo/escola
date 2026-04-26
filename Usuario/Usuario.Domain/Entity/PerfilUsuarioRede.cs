@@ -2,10 +2,12 @@ using System;
 
 namespace Usuario.Domain.Entity;
 
-public class PerfilUsuarioRede 
+public class PerfilUsuarioRede
 {
     public int ID_PERFIL { get; set; }
     public Perfil Perfil { get; set; }
-    public int ID_USUARIO_REDE { get; set; }
-    public UsuarioRede UsuarioRede { get; set; }
+    public int ID_USUARIO { get; set; }
+    public Usuario Usuario { get; set; }
+    public int ID_REDE { get; set; }
+    public Rede Rede { get; set; }
 }

@@ -1,9 +1,10 @@
 using System;
 using Usuario.Domain.DataTransferObject;
+using Usuario.Domain.SeedWork;
 
 namespace Usuario.Domain.Entity;
 
-public class Rede : SeedWork.Entity
+public class Rede : AggregationRoot
 {
     public int Id { get; set; }
     public string DS_REDE { get; set;}
@@ -15,7 +16,4 @@ public class Rede : SeedWork.Entity
         DS_REDE = redeDto.razaoSocial;
         return this;
     }
-
-    public ICollection<UsuarioRede> usuarioRedes { get; private set; }
-    public ICollection<Usuario> usuarios { get; private set; }
 }

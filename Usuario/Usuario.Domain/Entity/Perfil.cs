@@ -1,8 +1,9 @@
+using Usuario.Domain.SeedWork;
 using Usuario.Domain.Validation;
 
 namespace Usuario.Domain.Entity;
 
-public class Perfil : SeedWork.Entity
+public class Perfil : AggregationRoot
 {
     public Perfil()
     {
@@ -31,6 +32,4 @@ public class Perfil : SeedWork.Entity
     }
 
     public string DS_PERFIL { get; set; }
-    public ICollection<PerfilUsuarioRede> perfilUsuarioRedes { get; set; } = [];
-    public ICollection<UsuarioRede> usuarioRedes { get; set; } = [];
 }

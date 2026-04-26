@@ -22,13 +22,5 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
         builder.HasIndex(x => x.DS_EMAIL).IsUnique(true);
         builder.Property(x => x.SALT).HasMaxLength(100).IsRequired();
 
-
-        builder.HasMany(e => e.redes)
-        .WithMany(e => e.usuarios)
-        .UsingEntity<UsuarioRede>(
-            l => l.HasOne(e => e.rede).WithMany(e => e.usuarioRedes).HasForeignKey(e => e.ID_REDE),
-            r => r.HasOne(e => e.usuario).WithMany(e => e.usuarioRedes).HasForeignKey(e => e.ID_USUARIO)
-        );
-
     }
 }

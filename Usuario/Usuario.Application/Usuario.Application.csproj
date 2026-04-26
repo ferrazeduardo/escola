@@ -18,6 +18,7 @@
       <Folder Include="UseCases/Common/" />
       <Folder Include="UseCases/PerfilUseCase/Get/" />
       <Folder Include="UseCases/PerfilUseCase/Update/" />
+      <Folder Include="UseCases/UsuarioUseCase/AddPerfilUsuarioRede/" />
       <Folder Include="UseCases/UsuarioUseCase/Common/" />
       <Folder Include="UseCases/UsuarioUseCase/Listar/" />
       <Folder Include="UseCases/UsuarioUseCase/Obter/" />

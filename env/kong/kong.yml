@@ -11,6 +11,10 @@ services:
          paths:
           -  /usuarios
          strip_path: true
+       - name: login
+         paths:
+          - /login
+         strip_path: true
   - name: api_rede_service
     host: host.docker.internal
     port: 5281
@@ -20,3 +24,13 @@ services:
           paths:
             - /redes
           strip_path: true
+plugins:
+  - name: jwt
+    route: usuario_routes
+
+  - name: jwt
+    route: rede_routes
+jwt_secrets:
+  - consumer: escola
+    key: minha-chave
+    secret: segredo-super-forte

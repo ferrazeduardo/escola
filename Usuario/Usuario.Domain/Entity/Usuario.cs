@@ -59,29 +59,18 @@ public class Usuario : AggregationRoot
     }
 
 
-    public ICollection<Rede> redes { get; private set; } = [];
-    public ICollection<UsuarioRede> usuarioRedes { get; private set; } = [];
+    List<(int redeId, int perfilId)> redeIdPerfilId = [];
+    public List<PerfilUsuarioRede> perfilUsuarioRedes { get; set; } = [];
 
 
-    public void AddRede(Rede rede)
+    public void AddPerfilUsuarioRede(int redeId, int perfilId)
     {
-        redes.Add(rede);
-    }
-
-    public void addPerfil(Perfil perfil, int id_rede)
-    {
-        var usuarioRede = usuarioRedes.First(us => us.ID_REDE == id_rede && us.ID_USUARIO == Id);
-
-        var jaExiste = usuarioRede.perfilUsuarioRedes.Any(p => p.ID_PERFIL == perfil.Id);
-
-        ExcecaoDeDominio.HaError(jaExiste,"Perfil já vinculado");
-
-        usuarioRede.perfilUsuarioRedes.Add(new PerfilUsuarioRede
+        perfilUsuarioRedes.Add(new PerfilUsuarioRede
         {
-            ID_PERFIL = perfil.Id,
-            Perfil = perfil,
-            ID_USUARIO_REDE = usuarioRede.Id,
-            UsuarioRede = usuarioRede
+            ID_PERFIL = perfilId,
+            ID_REDE= redeId,
+            ID_USUARIO = Id
         });
     }
+
 }
