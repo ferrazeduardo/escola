@@ -5,6 +5,7 @@ using Usuario.Application.UseCases.UsuarioUseCase.AddPerfilUsuarioRede;
 using Usuario.Application.UseCases.UsuarioUseCase.Listar;
 using Usuario.Application.UseCases.UsuarioUseCase.Obter;
 using Usuario.Application.UseCases.UsuarioUseCase.Save;
+using Usuario.Application.UseCases.UsuarioUseCase.Update;
 
 namespace Usuario.Api.Controllers
 {
@@ -45,7 +46,14 @@ namespace Usuario.Api.Controllers
         [HttpPost("vincular/perfil")]
         public async Task<IActionResult> AddPerfilUsuarioRede([FromBody] AddPerfilUsuarioRedeInput addPerfilUsuarioRedeInput)
         {
-             var response = await _mediator.Send(addPerfilUsuarioRedeInput);
+            var response = await _mediator.Send(addPerfilUsuarioRedeInput);
+            return Ok(response);
+        }
+
+        [HttpPost("update")]
+        public async Task<IActionResult> Update([FromBody] UpdateUsuarioInput updateUsuarioInput)
+        {
+            var response = await _mediator.Send(updateUsuarioInput);
             return Ok(response);
         }
 

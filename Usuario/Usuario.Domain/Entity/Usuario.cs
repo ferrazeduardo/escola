@@ -68,9 +68,24 @@ public class Usuario : AggregationRoot
         perfilUsuarioRedes.Add(new PerfilUsuarioRede
         {
             ID_PERFIL = perfilId,
-            ID_REDE= redeId,
+            ID_REDE = redeId,
             ID_USUARIO = Id
         });
     }
 
+    public void Update(string nome, string cpf)
+    {
+        ValidacaoUpdate(nome, cpf);
+        NM_USUARIO = string.IsNullOrEmpty(nome) ? NM_USUARIO : nome;
+        NR_CPF = string.IsNullOrEmpty(cpf.Replace(".", "").Replace("-", "")) ? NR_CPF : cpf;
+    }
+
+
+    public void ValidacaoUpdate(string nome, string cpf)
+    {
+        ValidadorDeRegra.Novo()
+        .Quando(nome.Length > 100, "Nome não pode ter mais de 100 caracteres")
+        .Quando(cpf.Replace(".", "").Replace("-", "").Length > 11, "Cpf não pode ter mais de 11 caracteres")
+        .DispararExcecaoSeExistir();
+    }
 }

@@ -22,5 +22,6 @@
       <Folder Include="UseCases/UsuarioUseCase/Common/" />
       <Folder Include="UseCases/UsuarioUseCase/Listar/" />
       <Folder Include="UseCases/UsuarioUseCase/Obter/" />
+      <Folder Include="UseCases/UsuarioUseCase/Update/" />
     </ItemGroup>
 </Project>
