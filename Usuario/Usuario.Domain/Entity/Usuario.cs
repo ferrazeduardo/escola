@@ -50,12 +50,32 @@ public class Usuario : AggregationRoot
         SALT = salt;
     }
 
-    public void HashSenha()
+    public string HashSenha(string senha)
     {
         int iterations = 100_000;
-        using var pbkdf2 = new Rfc2898DeriveBytes(SEG_SENHA, SALT, iterations, HashAlgorithmName.SHA256);
+        using var pbkdf2 = new Rfc2898DeriveBytes(senha, SALT, iterations, HashAlgorithmName.SHA256);
         var hash = pbkdf2.GetBytes(32); // 256 bits
-        SEG_SENHA = Convert.ToBase64String(hash);
+        return Convert.ToBase64String(hash);
+    }
+
+    public void SetSenhaCriptografada()
+    {
+        SetSalt();
+        SEG_SENHA = HashSenha(SEG_SENHA);
+    }
+
+    public void VerificarSenha(string senhaDigitada)
+    {
+
+        var hashDigitado = Convert.FromBase64String(HashSenha(senhaDigitada));
+
+        var hashSalvo = Convert.FromBase64String(SEG_SENHA);
+
+        var senhaCriptografada = CryptographicOperations.FixedTimeEquals(
+            hashDigitado,
+            hashSalvo);
+
+        ExcecaoDeDominio.HaError(senhaCriptografada is false, "Senha esta inválida");
     }
 
 

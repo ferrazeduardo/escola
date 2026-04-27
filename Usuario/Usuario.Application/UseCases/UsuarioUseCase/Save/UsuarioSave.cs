@@ -23,7 +23,7 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
     {
         domain.Usuario usuario = new(request.nome, request.dataNascimento, request.cpf, request.email, request.senha);
         usuario.SetSalt();
-        usuario.HashSenha();
+        usuario.SetSenhaCriptografada();
 
         await _usuarioRepository.Inserir(usuario, cancellationToken);
 
