@@ -14,7 +14,7 @@ services:
        - name: login
          paths:
           - /login
-         strip_path: true
+         strip_path: false
   - name: api_rede_service
     host: host.docker.internal
     port: 5281
@@ -30,7 +30,11 @@ plugins:
 
   - name: jwt
     route: rede_routes
+
+consumers:
+  - username: escola
+
 jwt_secrets:
   - consumer: escola
-    key: minha-chave
-    secret: segredo-super-forte
+    key: escola_key
+    secret: 6v9kX4n2Qw8zP5sJ7rL1yM3bT9uC0fHk

@@ -12,7 +12,7 @@ public  class TokenService : ITokenService
     public  string GerarToken(domain.Usuario usuario)
     {
         
-        var secretKey = "123456789";
+        var secretKey = "6v9kX4n2Qw8zP5sJ7rL1yM3bT9uC0fHk";
         var key = new SymmetricSecurityKey(
             Encoding.UTF8.GetBytes(secretKey));
 
@@ -23,7 +23,8 @@ public  class TokenService : ITokenService
         var claims = new[]
         {
             new Claim("userId", usuario.Id.ToString()),
-            new Claim("email", usuario.DS_EMAIL)
+            new Claim("email", usuario.DS_EMAIL),
+            new Claim(JwtRegisteredClaimNames.Iss, "escola_key")
         };
 
         var token = new JwtSecurityToken(
