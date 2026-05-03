@@ -9,13 +9,13 @@ public class PerfilConfiguration : IEntityTypeConfiguration<Usuario.Domain.Entit
 {
     public void Configure(EntityTypeBuilder<Perfil> builder)
     {
-         builder.ToTable("Perfil");
+        builder.ToTable("Perfil");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
         builder.Property(x => x.DS_PERFIL).HasMaxLength(100);
 
-        
+
 
     }
 }
