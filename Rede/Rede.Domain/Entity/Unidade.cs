@@ -31,18 +31,18 @@ public class Unidade : SeedWork.Entity
 
     public Unidade()
     {
-        
+
     }
 
     public void AddTelefone(Telefone telefone)
     {
         Telefones.Add(telefone);
     }
-    public void AddTelefoneRange(List<Telefone> telefone)
+    public void AddTelefoneRange(List<string> telefones)
     {
-        ((List<Telefone>)Telefones).AddRange(telefone);
+        telefones.ForEach(t => Telefones.Add(new Telefone(t)));
     }
-    
+
     public void RemoveTelefone(Telefone telefone)
     {
         Telefones.Remove(telefone);

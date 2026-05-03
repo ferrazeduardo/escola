@@ -46,6 +46,22 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
                 .HasForeignKey("ID_REDE")
                 .HasConstraintName("FK_REDE_UNIDADE")
                 .OnDelete(DeleteBehavior.Cascade);
+
+
+        //mapeando value object
+        builder.OwnsMany(u => u.Telefones, telefone =>
+        {
+            telefone.ToTable("UnidadeTelefones");
+            telefone.WithOwner()
+                    .HasForeignKey("ID_UNIDADE");
+
+            telefone.Property<int>("Id"); // chave técnica
+            telefone.HasKey("Id");
+
+            telefone.Property(t => t.NR_TELEFONE)
+                 .HasColumnName("Numero")
+                 .IsRequired();
+        });
     }
 }
 

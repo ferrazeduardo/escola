@@ -9,13 +9,11 @@ namespace Rede.Application.UseCases.RedeUseCase.AddUnidade;
 public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
 {
     private readonly IRedeRepository _redeRepository;
-    private readonly IUnidadeRepository _unidadeRepository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public AddUnidade(IRedeRepository redeRepository, IUnidadeRepository unidadeRepository, IUnitOfWork unitOfWork)
+    public AddUnidade(IRedeRepository redeRepository, IUnitOfWork unitOfWork)
     {
         _redeRepository = redeRepository;
-        _unidadeRepository = unidadeRepository;
         _unitOfWork = unitOfWork;
     }
 
@@ -34,10 +32,7 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
             rede: rede
         );
 
-        List<Telefone> telefones = request.telefones.Select(GerarListaTelefone()).ToList();
-
-
-        unidade.AddTelefoneRange(telefones);
+        unidade.AddTelefoneRange(request.telefones);
         rede.AddUnidade(unidade);
 
         await _unitOfWork.Commit(cancellationToken);
@@ -48,11 +43,5 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
         return output;
     }
 
-    private static Func<string, Telefone> GerarListaTelefone()
-    {
-        return t => new Telefone
-        {
-            NR_TELEFONE = t
-        };
-    }
+
 }
