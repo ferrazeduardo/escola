@@ -14,4 +14,8 @@
       <ProjectReference Include="..\Rede.Domain\Rede.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="UseCases/RedeUseCase/AddSalaUnidade/" />
+    </ItemGroup>
+
 </Project>

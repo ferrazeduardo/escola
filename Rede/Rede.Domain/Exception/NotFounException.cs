@@ -8,7 +8,7 @@ public class NotFounException : IOException
     {
     }
 
-    public static void Object(object obj, string mensagem)
+    public static void IsNull(object obj, string mensagem)
     {
         if (obj is null)
             throw new NotFounException(mensagem);

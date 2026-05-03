@@ -2,15 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Domain", "Rede.Domain\Rede.Domain.csproj", "{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Test", "Rede.Test\Rede.Test.csproj", "{E6AD176B-7B4A-4442-9C9C-989645127F93}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Application", "Rede.Application\Rede.Application.csproj", "{4BC9038D-3331-4665-BEA2-F97A1BD46C69}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Api", "Rede.Api\Rede.Api.csproj", "{21EA4974-76FA-4DDC-BF3A-6C2DC20A0313}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.Data.EF", "Rede.Data.EF\Rede.Data.EF.csproj", "{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rede.IntegrationTest", "Rede.IntegrationTest\Rede.IntegrationTest.csproj", "{E5337DE1-F35D-47C3-BC99-4105366F1CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +18,6 @@ Global
 		{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEC03C18-B58C-423C-8DE3-F9C2D11037C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6AD176B-7B4A-4442-9C9C-989645127F93}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BC9038D-3331-4665-BEA2-F97A1BD46C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BC9038D-3331-4665-BEA2-F97A1BD46C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BC9038D-3331-4665-BEA2-F97A1BD46C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,10 +30,6 @@ Global
 		{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB51BDB-3A7B-45AF-A317-1387A2E2C9E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5337DE1-F35D-47C3-BC99-4105366F1CB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

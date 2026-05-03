@@ -21,7 +21,7 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
     {
         Domain.Entity.Rede rede = await _redeRepository.ObterPorId(request.id_rede);
 
-        NotFounException.Object(rede, "Rede não existe");
+        NotFounException.IsNull(rede, "Rede não existe");
 
         Unidade unidade = new Unidade(
             endereco: request.endereco,

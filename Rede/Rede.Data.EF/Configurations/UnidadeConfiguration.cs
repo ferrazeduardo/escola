@@ -40,7 +40,7 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
             .IsRequired();
 
 
-
+        //mapeando 
         builder.HasOne(x => x.Rede)
                 .WithMany(x => x.Unidades)
                 .HasForeignKey("ID_REDE")
@@ -59,8 +59,26 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
             telefone.HasKey("Id");
 
             telefone.Property(t => t.NR_TELEFONE)
-                 .HasColumnName("Numero")
+                 .HasColumnName("NR_TELEFONE")
                  .IsRequired();
+        });
+
+        builder.OwnsMany(u => u.Salas, sala =>
+        {
+            sala.ToTable("UnidadeSala");
+            sala.WithOwner()
+                .HasForeignKey("ID_UNIDADE");
+
+            sala.Property<int>("Id");
+            sala.HasKey("Id");
+
+            sala.Property(s => s.NR_SALA)
+               .HasColumnName("NR_SALA")
+               .IsRequired();
+            
+            sala.Property(s => s.QT_MAXIMA)
+            .HasColumnName("QT_MAXIMA")
+            .IsRequired();
         });
     }
 }

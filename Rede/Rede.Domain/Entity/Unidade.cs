@@ -1,3 +1,6 @@
+using Rede.Domain.Exception;
+using Rede.Domain.Validation;
+
 namespace Rede.Domain.Entity;
 
 public class Unidade : SeedWork.Entity
@@ -10,7 +13,7 @@ public class Unidade : SeedWork.Entity
     public int US_REGISTRO { get; set; }
     public ICollection<Telefone> Telefones { get; private set; } = new List<Telefone>();
 
-
+    public ICollection<Sala> Salas { get; private set; } = [];
     public Unidade(
         string endereco,
         string cep,
@@ -32,6 +35,12 @@ public class Unidade : SeedWork.Entity
     public Unidade()
     {
 
+    }
+
+    public void AddSala(Sala sala)
+    {
+        ExcecaoDeDominio.HaErro(Salas.FirstOrDefault(s => s.NR_SALA == sala.NR_SALA) is not null, "Sala já existe nesta unidade");
+        Salas.Add(sala);
     }
 
     public void AddTelefone(Telefone telefone)

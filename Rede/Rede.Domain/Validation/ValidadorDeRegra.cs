@@ -6,19 +6,28 @@ namespace Rede.Domain.Validation;
 public class ValidadorDeRegra
 {
 
+    private string Mensagens = "";
     public ValidadorDeRegra()
     {
     }
 
-    public ValidadorDeRegra Novo()
+    public static ValidadorDeRegra Novo()
     {
         return new ValidadorDeRegra();
     }
 
-    public void Quando(bool regra, string mensagem)
+    public ValidadorDeRegra Quando(bool temErro, string mensagem)
     {
-        if (regra)
-            throw new ExcecaoDeDominio(mensagem);
+        if (temErro)
+            Mensagens = mensagem;
+
+        return this;
+    }
+
+    public void DispararExcecaoSeExistir()
+    {
+        if(string.IsNullOrEmpty(Mensagens) is false)
+           throw new ExcecaoDeDominio(Mensagens);
     }
 
 }

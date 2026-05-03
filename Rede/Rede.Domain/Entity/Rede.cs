@@ -1,3 +1,4 @@
+using Rede.Domain.Exception;
 using Rede.Domain.SeedWork;
 using Rede.Domain.Validation;
 
@@ -75,4 +76,11 @@ public class Rede : AggregateRoot
         Unidades.Clear();
     }
 
+    public Unidade GetUnidadeById(int unidadeId)
+    {
+        var unidade = Unidades.FirstOrDefault(u => u.Id == unidadeId);
+        NotFounException.IsNull(unidade, "Unidade não encontrada");
+
+        return unidade;
+    }
 }
