@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "gvP/upGM8d0=",
+  "success": true,
+  "projectFilePath": "/home/eduardo/Documentos/escola/escola/Academico/Academico.Api/Academico.Api.csproj",
+  "expectedPackageFiles": [
+    "/home/eduardo/.nuget/packages/microsoft.aspnetcore.openapi/10.0.2/microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
+    "/home/eduardo/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
