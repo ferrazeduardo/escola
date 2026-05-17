@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Academico.Api/Academico.Api.csproj" />
+  <Project Path="Academico.Application/Academico.Application.csproj" />
   <Project Path="Academico.Domain/Academico.Domain.csproj" />
 </Solution>

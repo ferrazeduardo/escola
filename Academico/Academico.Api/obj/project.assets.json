@@ -36,6 +36,29 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "Academico.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Academico.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Academico.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Academico.Application.dll": {}
+        }
+      },
+      "Academico.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Academico.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Academico.Domain.dll": {}
+        }
       }
     }
   },
@@ -75,10 +98,21 @@
         "microsoft.openapi.2.0.0.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "Academico.Application/1.0.0": {
+      "type": "project",
+      "path": "../Academico.Application/Academico.Application.csproj",
+      "msbuildProject": "../Academico.Application/Academico.Application.csproj"
+    },
+    "Academico.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Academico.Domain/Academico.Domain.csproj",
+      "msbuildProject": "../Academico.Domain/Academico.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Academico.Application >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 10.0.2"
     ]
   },
@@ -106,7 +140,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/eduardo/Documentos/escola/escola/Academico/Academico.Application/Academico.Application.csproj": {
+              "projectPath": "/home/eduardo/Documentos/escola/escola/Academico/Academico.Application/Academico.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
