@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Exception/" />
+    <Folder Include="Interface/" />
+    <Folder Include="Interface/Repository/" />
     <Folder Include="SeedWork/" />
+    <Folder Include="Validator/" />
   </ItemGroup>
 
 </Project>

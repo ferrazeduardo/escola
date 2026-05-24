@@ -10,4 +10,14 @@
     <ProjectReference Include="../Academico.Domain/Academico.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCases/" />
+    <Folder Include="UseCases/Pessoa/" />
+    <Folder Include="UseCases/Pessoa/Create/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="14.1.0" />
+  </ItemGroup>
+
 </Project>
