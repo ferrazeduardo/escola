@@ -26,7 +26,7 @@ public class Obter : IRequestHandler<ObterInput, ObterOutput>
             { String.IsNullOrEmpty(request.cpf) is false,  x => x.NR_CPF == request.cpf }
         };
 
-        var func = dict.FirstOrDefault(x => x.Key).Value ?? throw new Exception("Filtro inválido");
+        var func = dict.FirstOrDefault(x => x.Key).Value ?? throw new Exception("É necessário enviar uma argumento válido.");
 
         AppDomain.Usuario usuario = await _usuarioRepository.Obter(func);
         var output = new ObterOutput();

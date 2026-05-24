@@ -13,7 +13,9 @@
   <ItemGroup>
     <Folder Include="UseCases/" />
     <Folder Include="UseCases/Pessoa/" />
+    <Folder Include="UseCases/Pessoa/Common/" />
     <Folder Include="UseCases/Pessoa/Create/" />
+    <Folder Include="UseCases/Pessoa/Get/" />
   </ItemGroup>
 
   <ItemGroup>
