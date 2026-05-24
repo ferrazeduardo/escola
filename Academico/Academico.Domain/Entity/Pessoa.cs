@@ -57,4 +57,8 @@ public class Pessoa : AggregateRoot
             .DispararExcecaoSeExistir();
     }
 
+    public void Update(string cpf, string nome, int rg)
+    {
+        throw new NotImplementedException();
+    }
 }
