@@ -18,7 +18,7 @@ public class Listar : IRequestHandler<ListarInput, ListarOutput>
     public async Task<ListarOutput> Handle(ListarInput request, CancellationToken cancellationToken)
     {
 
-        var usuarios = await _usuarioRepository.Search(new SearchInput(request.pagina,request.quantidade,request.pesquisa,request.ordernadacao,request.order),cancellationToken);
+        var usuarios = await _usuarioRepository.Search(new SearchInput(request.pagina,request.quantidade,request.pesquisa,request.ordernadacao,request.order));
 
         ListarOutput listarOutputs = new(
             usuarios.paginaAtual,

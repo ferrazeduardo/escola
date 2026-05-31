@@ -5,7 +5,7 @@ namespace Academico.Application.UseCases.Pessoa.Common;
 
 public class PessoaModelOutput
 {
-    public Guid id { get; private set; }
+    public int id { get; private set; }
     public int rg { get; private set; }
     public string cpf { get; private set; }
     public string nome { get; private set; }
@@ -14,7 +14,7 @@ public class PessoaModelOutput
 
     public void From(app.Pessoa pessoa)
     {
-        id = pessoa.IdGuid;
+        id = pessoa.Id;
         rg = pessoa.NR_RG;
         cpf = pessoa.NR_CPF;
         dataNascimento = pessoa.DH_NASCIMENTO;

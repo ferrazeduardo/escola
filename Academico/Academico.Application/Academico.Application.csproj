@@ -11,12 +11,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases/" />
+    <Folder Include="DependencyInjection/" />
     <Folder Include="UseCases/Pessoa/" />
     <Folder Include="UseCases/Pessoa/Common/" />
     <Folder Include="UseCases/Pessoa/Create/" />
     <Folder Include="UseCases/Pessoa/Delete/" />
     <Folder Include="UseCases/Pessoa/Get/" />
+    <Folder Include="UseCases/Pessoa/List/" />
     <Folder Include="UseCases/Pessoa/Update/" />
   </ItemGroup>
 
