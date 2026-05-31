@@ -24,12 +24,24 @@ services:
           paths:
             - /redes
           strip_path: true
+  - name: api_academico_service
+    host: host.docker.internal
+    port: 
+    protocol: http
+    routes:
+      - name: academico_routes
+        paths:
+          - /academico
+        strip_path: true
 plugins:
   - name: jwt
     route: usuario_routes
 
   - name: jwt
     route: rede_routes
+
+  - name: jwt
+    route: 
 
 consumers:
   - username: escola
