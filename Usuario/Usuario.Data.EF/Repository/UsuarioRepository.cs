@@ -58,7 +58,7 @@ public class UsuarioRepository : IUsuarioRepository
         _dbContext.Set<AppDomain.Usuario>().Remove(entity);
     }
 
-    public async Task<SearchOutput<AppDomain.Usuario>> Search(SearchInput input, CancellationToken cancellationToken)
+    public async Task<SearchOutput<AppDomain.Usuario>> Search(SearchInput input)
     {
         var query = _dbContext.Set<AppDomain.Usuario>().AsNoTracking();
         query = input.Order == SearchOrder.Desc ? query.OrderByDescending(x => x.NM_USUARIO) : query.OrderBy(x => x.NM_USUARIO);
@@ -66,9 +66,11 @@ public class UsuarioRepository : IUsuarioRepository
         if (!String.IsNullOrEmpty(input.Pesquisa))
             query = query.Where(x => x.NM_USUARIO.Contains(input.Pesquisa));
 
-        var total = await query.CountAsync(cancellationToken);
-        var items = await query.Skip((input.Pagina - 1) * input.Quantidade).Take(input.Quantidade).ToListAsync(cancellationToken);
+        var total = await query.CountAsync();
+        var items = await query.Skip((input.Pagina - 1) * input.Quantidade).Take(input.Quantidade).ToListAsync();
         return new SearchOutput<AppDomain.Usuario>(input.Pagina, input.Quantidade, total, items);
 
     }
+
+    
 }
