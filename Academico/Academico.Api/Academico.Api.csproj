@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="../Academico.Application/Academico.Application.csproj" />
+    <ProjectReference Include="../Academico.Data.EF/Academico.Data.EF.csproj" />
+    <ProjectReference Include="../Academico.EF.Data/Academico.EF.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

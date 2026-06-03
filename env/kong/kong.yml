@@ -9,21 +9,22 @@ services:
     routes:
        - name: usuario_routes
          paths:
-          -  /usuarios
+          -  /auth
          strip_path: true
        - name: login
          paths:
           - /login
          strip_path: false
-  # - name: api_rede_service
-  #   host: host.docker.internal
-  #   port: 5281
-  #   protocol: http
-  #   routes:
-  #       - name: rede_routes
-  #         paths:
-  #           - /redes
-  #         strip_path: true
+  - name: api_rede_service
+    # host: host.docker.internal
+    host: redeapi
+    port: 8080
+    protocol: http
+    routes:
+        - name: rede_routes
+          paths:
+            - /redes
+          strip_path: true
   # - name: api_academico_service
   #   host: host.docker.internal
   #   port: 
@@ -37,8 +38,8 @@ plugins:
   - name: jwt
     route: usuario_routes
 
-  # - name: jwt
-  #   route: rede_routes
+  - name: jwt
+    route: api_rede_service
 
   # - name: jwt
   #   route: 
