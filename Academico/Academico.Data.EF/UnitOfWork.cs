@@ -5,12 +5,14 @@ namespace Academico.Data.EF;
 
 public class UnitOfWork : IUnitOfWork
 {
-    public UnitOfWork()
+    private AcademicoDbContext _academicoDbContext;
+
+    public UnitOfWork(AcademicoDbContext academicoDbContext)
     {
-        
+        _academicoDbContext = academicoDbContext;
     }
-    public Task Commit(CancellationToken cancellationToken)
+    public async Task Commit(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        await _academicoDbContext.SaveChangesAsync(cancellationToken);
     }
 }
