@@ -12,6 +12,6 @@ public interface IRepository<T>
     Task<SearchOutput<Pessoa>> Search(SearchInput input);
     Task Update(T entity, CancellationToken cancellationToken);
 
-    Task<List<T>> List(Expression<Func<List<T>, bool>> filtro, bool rastrear = true);
+    Task<List<T>> List(Expression<Func<T, bool>> filtro, bool rastrear = true);
     Task Delete(T entity, CancellationToken cancellationToken);
 }
