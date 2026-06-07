@@ -16,7 +16,7 @@ public static class DependencyInjection
         services.AddScoped<IPessoaRepository, PessoaRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<AcademicoDbContext>(options =>
-        options.UseNpgsql(configuration.GetConnectionString("defaultConnection")));
+        options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         return services;
     }
