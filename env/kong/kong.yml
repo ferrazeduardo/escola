@@ -7,25 +7,32 @@ services:
     port: 8080
     protocol: http
     routes:
-       - name: usuario_routes
-         paths:
-          -  /auth
-         strip_path: true
-       - name: login
-         paths:
+      - name: usuario_routes
+        paths:
+          - /auth
+        strip_path: true
+        plugins:
+          - name: jwt
+
+      - name: login
+        paths:
           - /login
-         strip_path: false
+        strip_path: false
+        # sem JWT aqui — rota pública
+
   - name: api_rede_service
-    # host: host.docker.internal
     host: redeapi
     port: 8080
     protocol: http
     routes:
-        - name: rede_routes
-          paths:
-            - /redes
-          strip_path: true
-  # - name: api_academico_service
+      - name: rede_routes
+        paths:
+          - /redes
+        strip_path: true
+        plugins:
+          - name: jwt
+
+      # - name: api_academico_service
   #   host: host.docker.internal
   #   port: 
   #   protocol: http
@@ -34,15 +41,6 @@ services:
   #       paths:
   #         - /academico
   #       strip_path: true
-plugins:
-  - name: jwt
-    route: usuario_routes
-
-  - name: jwt
-    route: api_rede_service
-
-  # - name: jwt
-  #   route: 
 
 consumers:
   - username: escola
