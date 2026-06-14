@@ -1,4 +1,5 @@
 using System;
+using Academico.Data.EF.Configurations;
 using Academico.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,6 @@ public class AcademicoDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+        modelBuilder.ApplyConfiguration(new PessoaConfiguration());
     }
 }
