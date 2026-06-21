@@ -19,7 +19,7 @@ public class CreatePeriodo : IRequestHandler<CreatePeriodoInput, CreatePeriodoOu
     }
     public async Task<CreatePeriodoOutput> Handle(CreatePeriodoInput request, CancellationToken cancellationToken)
     {
-        domain.Periodo periodo = new(request.ano);
+        domain.Periodo periodo = new(request.ano,request.dataInicio, request.dataFim);
 
         var periodoJaExiste = await _periodoRepository.Get(x => x.NR_ANO == request.ano);
         AlreadyExistsException.IsNotNull("Periodo", periodoJaExiste, request.ano);
