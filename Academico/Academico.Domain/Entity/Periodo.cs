@@ -23,5 +23,8 @@ public class Periodo : AggregateRoot
     public DateTime DT_INICIO { get; set; }
     public DateTime DT_FIM { get; set; }
 
-    
+    public void Update(string status, DateTime dateFim, DateTime dateInicio)
+    {
+        throw new NotImplementedException();
+    }
 }
