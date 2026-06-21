@@ -12,7 +12,7 @@ public class AlreadyExistsException : System.Exception
     public static void IsNotNull(string entityNome, object @object, object key)
     {
         if (@object != null)
-            throw new AlreadyExistsException($"{entityNome} com identificado {key} já existe");
+            throw new AlreadyExistsException($"{entityNome} com identificador {key} já existe");
     }
     
 }

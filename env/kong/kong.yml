@@ -31,6 +31,18 @@ services:
         strip_path: true
         plugins:
           - name: jwt
+    
+  - name: api_academico_service
+    host: academicoapi
+    port: 8080
+    protocol: http
+    routes:
+      - name: academico_routes
+        paths:
+          - /academico
+        strip_path: true
+        plugins:
+          - name: jwt
 
       # - name: api_academico_service
   #   host: host.docker.internal
