@@ -18,5 +18,8 @@ public class Periodo : AggregateRoot
     public int NR_ANO { get; set; }
     public string ST_PERIODO { get; set; }
 
+    public DateTime DT_INICIO { get; set; }
+    public DateTime DT_FIM { get; set; }
+
     
 }

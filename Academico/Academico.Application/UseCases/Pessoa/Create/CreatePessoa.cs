@@ -28,7 +28,7 @@ public class CreatePessoa : IRequestHandler<CreatePessoaInput, CreatePessoaOutpu
         await _unitOfWork.Commit(cancellationToken);
         return new CreatePessoaOutput()
         {
-            id = pessoa.IdGuid
+            id = pessoa.Id
         };
     }
 }

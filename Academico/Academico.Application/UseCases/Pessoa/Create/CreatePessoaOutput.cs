@@ -4,5 +4,5 @@ namespace Academico.Application.UseCases.Pessoa.Create;
 
 public class CreatePessoaOutput
 {
-    public Guid id { get; set; }
+    public int id { get; set; }
 }

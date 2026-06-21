@@ -19,7 +19,7 @@ public class GetPessoa : IRequestHandler<GetPessoaInput, GetPessoaOutput>
     {
         IDictionary<bool, Expression<Func<app.Pessoa, bool>>> dict = new Dictionary<bool, Expression<Func<app.Pessoa, bool>>>()
         {
-            {request.id is not null , x => x.IdGuid == request.id},
+            {request.id is not null , x => x.Id == request.id},
             {string.IsNullOrEmpty(request.cpf) is false, x => x.NR_CPF == request.cpf },
             {request.rg > 0 , x => x.NR_RG == request.rg}
         };

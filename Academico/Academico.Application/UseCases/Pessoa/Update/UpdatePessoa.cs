@@ -18,7 +18,7 @@ public class UpdatePessoa : IRequestHandler<UpdatePessoaInput, UpdatePessoaOutpu
     }
     public async Task<UpdatePessoaOutput> Handle(UpdatePessoaInput request, CancellationToken cancellationToken)
     {
-        var pessoa = await _pessoaRepository.Get(x => x.IdGuid == request.id);
+        var pessoa = await _pessoaRepository.Get(x => x.Id == request.id);
        
         NotFoundException.IsNull(pessoa, "Pessoa não encontrada");
         pessoa.Update(request.cpf, request.nome, request.rg);
