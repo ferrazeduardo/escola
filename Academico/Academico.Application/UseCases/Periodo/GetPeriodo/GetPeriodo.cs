@@ -25,7 +25,7 @@ public class GetPeriodo : IRequestHandler<GetPeriodoInput, GetPeriodoOutput>
         var func = keys.FirstOrDefault(x => x.Key).Value ?? throw new ArgumentException("É nescessário enviar um argumento válido.");
 
 
-        var periodo = await _periodoRepository.Get(func);
+        var periodo = await _periodoRepository.Get(func, false);
 
         NotFoundException.IsNull(periodo, "Período não encontrado");
 
