@@ -5,14 +5,17 @@ namespace Academico.Domain.Entity;
 
 public class Serie : AggregateRoot
 {
-    public int NR_SERIE { get; set; }
+    public int NR_SERIE { get; private set; }
 
-    public ICollection<int> periodosId { get; set; } = [];
+    public ICollection<int> materiasId { get; private set; } = [];
+    public ICollection<SerieMateria> _serieMaterias { get; private set; } = [];
 
-    public ICollection<SeriePeriodo> _seriePeriodos { get; set; } = [];
-    public ICollection<(int, string)> unidadesIdSalas { get; set; } = [];
+    public ICollection<int> periodosId { get; private set; } = [];
 
-    public ICollection<SerieUnidadeSala> _serieunidadeSalas { get; set; } = [];
+    public ICollection<SeriePeriodo> _seriePeriodos { get; private set; } = [];
+    public ICollection<(int, string)> unidadesIdSalas { get; private set; } = [];
+
+    public ICollection<SerieUnidadeSala> _serieunidadeSalas { get; private set; } = [];
 
     public void AdicionarPeriodo(int idPeriodo)
     {
