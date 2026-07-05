@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Folder Include="DependencyInjection/" />
+    <Folder Include="UseCases/Materia/" />
+    <Folder Include="UseCases/Materia/Create/" />
     <Folder Include="UseCases/Periodo/Common/" />
     <Folder Include="UseCases/Periodo/Create/" />
     <Folder Include="UseCases/Periodo/Delete/" />
