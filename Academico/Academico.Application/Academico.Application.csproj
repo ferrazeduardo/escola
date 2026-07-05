@@ -17,6 +17,7 @@
     <Folder Include="UseCases/Materia/Create/" />
     <Folder Include="UseCases/Materia/Get/" />
     <Folder Include="UseCases/Materia/List/" />
+    <Folder Include="UseCases/Materia/UpdateStatus/" />
     <Folder Include="UseCases/Periodo/Common/" />
     <Folder Include="UseCases/Periodo/Create/" />
     <Folder Include="UseCases/Periodo/Delete/" />

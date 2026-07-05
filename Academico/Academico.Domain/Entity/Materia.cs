@@ -30,4 +30,9 @@ public class Materia : AggregateRoot
     {
         ExcecaoDeDominio.HaError(string.IsNullOrEmpty(DS_MATERIA), "Descrição da matéria é obrigatório.");
     }
+
+    public void UpdateStatus(bool status)
+    {
+        ST_MATERIA = status;
+    }
 }
