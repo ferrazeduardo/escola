@@ -1,9 +1,9 @@
 using System;
 using Academico.Domain.Entity;
+using Academico.Domain.SeedWork;
 
 namespace Academico.Domain.Interface.Repository;
 
-public interface IMateriaRepository
+public interface IMateriaRepository : IRepository<Materia>
 {
-    Task Create(Materia materia, CancellationToken cancellationToken);
 }

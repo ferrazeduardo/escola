@@ -20,7 +20,7 @@ public class CreateMateria : IRequestHandler<CreateMateriaInput, CreateMateriaOu
     {
         var materia = new domain.Materia(request.descricao);
 
-        await _materiaRepository.Create(materia, cancellationToken);
+        await _materiaRepository.Cadastrar(materia, cancellationToken);
         await _unitOfWork.Commit(cancellationToken);
 
         return new CreateMateriaOutput()
