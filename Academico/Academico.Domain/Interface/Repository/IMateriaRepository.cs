@@ -7,4 +7,5 @@ namespace Academico.Domain.Interface.Repository;
 
 public interface IMateriaRepository : IRepository<Materia>, ISearchRepository<Materia>
 {
+    Task<List<Materia>?> ListByIds(ICollection<int> materiasId);
 }

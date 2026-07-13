@@ -8,13 +8,12 @@ public class Serie : AggregateRoot
     public int NR_SERIE { get; private set; }
 
     public ICollection<int> materiasId { get; private set; } = [];
-    public ICollection<SerieMateria> _serieMaterias { get; private set; } = [];
+    public int redeId { get; private set; }
+    public ICollection<SerieMateriaRede> SerieMateriaRede { get; private set; } = [];
 
-    public ICollection<int> periodosId { get; private set; } = [];
 
-    public ICollection<SeriePeriodo> _seriePeriodos { get; private set; } = [];
-    public ICollection<(int, string)> unidadesIdSalas { get; private set; } = [];
-
-    public ICollection<SerieUnidadeSala> _serieunidadeSalas { get; private set; } = [];
-
+    public int periodosId { get; private set; }
+    public int unidadeId { get; private set; }
+    public string nrSala { get; private set; }
+    public SeriePeriodoUnidade SeriePeriodoUnidade { get; private set; } = new();
 }

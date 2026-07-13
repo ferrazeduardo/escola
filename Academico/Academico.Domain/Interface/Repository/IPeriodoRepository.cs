@@ -7,5 +7,5 @@ namespace Academico.Domain.Interface.Repository;
 public interface IPeriodoRepository : IRepository<Periodo>
 {
     Task<List<Domain.Entity.Periodo>> ListAll(DateTime anoInicio,DateTime anoFIm);
-
+    Task<List<Periodo>?> ListByIds(ICollection<int> periodosId);
 }
