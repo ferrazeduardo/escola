@@ -22,13 +22,11 @@
 ## 🚀 Tecnologias Utilizadas
 
 - **Backend**: .NET 8 (ASP.NET Core)
-- **Frontend**: React
 - **Banco de dados**:  PostgreSQL 
 - **ORM**: Entity Framework Core (Code First)
 - **Outras ferramentas**:
   - .NET CLI
   - Git
   - Docker / Docker Compose (opcional para ambiente de produção)
-  - xUnit + Moq (testes unitários/integração – em desenvolvimento)
 
 ## Estrutura Básica do Banco de Dados (entidades principais)
