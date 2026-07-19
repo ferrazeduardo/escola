@@ -31,6 +31,7 @@
     <Folder Include="UseCases/Pessoa/Update/" />
     <Folder Include="UseCases/Serie/" />
     <Folder Include="UseCases/Serie/Common/" />
+    <Folder Include="UseCases/Serie/Create/" />
     <Folder Include="UseCases/Serie/Get/" />
   </ItemGroup>
 
