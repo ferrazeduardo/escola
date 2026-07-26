@@ -34,4 +34,10 @@ public class Serie : AggregateRoot
     {
         ExcecaoDeDominio.HaError(NR_SERIE <= 0, "Numéro de série não pode ser zero ou negativo");
     }
+
+    public void VerificaSeMateriaJaExiste(List<int> materiaId)
+    {
+        var materiasJaVinculadas = materiasId.Where(x => materiaId.Any(y => y == x)).ToList();
+        ExcecaoDeDominio.HaError(materiasJaVinculadas.Count > 0, "Matéria já vinculada à série: " + string.Join(",",materiasJaVinculadas));
+    }
 }
