@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Exception/" />
+    <Folder Include="Interface/HttpClients/" />
     <Folder Include="Interface/SearchRepository/" />
     <Folder Include="SeedWork/" />
     <Folder Include="Validator/" />
