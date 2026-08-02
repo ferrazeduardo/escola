@@ -8,6 +8,7 @@ namespace Academico.Data.EF;
 public class AcademicoDbContext : DbContext
 {
     public DbSet<Pessoa> Pessoa => Set<Pessoa>();
+    public DbSet<Serie> Serie => Set<Serie>();
     public AcademicoDbContext(DbContextOptions<AcademicoDbContext> options) : base(options)
     {
         
@@ -16,5 +17,6 @@ public class AcademicoDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new PessoaConfiguration());
+        modelBuilder.ApplyConfiguration(new SerieConfiguration());
     }
 }
