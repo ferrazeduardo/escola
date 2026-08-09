@@ -14,6 +14,7 @@ public static class DependencyInjection
     public static IServiceCollection AddDataEf(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IPessoaRepository, PessoaRepository>();
+        services.AddScoped<IMateriaRepository, MateriaRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<AcademicoDbContext>(options =>
         options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
