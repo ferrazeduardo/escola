@@ -13,10 +13,6 @@ public class Materia : AggregateRoot
         Validacao();
     }
 
-    public Materia()
-    {
-        
-    }
 
     public String DS_MATERIA { get; set; }
     public Boolean ST_MATERIA { get; set; }
