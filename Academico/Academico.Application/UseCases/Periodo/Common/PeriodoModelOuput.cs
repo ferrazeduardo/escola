@@ -8,5 +8,5 @@ public class PeriodoModelOuput
     public int ano { get; set; }
     public DateTime dataInicio { get; set; }
     public DateTime dataFim { get; set; }
-    public string status { get; set; }
+    public bool status { get; set; }
 }

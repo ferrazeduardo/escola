@@ -15,4 +15,9 @@ public abstract class Entity
 
         return Id == entity.Id;
     }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(GetType(), Id);
+    }
 }
