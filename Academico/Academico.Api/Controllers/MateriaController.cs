@@ -40,8 +40,8 @@ namespace Academico.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost("update/status")]
-        public async Task<IActionResult> Delete([FromBody] UpdateStatusInput request)
+        [HttpPut("status")]
+        public async Task<IActionResult> UpdateStatus([FromBody] UpdateStatusInput request)
         {
             var result = await _mediator.Send(request);
             return Ok(result);
