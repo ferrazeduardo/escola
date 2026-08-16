@@ -20,7 +20,7 @@ public class Login : IRequestHandler<LoginInput, LoginOutput>
     public async Task<LoginOutput> Handle(LoginInput request, CancellationToken cancellationToken)
     {
         var usuario = await _usuarioRepository.Obter(x => x.DS_EMAIL == request.login);
-        NotFoundException.IsNull(usuario, "Usuario não existe com este login");
+        NotFoundException.IsNull(usuario, "Usuário não encontrado");
         usuario.VerificarSenha(request.senha);
         var output = new LoginOutput();
         output.token = _tokenService.GerarToken(usuario);

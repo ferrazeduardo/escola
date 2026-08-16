@@ -75,7 +75,7 @@ public class Usuario : AggregationRoot
             hashDigitado,
             hashSalvo);
 
-        ExcecaoDeDominio.HaError(senhaCriptografada is false, "Senha esta inválida");
+        ExcecaoDeDominio.HaError(senhaCriptografada is false, "Usuário nao encontrado");
     }
 
 
