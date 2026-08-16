@@ -5,7 +5,7 @@ namespace Usuario.Domain.Validation;
 
 public class ValidadorDeRegra
 {
-    private string Mensagens = "";
+    private List<string> Mensagens = new List<string>();
     public ValidadorDeRegra()
     {
     }
@@ -18,14 +18,14 @@ public class ValidadorDeRegra
     public ValidadorDeRegra Quando(bool temErro, string mensagem)
     {
         if (temErro)
-            Mensagens = mensagem;
+            Mensagens.Add(mensagem);
 
         return this;
     }
 
     public void DispararExcecaoSeExistir()
     {
-        if(string.IsNullOrEmpty(Mensagens) is false)
-           throw new ExcecaoDeDominio(Mensagens);
+        if(Mensagens.Count > 0)
+           throw new ExcecaoDeDominio(string.Join(", ", Mensagens));
     }
 }
