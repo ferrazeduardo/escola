@@ -42,7 +42,8 @@ public class AddPerfilUsuarioRede : IRequestHandler<AddPerfilUsuarioRedeInput, A
 
         usuario.AddPerfilUsuarioRede(rede.Id, perfil.Id);
         await _perfilUsuarioRedeRespository.Inserir(usuario.perfilUsuarioRedes.First(), cancellationToken);
-
+        await _unitOfWork.Commit(cancellationToken);
+        
         return new AddPerfilUsuarioRedeOutput();
     }
 }
