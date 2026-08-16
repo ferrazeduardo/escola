@@ -1,5 +1,6 @@
 using System;
 using MediatR;
+using Usuario.Domain.Exception;
 using Usuario.Domain.Interface;
 using Usuario.Domain.Interface.Repository;
 
@@ -19,8 +20,8 @@ public class UpdatePerfil : IRequestHandler<UpdatePerfilInput, UpdatePerfilOutpu
     {
         var perfil = await _perfilRepository.Obter(x => x.Id == request.id);
 
-        if (perfil == null)
-            throw new Exception("Perfil não encontrado");
+        NotFoundException.IsNull(perfil,"Perfil não encontrado");
+
 
         perfil.Update(request.descricao);   
 
