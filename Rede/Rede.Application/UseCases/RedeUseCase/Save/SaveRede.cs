@@ -24,6 +24,7 @@ public class SaveRede : IRequestHandler<SaveRedeInput, SaveRedePayload>
         await _unitOfWork.Commit(cancellationToken);
         SaveRedePayload payload = new();
         payload.codigo = rede.Id;
+
         
         return payload;
     }
