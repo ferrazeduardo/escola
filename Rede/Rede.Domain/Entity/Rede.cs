@@ -32,7 +32,7 @@ public class Rede : AggregateRoot
 
     private void ValidacaoUpdate()
     {
-        throw new NotImplementedException();
+       ExcecaoDeDominio.HaErro(string.IsNullOrWhiteSpace(RZ_SOCIAL), "Razão social não pode ser nula ou vazia");
     }
 
     public void Update(string dsRede)
@@ -44,19 +44,19 @@ public class Rede : AggregateRoot
     public string NR_CNPJ { get; set; }
     public DateTime DH_REGISTRO { get; set; }
     public int US_REGISTRO { get; set; }
-    public string ST_REDE { get; set; }
+    public bool ST_REDE { get; set; }
     
     public ICollection<Unidade> Unidades { get; private set; } = new List<Unidade>();
 
 
     public void Ativar()
     {
-        ST_REDE = "S";
+        ST_REDE = true;
     }
 
     public void Desativar()
     {
-        ST_REDE = "N";
+        ST_REDE = false;
     }
     
     public void AddUnidade(Unidade unidade)
