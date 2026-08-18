@@ -28,7 +28,7 @@ public class RedeRepository : IRedeRepository
     {
         var redeQuery = _context.Set<Domain.Entity.Rede>().Include(x => x.Unidades).ThenInclude(u => u.Salas).AsQueryable();
 
-        if (rastreavel)
+        if (rastreavel is false)
             redeQuery = redeQuery.AsNoTracking();
 
         var rede = await redeQuery.FirstOrDefaultAsync(rede => rede.Id == id);
