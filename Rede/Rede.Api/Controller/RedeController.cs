@@ -20,9 +20,9 @@ namespace Rede.Api.Controller
         }
 
         [HttpPost("save")]
-        public async Task<IActionResult> Save([FromBody] SaveRedeInput saveRedeInput)
+        public async Task<IActionResult> Save([FromBody] SaveRedeInput saveRedeInput, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(saveRedeInput);
+            var response = await _mediator.Send(saveRedeInput, cancellationToken);
             return Ok(response);
         }
 
@@ -34,16 +34,16 @@ namespace Rede.Api.Controller
         }
 
         [HttpPost("vincular")]
-        public async Task<IActionResult> AddUnidade([FromBody] AddUnidadeInput addUnidadeInput)
+        public async Task<IActionResult> AddUnidade([FromBody] AddUnidadeInput addUnidadeInput, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(addUnidadeInput);
+            var response = await _mediator.Send(addUnidadeInput, cancellationToken);
             return Ok(response);
         }
 
         [HttpPost("vincular/sala/unidade")]
-        public async Task<IActionResult> AddSalaUnidade([FromBody] AddSalaUnidadeInput addSalaUnidadeInput)
+        public async Task<IActionResult> AddSalaUnidade([FromBody] AddSalaUnidadeInput addSalaUnidadeInput,CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(addSalaUnidadeInput);
+            var response = await _mediator.Send(addSalaUnidadeInput, cancellationToken);
             return Ok(response);
         }
     }
