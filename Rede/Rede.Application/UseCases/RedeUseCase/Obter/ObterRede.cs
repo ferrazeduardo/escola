@@ -1,6 +1,7 @@
 using MediatR;
 using Rede.Domain.DataTransferObject;
 using Rede.Domain.Entity;
+using Rede.Domain.Exception;
 using Rede.Domain.Interfaces.Repository;
 
 namespace Rede.Application.UseCases.RedeUseCase.Obter;
@@ -17,7 +18,7 @@ public class ObterRede : IRequestHandler<ObterRedeInput, ObterRedeOutput>
     public  async Task<ObterRedeOutput> Handle(ObterRedeInput request, CancellationToken cancellationToken)
     {
         Domain.Entity.Rede rede = await _redeRepository.ObterPorId(request.id);
-
+        NotFounException.IsNull(rede, "Rede não encontrada");
         ObterRedeOutput obterRedePayload = new();
         obterRedePayload.id = rede.Id;
         obterRedePayload.razaoSocial = rede.RZ_SOCIAL;
