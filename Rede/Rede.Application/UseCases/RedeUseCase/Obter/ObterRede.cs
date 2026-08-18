@@ -29,7 +29,8 @@ public class ObterRede : IRequestHandler<ObterRedeInput, ObterRedeOutput>
             complemento = u.DS_COMPLMENTO,
             endereco = u.DS_ENDERECO,
             numero = u.NR_UNIDADE,
-            cep = u.NR_CEP
+            cep = u.NR_CEP,
+            status = u.ST_UNIDADE
         }).ToList();
        
         return obterRedePayload;

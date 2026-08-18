@@ -7,7 +7,7 @@ public class Unidade : SeedWork.Entity
 {
     public string DS_ENDERECO { get; set; }
     public string NR_CEP { get; set; }
-    public string ST_UNIDADE { get; set; }
+    public bool ST_UNIDADE { get; set; }
     public DateTime DH_REGISTRO { get; set; }
     public string NR_UNIDADE { get; set; }
     public int US_REGISTRO { get; set; }
@@ -64,11 +64,11 @@ public class Unidade : SeedWork.Entity
 
     public void Ativar()
     {
-        ST_UNIDADE = "S";
+        ST_UNIDADE = true;
     }
 
     public void Desativar()
     {
-        ST_UNIDADE = "N";
+        ST_UNIDADE = false;
     }
 }

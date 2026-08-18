@@ -7,4 +7,5 @@ public class UnidadeDto
     public string numero { get; set; }
     public string complemento { get; set; }
     public string cep { get; set; }
+    public bool status { get; set; }
 }
