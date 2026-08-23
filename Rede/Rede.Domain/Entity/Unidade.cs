@@ -1,5 +1,6 @@
 using Rede.Domain.Exception;
 using Rede.Domain.Validation;
+using Rede.Domain.ValueObject;
 
 namespace Rede.Domain.Entity;
 
