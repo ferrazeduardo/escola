@@ -1,5 +1,6 @@
 using Academico.Application.DependencyInjection;
 using Academico.Data.EF.DependencyInjection;
+using Academico.Infra.Http.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddApplication().AddApplication().AddDataEf(builder.Configuration).AddHttpClient();
+builder.Services.AddApplication().AddApplication().AddDataEf(builder.Configuration).AddInfraHttp();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
