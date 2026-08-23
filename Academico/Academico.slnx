@@ -3,4 +3,5 @@
   <Project Path="Academico.Application/Academico.Application.csproj" />
   <Project Path="Academico.Data.EF/Academico.Data.EF.csproj" />
   <Project Path="Academico.Domain/Academico.Domain.csproj" />
+  <Project Path="Academico.Infra.Http/Academico.Infra.Http.csproj" />
 </Solution>
