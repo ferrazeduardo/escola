@@ -84,4 +84,13 @@ public class Unidade : SeedWork.AggregateRoot
     {
         ST_UNIDADE = false;
     }
+
+    public void Update(string endereco, string cep, string numeroUnidade,bool status, string dsComplmento)
+    {
+        DS_ENDERECO = endereco;
+        NR_CEP = cep;
+        NR_UNIDADE = numeroUnidade;
+        ST_UNIDADE = status;
+        DS_COMPLMENTO = dsComplmento;
+    }
 }

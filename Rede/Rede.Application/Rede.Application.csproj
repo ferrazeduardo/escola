@@ -21,6 +21,7 @@
       <Folder Include="UseCases/UnidadeUseCase/Create/" />
       <Folder Include="UseCases/UnidadeUseCase/Get/" />
       <Folder Include="UseCases/UnidadeUseCase/List/" />
+      <Folder Include="UseCases/UnidadeUseCase/Update/" />
     </ItemGroup>
 
 </Project>
