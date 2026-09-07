@@ -16,6 +16,8 @@
 
     <ItemGroup>
       <Folder Include="UseCases/RedeUseCase/AddSalaUnidade/" />
+      <Folder Include="UseCases/UnidadeUseCase/" />
+      <Folder Include="UseCases/UnidadeUseCase/Create/" />
     </ItemGroup>
 
 </Project>

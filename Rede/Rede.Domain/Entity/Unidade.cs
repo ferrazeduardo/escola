@@ -4,8 +4,14 @@ using Rede.Domain.ValueObject;
 
 namespace Rede.Domain.Entity;
 
-public class Unidade : SeedWork.Entity
+public class Unidade : SeedWork.AggregateRoot
 {
+    private string endereco;
+    private string cep;
+    private string numeroUnidade;
+    private int usuarioRegistro;
+    private string dsComplmento;
+
     public string DS_ENDERECO { get; set; }
     public string NR_CEP { get; set; }
     public bool ST_UNIDADE { get; set; }
@@ -36,6 +42,15 @@ public class Unidade : SeedWork.Entity
     public Unidade()
     {
 
+    }
+
+    public Unidade(string endereco, string cep, string numeroUnidade, int usuarioRegistro, string dsComplmento)
+    {
+        this.endereco = endereco;
+        this.cep = cep;
+        this.numeroUnidade = numeroUnidade;
+        this.usuarioRegistro = usuarioRegistro;
+        this.dsComplmento = dsComplmento;
     }
 
     public void AddSala(Sala sala)

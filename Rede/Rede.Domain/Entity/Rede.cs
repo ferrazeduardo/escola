@@ -46,7 +46,7 @@ public class Rede : AggregateRoot
     public int US_REGISTRO { get; set; }
     public bool ST_REDE { get; set; }
     
-    public ICollection<Unidade> Unidades { get; private set; } = new List<Unidade>();
+    public ICollection<int> Unidades { get; private set; } = [];
 
 
     public void Ativar()
@@ -59,28 +59,9 @@ public class Rede : AggregateRoot
         ST_REDE = false;
     }
     
-    public void AddUnidade(Unidade unidade)
-    {
-        Unidades.Add(unidade);
-    }
-    
-    public void SetUnidades(List<Unidade> unidades) => Unidades = unidades;
-
-    public void RemoveUnidade(Unidade unidade)
-    {
-        Unidades.Remove(unidade);
-    }
-
     public void RemoveAllUnidades()
     {
         Unidades.Clear();
     }
 
-    public Unidade GetUnidadeById(int unidadeId)
-    {
-        var unidade = Unidades.FirstOrDefault(u => u.Id == unidadeId);
-        NotFounException.IsNull(unidade, "Unidade não encontrada");
-
-        return unidade;
-    }
 }
