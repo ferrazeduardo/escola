@@ -14,6 +14,7 @@ public class Unidade : SeedWork.AggregateRoot
     public DateTime DH_REGISTRO { get; set; }
     public string NR_UNIDADE { get; set; }
     public int US_REGISTRO { get; set; }
+    public int IdRede { get; set; }
     public ICollection<Telefone> Telefones { get; private set; } = new List<Telefone>();
 
     public ICollection<Sala> Salas { get; private set; } = [];
