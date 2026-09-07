@@ -6,11 +6,7 @@ namespace Rede.Domain.Entity;
 
 public class Unidade : SeedWork.AggregateRoot
 {
-    private string endereco;
-    private string cep;
-    private string numeroUnidade;
-    private int usuarioRegistro;
-    private string dsComplmento;
+  
 
     public string DS_ENDERECO { get; set; }
     public string NR_CEP { get; set; }
@@ -46,11 +42,11 @@ public class Unidade : SeedWork.AggregateRoot
 
     public Unidade(string endereco, string cep, string numeroUnidade, int usuarioRegistro, string dsComplmento)
     {
-        this.endereco = endereco;
-        this.cep = cep;
-        this.numeroUnidade = numeroUnidade;
-        this.usuarioRegistro = usuarioRegistro;
-        this.dsComplmento = dsComplmento;
+        this.DS_ENDERECO = endereco;
+        this.NR_CEP = cep;
+        this.NR_UNIDADE = numeroUnidade;
+        this.US_REGISTRO = usuarioRegistro;
+        this.DS_COMPLMENTO = dsComplmento;
     }
 
     public void AddSala(Sala sala)
