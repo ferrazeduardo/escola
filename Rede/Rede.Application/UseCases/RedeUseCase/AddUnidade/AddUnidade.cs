@@ -23,22 +23,22 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
 
         NotFounException.IsNull(rede, "Rede não existe");
 
-        Unidade unidade = new Unidade(
-            endereco: request.endereco,
-            cep: request.cep,
-            numeroUnidade: request.numeroUnidade,
-            usuarioRegistro: request.usuarioRegistro,
-            dsComplmento: request.complemento,
-            rede: rede
-        );
+        // Unidade unidade = new Unidade(
+        //     endereco: request.endereco,
+        //     cep: request.cep,
+        //     numeroUnidade: request.numeroUnidade,
+        //     usuarioRegistro: request.usuarioRegistro,
+        //     dsComplmento: request.complemento,
+        //     rede: rede
+        // );
 
-        unidade.AddTelefoneRange(request.telefones);
-        rede.AddUnidade(unidade);
+        // unidade.AddTelefoneRange(request.telefones);
+        // rede.AddUnidade(unidade);
 
         await _unitOfWork.Commit(cancellationToken);
 
         AddUnidadePayload output = new();
-        output.id_unidade = unidade.Id;
+        // output.id_unidade = unidade.Id;
 
         return output;
     }
