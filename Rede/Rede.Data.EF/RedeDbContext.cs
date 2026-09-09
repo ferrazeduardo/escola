@@ -20,5 +20,6 @@ public class RedeDbContext  : DbContext
     {
         modelBuilder.ApplyConfiguration(new RedeConfiguration());
         modelBuilder.ApplyConfiguration(new UnidadeConfiguration());
+        modelBuilder.ApplyConfiguration(new RedeUnidadeConfiguration());
     }
 }
