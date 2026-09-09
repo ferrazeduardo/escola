@@ -8,6 +8,7 @@ public class RedeDbContext  : DbContext
 {
     public DbSet<Domain.Entity.Rede> Rede => Set<Domain.Entity.Rede>();
     public DbSet<Unidade> Unidade => Set<Unidade>();
+    public DbSet<RedeUnidade> RedeUnidade => Set<RedeUnidade>();
     
     
     public RedeDbContext(DbContextOptions<RedeDbContext> options) : base(options)
