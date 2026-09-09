@@ -26,10 +26,10 @@ public class PeriodoRepository : IPeriodoRepository
 
     public async Task<Periodo> Get(Expression<Func<Periodo, bool>> filtro, bool rastrear = true)
     {
-        var query = _context.Set<Periodo>();
+        var query = _context.Set<Periodo>().AsQueryable();
 
         if (!rastrear)
-            query.AsNoTracking();
+            query = query.AsNoTracking();
 
         return await query.FirstOrDefaultAsync(filtro);
 
@@ -38,10 +38,10 @@ public class PeriodoRepository : IPeriodoRepository
 
     public async Task<List<Periodo>> List(Expression<Func<Periodo, bool>> filtro, bool rastrear = true)
     {
-        var query = _context.Set<Periodo>();
-        
-        if(rastrear is false)
-            query.AsNoTracking();
+        var query = _context.Set<Periodo>().AsQueryable();
+
+        if (rastrear is false)
+            query = query.AsNoTracking();
 
         return await query.Where(filtro).ToListAsync();
     }

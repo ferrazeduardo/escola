@@ -24,6 +24,12 @@ public class UnidadeRepository : IUnidadeRepository
         await _context.Set<Unidade>().AddAsync(entity, cancellationToken);
     }
 
+    public async Task<List<Unidade>> ListarTodosPorRede(int id_rede)
+    {
+        var unidadesRede = await _context.Set<RedeUnidade>().Where(x => x.id_rede == id_rede).ToListAsync();
+        return await _context.Set<Unidade>().Where(x => unidadesRede.Any(y => y.id_unidade == x.Id)).ToListAsync();
+    }
+
     public Task<Unidade> ObterPorId(int id, bool rastreavel = false)
     {
         var query = _context.Set<Unidade>().AsQueryable();
