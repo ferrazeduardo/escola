@@ -10,35 +10,34 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
 {
     private readonly IRedeRepository _redeRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IRedeUnidadeRepository _redeUnidadeRepository;
+    private readonly IUnidadeRepository _unidadeRepository;
 
-    public AddUnidade(IRedeRepository redeRepository, IUnitOfWork unitOfWork)
+    public AddUnidade(IRedeRepository redeRepository, IUnitOfWork unitOfWork, IRedeUnidadeRepository redeUnidadeRepository, IUnidadeRepository unidadeRepository)
     {
         _redeRepository = redeRepository;
         _unitOfWork = unitOfWork;
+        _redeUnidadeRepository = redeUnidadeRepository;
+        _unidadeRepository = unidadeRepository;
     }
 
     public async Task<AddUnidadePayload> Handle(AddUnidadeInput request, CancellationToken cancellationToken)
     {
-        Domain.Entity.Rede rede = await _redeRepository.ObterPorId(request.id_rede);
+        var rede = _redeRepository.ObterPorId(request.id_rede);
+        var unidade = _unidadeRepository.ObterPorId(request.id_unidade);
 
+        await Task.WhenAll(rede, unidade);
         NotFounException.IsNull(rede, "Rede não existe");
+        NotFounException.IsNull(unidade, "Unidade não existe");
 
-        // Unidade unidade = new Unidade(
-        //     endereco: request.endereco,
-        //     cep: request.cep,
-        //     numeroUnidade: request.numeroUnidade,
-        //     usuarioRegistro: request.usuarioRegistro,
-        //     dsComplmento: request.complemento,
-        //     rede: rede
-        // );
+        RedeUnidade redeUnidade = new RedeUnidade();
+        redeUnidade.id_rede = request.id_rede;
+        redeUnidade.id_unidade = request.id_unidade;
 
-        // unidade.AddTelefoneRange(request.telefones);
-        // rede.AddUnidade(unidade);
 
         await _unitOfWork.Commit(cancellationToken);
 
         AddUnidadePayload output = new();
-        // output.id_unidade = unidade.Id;
 
         return output;
     }
