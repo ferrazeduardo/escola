@@ -34,7 +34,7 @@ public class AddUnidade : IRequestHandler<AddUnidadeInput, AddUnidadePayload>
         redeUnidade.id_rede = request.id_rede;
         redeUnidade.id_unidade = request.id_unidade;
 
-
+        await _redeUnidadeRepository.Inserir(redeUnidade, cancellationToken);
         await _unitOfWork.Commit(cancellationToken);
 
         AddUnidadePayload output = new();
