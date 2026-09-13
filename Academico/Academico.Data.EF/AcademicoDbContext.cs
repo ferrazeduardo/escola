@@ -12,6 +12,7 @@ public class AcademicoDbContext : DbContext
     public DbSet<Periodo> Periodo => Set<Periodo>();
     public DbSet<Turma> Turma => Set<Turma>();
     public DbSet<Historico> Historico => Set<Historico>();
+    public DbSet<SerieMateriaRede> SerieMateriaRede => Set<SerieMateriaRede>();
     public AcademicoDbContext(DbContextOptions<AcademicoDbContext> options) : base(options)
     {
         
@@ -24,5 +25,6 @@ public class AcademicoDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PeriodoConfiguration());
         modelBuilder.ApplyConfiguration(new TurmaConfiguration());
         modelBuilder.ApplyConfiguration(new HistoricoConfiguration());
+        modelBuilder.ApplyConfiguration(new SerieMateriaRedeConfiguration());
     }
 }
