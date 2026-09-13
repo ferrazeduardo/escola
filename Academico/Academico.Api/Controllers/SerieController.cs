@@ -1,5 +1,4 @@
 using Academico.Application.UseCases.Serie.AddMateriaRede;
-using Academico.Application.UseCases.Serie.BindSeriePeriodoUnidade;
 using Academico.Application.UseCases.Serie.Create;
 using Academico.Application.UseCases.Serie.Get;
 using MediatR;
@@ -28,13 +27,6 @@ namespace Academico.Api.Controllers
 
         [HttpPost("materia-rede")]
         public async Task<IActionResult> AddMateriaRede([FromBody] AddMateriaRedeInput request)
-        {
-            var result = await _mediator.Send(request);
-            return Ok(result);
-        }
-
-        [HttpPost("serie-periodo-unidade")]
-        public async Task<IActionResult> BindSeriePeriodoUnidade([FromBody] BindSeriePeriodoUnidadeInput request)
         {
             var result = await _mediator.Send(request);
             return Ok(result);

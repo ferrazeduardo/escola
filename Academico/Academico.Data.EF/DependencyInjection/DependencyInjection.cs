@@ -18,7 +18,7 @@ public static class DependencyInjection
         services.AddScoped<IPeriodoRepository, PeriodoRepository>();
         services.AddScoped<ISerieRepository, SerieRepository>();
         services.AddScoped<ISerieMateriaRedeRepository, SerieMateriaRedeRepository>();
-        services.AddScoped<ISeriePeriodoUnidadeRepository, SeriePeriodoUnidadeRepository>();
+        services.AddScoped<ITurmaRepository, TurmaRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddDbContext<AcademicoDbContext>(options =>
         options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));

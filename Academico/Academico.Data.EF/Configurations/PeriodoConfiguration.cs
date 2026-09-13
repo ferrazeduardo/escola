@@ -10,6 +10,7 @@ public class PeriodoConfiguration : IEntityTypeConfiguration<Periodo>
     public void Configure(EntityTypeBuilder<Periodo> builder)
     {
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.NR_ANO).IsRequired();
         builder.Property(x => x.ST_PERIODO).IsRequired();
         builder.Property(x => x.DT_INICIO).IsRequired();

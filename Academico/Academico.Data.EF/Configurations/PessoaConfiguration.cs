@@ -17,6 +17,8 @@ public class PessoaConfiguration : IEntityTypeConfiguration<Pessoa>
         .HasMaxLength(200)
         .IsRequired();
 
-        
+        builder.HasMany(x => x.Historicos)
+        .WithOne()
+        .HasForeignKey(x => x.ID_ALUNO);
     }
 }

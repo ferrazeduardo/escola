@@ -4,7 +4,7 @@ using Academico.Domain.SeedWork;
 
 namespace Academico.Domain.Interface.Repository;
 
-public interface ISeriePeriodoUnidadeRepository : IRepository<SeriePeriodoUnidade>
+public interface ITurmaRepository : IRepository<Turma>
 {
 
 }

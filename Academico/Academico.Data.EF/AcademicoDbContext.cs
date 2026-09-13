@@ -10,6 +10,8 @@ public class AcademicoDbContext : DbContext
     public DbSet<Pessoa> Pessoa => Set<Pessoa>();
     public DbSet<Serie> Serie => Set<Serie>();
     public DbSet<Periodo> Periodo => Set<Periodo>();
+    public DbSet<Turma> Turma => Set<Turma>();
+    public DbSet<Historico> Historico => Set<Historico>();
     public AcademicoDbContext(DbContextOptions<AcademicoDbContext> options) : base(options)
     {
         
@@ -20,5 +22,7 @@ public class AcademicoDbContext : DbContext
         modelBuilder.ApplyConfiguration(new PessoaConfiguration());
         modelBuilder.ApplyConfiguration(new SerieConfiguration());
         modelBuilder.ApplyConfiguration(new PeriodoConfiguration());
+        modelBuilder.ApplyConfiguration(new TurmaConfiguration());
+        modelBuilder.ApplyConfiguration(new HistoricoConfiguration());
     }
 }

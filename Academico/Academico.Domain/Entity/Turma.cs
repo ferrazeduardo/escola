@@ -5,8 +5,16 @@ namespace Academico.Domain.Entity;
 
 public class Turma : AggregateRoot
 {
-    public string SG_TURMA { get; set; }
-    public int periodosId { get; private set; }
-    public int unidadeId { get; private set; }
-    public string nrSala { get; private set; }
+    public Turma(string sgTurma, int idPeriodo, int idUnidade, string nrSala)
+    {
+        SG_TURMA = sgTurma;
+        ID_PERIODO = idPeriodo;
+        ID_UNIDADE = idUnidade;
+        NR_SALA = nrSala;
+    }
+
+    public string SG_TURMA { get; private set; }
+    public int ID_PERIODO { get; private set; }
+    public int ID_UNIDADE { get; private set; }
+    public string NR_SALA { get; private set; }
 }

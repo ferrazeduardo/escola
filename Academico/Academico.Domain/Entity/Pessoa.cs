@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Academico.Domain.Exception;
 using Academico.Domain.SeedWork;
 using Academico.Domain.Validator;
@@ -29,7 +30,7 @@ public class Pessoa : AggregateRoot
     public DateTime DH_CREATE { get; set; }
 
     public ICollection<Responsavel> Responsaveis { get; private set; } = [];
-
+    public ICollection<Historico> Historicos { get; set; } = [];
     public void AddResponsavel(Responsavel responsavel)
     {
         Responsaveis.Add(responsavel);
@@ -43,6 +44,12 @@ public class Pessoa : AggregateRoot
     public void JaSalvoBanco(Pessoa pessoa)
     {
         ExcecaoDeDominio.HaError(pessoa is not null && this.Equals(pessoa), "Pessoa já estava cadastrada");
+    }
+
+    public void Matricular(int idTurma)
+    {
+        ExcecaoDeDominio.HaError(Historicos.Any(x => x.ID_TURMA == idTurma), "Aluno já matriculado nessa turma");
+        Historicos.Add(new Historico(Id, idTurma));
     }
 
 
