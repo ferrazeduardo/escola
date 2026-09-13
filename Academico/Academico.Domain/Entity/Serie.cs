@@ -20,9 +20,7 @@ public class Serie : AggregateRoot
     public ICollection<SerieMateriaRede> SerieMateriaRede { get; private set; } = [];
 
 
-    public int periodosId { get; private set; }
-    public int unidadeId { get; private set; }
-    public string nrSala { get; private set; }
+
     public SeriePeriodoUnidade SeriePeriodoUnidade { get; private set; } = new();
 
     public void Ativar()

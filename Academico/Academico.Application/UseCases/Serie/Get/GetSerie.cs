@@ -31,13 +31,13 @@ public class GetSerie : IRequestHandler<GetSerieInput, GetSerieOutput>
             materias = await _materiaRepository.ListByIds(serie.materiasId);
 
 
-        AppDomain.Periodo periodo = null;
-        if (serie.periodosId > 0)
-            periodo = await _periodoRepository.Get(x => x.Id == serie.periodosId);
+        // AppDomain.Periodo periodo = null;
+        // if (serie.periodosId > 0)
+        //     periodo = await _periodoRepository.Get(x => x.Id == serie.periodosId);
 
         return new GetSerieOutput
         {
-            serie = new SerieModelOutput(serie.Id, serie.NR_SERIE, serie.nrSala, materias, periodo?.NR_ANO ?? 0)
+            serie = new SerieModelOutput(serie.Id, serie.NR_SERIE, materias)
         };
     }
 }
