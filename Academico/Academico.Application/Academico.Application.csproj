@@ -37,6 +37,7 @@
     <Folder Include="UseCases/Turma/" />
     <Folder Include="UseCases/Turma/Common/" />
     <Folder Include="UseCases/Turma/Get/" />
+    <Folder Include="UseCases/Turma/List/" />
   </ItemGroup>
 
   <ItemGroup>
