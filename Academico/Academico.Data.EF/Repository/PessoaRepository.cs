@@ -47,6 +47,11 @@ public class PessoaRepository : IPessoaRepository
         return await query.Where(filtro).ToListAsync();
     }
 
+    public async Task<int> Count(Expression<Func<Pessoa, bool>> filtro)
+    {
+        return await _context.Set<Pessoa>().CountAsync(filtro);
+    }
+
     public async Task<SearchOutput<Pessoa>> Search(SearchInput input)
     {
         var query = _context.Set<Pessoa>().AsNoTracking();
