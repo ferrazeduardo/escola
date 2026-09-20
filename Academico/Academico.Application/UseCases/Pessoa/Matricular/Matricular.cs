@@ -36,14 +36,26 @@ public class Matricular : IRequestHandler<MatricularInput, MatricularOutput>
         var aluno = await _pessoaRepository.Get(x => x.Id == request.alunoId);
         NotFoundException.IsNull(aluno, "Aluno não existe");
 
-        var qtdAlunosMatriculados = await _pessoaRepository.Count(x => x.Historicos.Any(h => h.ID_TURMA == turma.Id));
+        await _unitOfWork.BeginTransaction(cancellationToken);
+        try
+        {
+            turma = await _turmaRepository.GetComLock(turma.Id, cancellationToken);
 
-        _verificadorDeVagaService.Verificar(turma, unidade, qtdAlunosMatriculados);
+            var qtdAlunosMatriculados = await _pessoaRepository.Count(x => x.Historicos.Any(h => h.ID_TURMA == turma.Id));
 
-        aluno.Matricular(turma.Id);
+            _verificadorDeVagaService.Verificar(turma, unidade, qtdAlunosMatriculados);
 
-        await _pessoaRepository.Update(aluno, cancellationToken);
-        await _unitOfWork.Commit(cancellationToken);
+            aluno.Matricular(turma.Id);
+
+            await _pessoaRepository.Update(aluno, cancellationToken);
+            await _unitOfWork.Commit(cancellationToken);
+            await _unitOfWork.CommitTransaction(cancellationToken);
+        }
+        catch
+        {
+            await _unitOfWork.RollbackTransaction(cancellationToken);
+            throw;
+        }
 
         return new MatricularOutput(aluno.Id, turma.Id);
     }

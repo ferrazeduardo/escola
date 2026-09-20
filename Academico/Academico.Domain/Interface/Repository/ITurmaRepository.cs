@@ -6,5 +6,5 @@ namespace Academico.Domain.Interface.Repository;
 
 public interface ITurmaRepository : IRepository<Turma>
 {
-
+    Task<Turma> GetComLock(int id, CancellationToken cancellationToken);
 }

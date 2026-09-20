@@ -36,6 +36,13 @@ public class TurmaRepository : ITurmaRepository
         return await query.FirstOrDefaultAsync(filtro);
     }
 
+    public async Task<Turma> GetComLock(int id, CancellationToken cancellationToken)
+    {
+        return await _context.Set<Turma>()
+            .FromSqlInterpolated($"SELECT * FROM \"Turma\" WHERE \"Id\" = {id} FOR UPDATE")
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
     public async Task<List<Turma>> List(Expression<Func<Turma, bool>> filtro, bool rastrear = true)
     {
         var query = _context.Set<Turma>().AsQueryable();
