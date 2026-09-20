@@ -34,7 +34,6 @@
     <Folder Include="UseCases/Serie/Common/" />
     <Folder Include="UseCases/Serie/Create/" />
     <Folder Include="UseCases/Serie/Get/" />
-    <Folder Include="UseCases/Turma/" />
     <Folder Include="UseCases/Turma/Common/" />
     <Folder Include="UseCases/Turma/Get/" />
     <Folder Include="UseCases/Turma/List/" />
