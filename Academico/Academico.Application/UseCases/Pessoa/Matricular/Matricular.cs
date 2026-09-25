@@ -31,14 +31,11 @@ public class Matricular : IRequestHandler<MatricularInput, MatricularOutput>
         await _unitOfWork.BeginTransaction(cancellationToken);
         try
         {
-
-            var turma = await _turmaRepository.GetComLock(request.turmaId, cancellationToken);
-            NotFoundException.IsNull(turma, "Turma não existe");
-
+            (Domain.Entity.Turma turma, Domain.Entity.Pessoa aluno) = await GetAlunoETurma(request, cancellationToken);
             var unidade = await _unidadeClient.Obter(turma.ID_UNIDADE);
-            NotFoundException.IsNull(unidade, "Unidade não existe");
 
-            var aluno = await _pessoaRepository.Get(x => x.Id == request.alunoId);
+            NotFoundException.IsNull(unidade, "Unidade não existe");
+            NotFoundException.IsNull(turma, "Turma não existe");
             NotFoundException.IsNull(aluno, "Aluno não existe");
 
             var qtdAlunosMatriculados = await _pessoaRepository.Count(x => x.Historicos.Any(h => h.ID_TURMA == turma.Id));
@@ -58,5 +55,16 @@ public class Matricular : IRequestHandler<MatricularInput, MatricularOutput>
             throw;
         }
 
+    }
+
+    private async Task<(Domain.Entity.Turma turma, Domain.Entity.Pessoa aluno)> GetAlunoETurma(MatricularInput request, CancellationToken cancellationToken)
+    {
+        var turmaAsync = _turmaRepository.GetComLock(request.turmaId, cancellationToken);
+        var alunoAsync = _pessoaRepository.Get(x => x.Id == request.alunoId);
+        await Task.WhenAll(turmaAsync, alunoAsync);
+
+        var turma = await turmaAsync;
+        var aluno = await alunoAsync;
+        return (turma, aluno);
     }
 }
