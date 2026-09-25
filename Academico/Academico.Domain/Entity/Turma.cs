@@ -17,4 +17,6 @@ public class Turma : AggregateRoot
     public int ID_PERIODO { get; private set; }
     public int ID_UNIDADE { get; private set; }
     public string NR_SALA { get; private set; }
+
+
 }

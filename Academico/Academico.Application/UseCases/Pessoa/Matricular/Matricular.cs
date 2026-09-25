@@ -27,19 +27,19 @@ public class Matricular : IRequestHandler<MatricularInput, MatricularOutput>
 
     public async Task<MatricularOutput> Handle(MatricularInput request, CancellationToken cancellationToken)
     {
-        var turma = await _turmaRepository.Get(x => x.Id == request.turmaId);
-        NotFoundException.IsNull(turma, "Turma não existe");
-
-        var unidade = await _unidadeClient.Obter(turma.ID_UNIDADE);
-        NotFoundException.IsNull(unidade, "Unidade não existe");
-
-        var aluno = await _pessoaRepository.Get(x => x.Id == request.alunoId);
-        NotFoundException.IsNull(aluno, "Aluno não existe");
 
         await _unitOfWork.BeginTransaction(cancellationToken);
         try
         {
-            turma = await _turmaRepository.GetComLock(turma.Id, cancellationToken);
+
+            var turma = await _turmaRepository.GetComLock(request.turmaId, cancellationToken);
+            NotFoundException.IsNull(turma, "Turma não existe");
+
+            var unidade = await _unidadeClient.Obter(turma.ID_UNIDADE);
+            NotFoundException.IsNull(unidade, "Unidade não existe");
+
+            var aluno = await _pessoaRepository.Get(x => x.Id == request.alunoId);
+            NotFoundException.IsNull(aluno, "Aluno não existe");
 
             var qtdAlunosMatriculados = await _pessoaRepository.Count(x => x.Historicos.Any(h => h.ID_TURMA == turma.Id));
 
@@ -50,6 +50,7 @@ public class Matricular : IRequestHandler<MatricularInput, MatricularOutput>
             await _pessoaRepository.Update(aluno, cancellationToken);
             await _unitOfWork.Commit(cancellationToken);
             await _unitOfWork.CommitTransaction(cancellationToken);
+            return new MatricularOutput(aluno.Id, turma.Id);
         }
         catch
         {
@@ -57,6 +58,5 @@ public class Matricular : IRequestHandler<MatricularInput, MatricularOutput>
             throw;
         }
 
-        return new MatricularOutput(aluno.Id, turma.Id);
     }
 }
