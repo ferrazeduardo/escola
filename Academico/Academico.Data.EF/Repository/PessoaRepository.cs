@@ -44,7 +44,7 @@ public class PessoaRepository : IPessoaRepository
         if (!rastrear)
             query = query.AsNoTracking();
 
-        return await query.Where(filtro).ToListAsync();
+        return await query.Where(filtro).Include(p => p.Historicos).ThenInclude(h => h.Notas).ToListAsync();
     }
 
     public async Task<int> Count(Expression<Func<Pessoa, bool>> filtro)

@@ -3,7 +3,6 @@ using MediatR;
 
 namespace Academico.Application.UseCases.Pessoa.Delete;
 
-public class DeletePessoaInput : IRequest<DeletePessoaOutput>
+public record DeletePessoaInput(int id) : IRequest<DeletePessoaOutput>
 {
-    public int id { get; set; }
 }

@@ -30,7 +30,7 @@ public class Pessoa : AggregateRoot
     public DateTime DH_CREATE { get; set; }
 
     public ICollection<Responsavel> Responsaveis { get; private set; } = [];
-    public ICollection<Historico> Historicos { get; set; } = [];
+    public ICollection<Historico> Historicos { get; private set; } = [];
     public void AddResponsavel(Responsavel responsavel)
     {
         Responsaveis.Add(responsavel);
@@ -67,5 +67,12 @@ public class Pessoa : AggregateRoot
     public void Update(string cpf, string nome, int rg)
     {
         throw new NotImplementedException();
+    }
+
+    public void AddNota(List<Nota> notas)
+    {
+        var historico = Historicos.FirstOrDefault(h => h.Id == notas.First().ID_HISTORICO) ?? throw new ExcecaoDeDominio($"Historico {notas.First().ID_HISTORICO} não encontrado");
+        foreach (var nota in notas)
+            historico.AddNotas(nota);
     }
 }
