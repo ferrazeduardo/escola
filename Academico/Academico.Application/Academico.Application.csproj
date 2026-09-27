@@ -27,6 +27,7 @@
     <Folder Include="UseCases/Pessoa/Create/" />
     <Folder Include="UseCases/Pessoa/Delete/" />
     <Folder Include="UseCases/Pessoa/Get/" />
+    <Folder Include="UseCases/Pessoa/LancarFrequencia/" />
     <Folder Include="UseCases/Pessoa/LancarNota/" />
     <Folder Include="UseCases/Pessoa/List/" />
     <Folder Include="UseCases/Pessoa/Update/" />

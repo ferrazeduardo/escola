@@ -75,4 +75,11 @@ public class Pessoa : AggregateRoot
         foreach (var nota in notas)
             historico.AddNotas(nota);
     }
+
+    public void AddFrequencia(List<Frequencia> frequencias)
+    {
+        var historico = Historicos.FirstOrDefault(h => h.Id == frequencias.First().ID_HISTORICO) ?? throw new ExcecaoDeDominio($"Historico {frequencias.First().ID_HISTORICO} não encontrado");
+        foreach(var frequencia in frequencias)
+            historico.AddFrequencia(frequencia);
+    }
 }

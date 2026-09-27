@@ -15,13 +15,18 @@ public class Historico : SeedWork.Entity
 
     }
 
-    public int ID_ALUNO {get; private set;}
-    public int ID_TURMA {get; private set;}
-    public ICollection<Nota> Notas {get; private set;} = [];
-    public ICollection<Frequencia> Frequencias {get; private set;} = [];
+    public int ID_ALUNO { get; private set; }
+    public int ID_TURMA { get; private set; }
+    public ICollection<Nota> Notas { get; private set; } = [];
+    public ICollection<Frequencia> Frequencias { get; private set; } = [];
 
     public void AddNotas(Nota notas)
     {
-       Notas.Add(notas);
+        Notas.Add(notas);
+    }
+
+    internal void AddFrequencia(Frequencia frequencia)
+    {
+        Frequencias.Add(frequencia);
     }
 }

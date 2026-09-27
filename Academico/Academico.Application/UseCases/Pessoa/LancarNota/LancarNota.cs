@@ -32,7 +32,7 @@ public class LancarNota : IRequestHandler<LancarNotaInput, LancarNotaOutput>
 
             pessoa.AddNota(notas);
         }
-
+        await _unitOfWork.Commit(cancellationToken);
         return new LancarNotaOutput();
     }
 
