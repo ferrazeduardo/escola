@@ -14,5 +14,8 @@ public class HistoricoConfiguration : IEntityTypeConfiguration<Historico>
 
         builder.Property(x => x.ID_ALUNO).IsRequired();
         builder.Property(x => x.ID_TURMA).IsRequired();
+
+        builder.HasMany(x => x.Notas).WithOne().HasForeignKey(x => x.ID_HISTORICO);
+        builder.HasMany(x => x.Frequencias).WithOne().HasForeignKey(x => x.ID_HISTORICO);
     }
 }
