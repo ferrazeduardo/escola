@@ -82,4 +82,10 @@ public class Pessoa : AggregateRoot
         foreach(var frequencia in frequencias)
             historico.AddFrequencia(frequencia);
     }
+
+    public void TransferirTurma(int historicoId, int turmaNovaId)
+    {
+        var historico = Historicos.FirstOrDefault(h => h.Id == historicoId) ?? throw new ExcecaoDeDominio($"Historico {historicoId} não encontrado");
+        historico.TransferirTurma(turmaNovaId);
+    }
 }

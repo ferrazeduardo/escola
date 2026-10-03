@@ -30,6 +30,7 @@
     <Folder Include="UseCases/Pessoa/LancarFrequencia/" />
     <Folder Include="UseCases/Pessoa/LancarNota/" />
     <Folder Include="UseCases/Pessoa/List/" />
+    <Folder Include="UseCases/Pessoa/Transferencia/" />
     <Folder Include="UseCases/Pessoa/Update/" />
     <Folder Include="UseCases/Serie/" />
     <Folder Include="UseCases/Serie/AddMateriaRede/" />

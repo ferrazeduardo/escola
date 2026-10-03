@@ -29,4 +29,9 @@ public class Historico : SeedWork.Entity
     {
         Frequencias.Add(frequencia);
     }
+
+    internal void TransferirTurma(int turmaNovaId)
+    {
+        ID_TURMA = turmaNovaId;
+    }
 }
