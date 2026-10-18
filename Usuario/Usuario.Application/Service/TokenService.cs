@@ -2,6 +2,7 @@ using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Usuario.Domain.Interface.Service;
 using domain = Usuario.Domain.Entity;
@@ -9,12 +10,18 @@ namespace Usuario.Application.Service;
 
 public  class TokenService : ITokenService
 {
+    private string _secretKey;
+
+    public TokenService(IConfiguration configuration)
+    {
+        _secretKey  = configuration["Jwt:Secret"];
+    }
+
     public  string GerarToken(domain.Usuario usuario)
     {
         
-        var secretKey = "6v9kX4n2Qw8zP5sJ7rL1yM3bT9uC0fHk";
         var key = new SymmetricSecurityKey(
-            Encoding.UTF8.GetBytes(secretKey));
+            Encoding.UTF8.GetBytes(_secretKey));
 
         var credentials = new SigningCredentials(
             key,
