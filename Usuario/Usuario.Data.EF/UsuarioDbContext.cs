@@ -11,6 +11,7 @@ public class UsuarioDbContext : DbContext
     public DbSet<Usuario.Domain.Entity.Perfil> perfis => Set<Usuario.Domain.Entity.Perfil>();
     public DbSet<Usuario.Domain.Entity.PerfilUsuarioRede> perfilUsuarioRedes => Set<Usuario.Domain.Entity.PerfilUsuarioRede>();
     public DbSet<Usuario.Domain.Entity.Permissao> permissoes => Set<Usuario.Domain.Entity.Permissao>();
+    public DbSet<Usuario.Domain.Entity.PerfilPermissao> perfilPermissoes => Set<Usuario.Domain.Entity.PerfilPermissao>();
 
     public UsuarioDbContext(DbContextOptions<UsuarioDbContext> options) : base(options)
     {
@@ -21,6 +22,7 @@ public class UsuarioDbContext : DbContext
         modelBuilder.ApplyConfiguration(new UsuarioConfiguration());
         modelBuilder.ApplyConfiguration(new PerfilConfiguration());
         modelBuilder.ApplyConfiguration(new PerfilUsuarioRedeConfiguration());
+        modelBuilder.ApplyConfiguration(new PerfilPermissaoConfiguration());
         modelBuilder.ApplyConfiguration(new PermissaoConfiguration());
     }
 }
