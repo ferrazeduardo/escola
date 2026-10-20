@@ -20,6 +20,7 @@
     <ItemGroup>
       <Folder Include="Service/" />
       <Folder Include="UseCases/Common/" />
+      <Folder Include="UseCases/PerfilUseCase/AddPermissao/" />
       <Folder Include="UseCases/PerfilUseCase/Get/" />
       <Folder Include="UseCases/PerfilUseCase/Update/" />
       <Folder Include="UseCases/UsuarioUseCase/AddPerfilUsuarioRede/" />
