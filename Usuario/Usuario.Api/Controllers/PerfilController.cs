@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Usuario.Application.UseCases.PerfilUseCase.AddPermissao;
 using Usuario.Application.UseCases.PerfilUseCase.Create;
 using Usuario.Application.UseCases.PerfilUseCase.Get;
 using Usuario.Application.UseCases.PerfilUseCase.List;
@@ -42,6 +43,13 @@ namespace Usuario.Api.Controllers
         public async Task<IActionResult> Update([FromBody] UpdatePerfilInput updatePerfilInput, CancellationToken cancellationToken)
         {
             var response = await _mediator.Send(updatePerfilInput, cancellationToken);
+            return Ok(response);
+        }
+
+        [HttpPost("vincular/permissao")]
+        public async Task<IActionResult> AddPermissao([FromBody] AddPermissaoInput addPermissaoPerfilInput, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(addPermissaoPerfilInput, cancellationToken);
             return Ok(response);
         }
     }
