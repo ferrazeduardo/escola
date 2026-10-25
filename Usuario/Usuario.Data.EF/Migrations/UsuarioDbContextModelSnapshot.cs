@@ -64,22 +64,11 @@ namespace Usuario.Data.EF.Migrations
                     b.Property<int>("ID_USUARIO")
                         .HasColumnType("integer");
 
-                    b.Property<int>("PerfilId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("RedeId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("integer");
-
                     b.HasKey("ID_PERFIL", "ID_REDE", "ID_USUARIO");
 
-                    b.HasIndex("PerfilId");
+                    b.HasIndex("ID_REDE");
 
-                    b.HasIndex("RedeId");
-
-                    b.HasIndex("UsuarioId");
+                    b.HasIndex("ID_USUARIO");
 
                     b.ToTable("perfilUsuarioRedes");
                 });
@@ -180,19 +169,19 @@ namespace Usuario.Data.EF.Migrations
                 {
                     b.HasOne("Usuario.Domain.Entity.Perfil", "Perfil")
                         .WithMany()
-                        .HasForeignKey("PerfilId")
+                        .HasForeignKey("ID_PERFIL")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Usuario.Domain.Entity.Rede", "Rede")
                         .WithMany()
-                        .HasForeignKey("RedeId")
+                        .HasForeignKey("ID_REDE")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Usuario.Domain.Entity.Usuario", "Usuario")
                         .WithMany("perfilUsuarioRedes")
-                        .HasForeignKey("UsuarioId")
+                        .HasForeignKey("ID_USUARIO")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

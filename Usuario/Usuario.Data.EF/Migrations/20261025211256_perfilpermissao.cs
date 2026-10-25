@@ -19,6 +19,19 @@ namespace Usuario.Data.EF.Migrations
                 name: "FK_PerfilUsuarioRede_UsuarioRede_ID_USUARIO_REDE",
                 table: "PerfilUsuarioRede");
 
+            migrationBuilder.AddColumn<int>(
+                name: "ID_REDE",
+                table: "PerfilUsuarioRede",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.Sql(@"
+                UPDATE ""PerfilUsuarioRede"" p
+                SET ""ID_REDE"" = ur.""ID_REDE"", ""ID_USUARIO_REDE"" = ur.""ID_USUARIO""
+                FROM ""UsuarioRede"" ur
+                WHERE ur.""Id"" = p.""ID_USUARIO_REDE"";");
+
             migrationBuilder.DropTable(
                 name: "UsuarioRede");
 
@@ -33,12 +46,12 @@ namespace Usuario.Data.EF.Migrations
             migrationBuilder.RenameColumn(
                 name: "ID_USUARIO_REDE",
                 table: "perfilUsuarioRedes",
-                newName: "UsuarioId");
+                newName: "ID_USUARIO");
 
             migrationBuilder.RenameIndex(
                 name: "IX_PerfilUsuarioRede_ID_USUARIO_REDE",
                 table: "perfilUsuarioRedes",
-                newName: "IX_perfilUsuarioRedes_UsuarioId");
+                newName: "IX_perfilUsuarioRedes_ID_USUARIO");
 
             migrationBuilder.AlterColumn<string>(
                 name: "DS_REDE",
@@ -57,34 +70,6 @@ namespace Usuario.Data.EF.Migrations
                 oldClrType: typeof(int),
                 oldType: "integer")
                 .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-            migrationBuilder.AddColumn<int>(
-                name: "ID_REDE",
-                table: "perfilUsuarioRedes",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "ID_USUARIO",
-                table: "perfilUsuarioRedes",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "PerfilId",
-                table: "perfilUsuarioRedes",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
-
-            migrationBuilder.AddColumn<int>(
-                name: "RedeId",
-                table: "perfilUsuarioRedes",
-                type: "integer",
-                nullable: false,
-                defaultValue: 0);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_perfilUsuarioRedes",
@@ -119,35 +104,30 @@ namespace Usuario.Data.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_perfilUsuarioRedes_PerfilId",
+                name: "IX_perfilUsuarioRedes_ID_REDE",
                 table: "perfilUsuarioRedes",
-                column: "PerfilId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_perfilUsuarioRedes_RedeId",
-                table: "perfilUsuarioRedes",
-                column: "RedeId");
+                column: "ID_REDE");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_perfilUsuarioRedes_Perfil_PerfilId",
+                name: "FK_perfilUsuarioRedes_Perfil_ID_PERFIL",
                 table: "perfilUsuarioRedes",
-                column: "PerfilId",
+                column: "ID_PERFIL",
                 principalTable: "Perfil",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_perfilUsuarioRedes_Rede_RedeId",
+                name: "FK_perfilUsuarioRedes_Rede_ID_REDE",
                 table: "perfilUsuarioRedes",
-                column: "RedeId",
+                column: "ID_REDE",
                 principalTable: "Rede",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_perfilUsuarioRedes_Usuario_UsuarioId",
+                name: "FK_perfilUsuarioRedes_Usuario_ID_USUARIO",
                 table: "perfilUsuarioRedes",
-                column: "UsuarioId",
+                column: "ID_USUARIO",
                 principalTable: "Usuario",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -157,15 +137,15 @@ namespace Usuario.Data.EF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_perfilUsuarioRedes_Perfil_PerfilId",
+                name: "FK_perfilUsuarioRedes_Perfil_ID_PERFIL",
                 table: "perfilUsuarioRedes");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_perfilUsuarioRedes_Rede_RedeId",
+                name: "FK_perfilUsuarioRedes_Rede_ID_REDE",
                 table: "perfilUsuarioRedes");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_perfilUsuarioRedes_Usuario_UsuarioId",
+                name: "FK_perfilUsuarioRedes_Usuario_ID_USUARIO",
                 table: "perfilUsuarioRedes");
 
             migrationBuilder.DropTable(
@@ -179,27 +159,11 @@ namespace Usuario.Data.EF.Migrations
                 table: "perfilUsuarioRedes");
 
             migrationBuilder.DropIndex(
-                name: "IX_perfilUsuarioRedes_PerfilId",
-                table: "perfilUsuarioRedes");
-
-            migrationBuilder.DropIndex(
-                name: "IX_perfilUsuarioRedes_RedeId",
+                name: "IX_perfilUsuarioRedes_ID_REDE",
                 table: "perfilUsuarioRedes");
 
             migrationBuilder.DropColumn(
                 name: "ID_REDE",
-                table: "perfilUsuarioRedes");
-
-            migrationBuilder.DropColumn(
-                name: "ID_USUARIO",
-                table: "perfilUsuarioRedes");
-
-            migrationBuilder.DropColumn(
-                name: "PerfilId",
-                table: "perfilUsuarioRedes");
-
-            migrationBuilder.DropColumn(
-                name: "RedeId",
                 table: "perfilUsuarioRedes");
 
             migrationBuilder.RenameTable(
@@ -207,12 +171,12 @@ namespace Usuario.Data.EF.Migrations
                 newName: "PerfilUsuarioRede");
 
             migrationBuilder.RenameColumn(
-                name: "UsuarioId",
+                name: "ID_USUARIO",
                 table: "PerfilUsuarioRede",
                 newName: "ID_USUARIO_REDE");
 
             migrationBuilder.RenameIndex(
-                name: "IX_perfilUsuarioRedes_UsuarioId",
+                name: "IX_perfilUsuarioRedes_ID_USUARIO",
                 table: "PerfilUsuarioRede",
                 newName: "IX_PerfilUsuarioRede_ID_USUARIO_REDE");
 

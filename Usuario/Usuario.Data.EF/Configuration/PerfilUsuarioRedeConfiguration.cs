@@ -10,5 +10,9 @@ public class PerfilUsuarioRedeConfiguration : IEntityTypeConfiguration<PerfilUsu
     public void Configure(EntityTypeBuilder<PerfilUsuarioRede> builder)
     {
         builder.HasKey(x => new { x.ID_PERFIL, x.ID_REDE, x.ID_USUARIO });
+
+        builder.HasOne(x => x.Perfil).WithMany().HasForeignKey(x => x.ID_PERFIL);
+        builder.HasOne(x => x.Usuario).WithMany(x => x.perfilUsuarioRedes).HasForeignKey(x => x.ID_USUARIO);
+        builder.HasOne(x => x.Rede).WithMany().HasForeignKey(x => x.ID_REDE);
     }
 }
