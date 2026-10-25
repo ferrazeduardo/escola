@@ -40,34 +40,93 @@ namespace Usuario.Data.EF.Migrations
                     b.ToTable("Perfil", (string)null);
                 });
 
+            modelBuilder.Entity("Usuario.Domain.Entity.PerfilPermissao", b =>
+                {
+                    b.Property<int>("ID_PERFIL")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ID_PERMISSAO")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID_PERFIL", "ID_PERMISSAO");
+
+                    b.ToTable("PerfilPermissao", (string)null);
+                });
+
             modelBuilder.Entity("Usuario.Domain.Entity.PerfilUsuarioRede", b =>
                 {
                     b.Property<int>("ID_PERFIL")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ID_USUARIO_REDE")
+                    b.Property<int>("ID_REDE")
                         .HasColumnType("integer");
 
-                    b.HasKey("ID_PERFIL", "ID_USUARIO_REDE");
+                    b.Property<int>("ID_USUARIO")
+                        .HasColumnType("integer");
 
-                    b.HasIndex("ID_USUARIO_REDE");
+                    b.Property<int>("PerfilId")
+                        .HasColumnType("integer");
 
-                    b.ToTable("PerfilUsuarioRede");
+                    b.Property<int>("RedeId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("ID_PERFIL", "ID_REDE", "ID_USUARIO");
+
+                    b.HasIndex("PerfilId");
+
+                    b.HasIndex("RedeId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("perfilUsuarioRedes");
+                });
+
+            modelBuilder.Entity("Usuario.Domain.Entity.Permissao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("DS_MODULO")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.Property<string>("DS_PERMISSAO")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<string>("PL_PERMISSAO")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Permisao", (string)null);
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.Rede", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DS_REDE")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rede", (string)null);
+                    b.ToTable("Rede");
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.Usuario", b =>
@@ -117,83 +176,34 @@ namespace Usuario.Data.EF.Migrations
                     b.ToTable("Usuario", (string)null);
                 });
 
-            modelBuilder.Entity("Usuario.Domain.Entity.UsuarioRede", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ID_REDE")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ID_USUARIO")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ID_REDE");
-
-                    b.HasIndex("ID_USUARIO");
-
-                    b.ToTable("UsuarioRede");
-                });
-
             modelBuilder.Entity("Usuario.Domain.Entity.PerfilUsuarioRede", b =>
                 {
                     b.HasOne("Usuario.Domain.Entity.Perfil", "Perfil")
-                        .WithMany("perfilUsuarioRedes")
-                        .HasForeignKey("ID_PERFIL")
+                        .WithMany()
+                        .HasForeignKey("PerfilId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Usuario.Domain.Entity.UsuarioRede", "UsuarioRede")
+                    b.HasOne("Usuario.Domain.Entity.Rede", "Rede")
+                        .WithMany()
+                        .HasForeignKey("RedeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Usuario.Domain.Entity.Usuario", "Usuario")
                         .WithMany("perfilUsuarioRedes")
-                        .HasForeignKey("ID_USUARIO_REDE")
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Perfil");
 
-                    b.Navigation("UsuarioRede");
-                });
+                    b.Navigation("Rede");
 
-            modelBuilder.Entity("Usuario.Domain.Entity.UsuarioRede", b =>
-                {
-                    b.HasOne("Usuario.Domain.Entity.Rede", "rede")
-                        .WithMany("usuarioRedes")
-                        .HasForeignKey("ID_REDE")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Usuario.Domain.Entity.Usuario", "usuario")
-                        .WithMany("usuarioRedes")
-                        .HasForeignKey("ID_USUARIO")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("rede");
-
-                    b.Navigation("usuario");
-                });
-
-            modelBuilder.Entity("Usuario.Domain.Entity.Perfil", b =>
-                {
-                    b.Navigation("perfilUsuarioRedes");
-                });
-
-            modelBuilder.Entity("Usuario.Domain.Entity.Rede", b =>
-                {
-                    b.Navigation("usuarioRedes");
+                    b.Navigation("Usuario");
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.Usuario", b =>
-                {
-                    b.Navigation("usuarioRedes");
-                });
-
-            modelBuilder.Entity("Usuario.Domain.Entity.UsuarioRede", b =>
                 {
                     b.Navigation("perfilUsuarioRedes");
                 });

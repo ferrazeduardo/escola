@@ -4,6 +4,10 @@ namespace Usuario.Domain.Entity;
 
 public class PerfilPermissao
 {
+    public PerfilPermissao()
+    {
+        
+    }
 
     public PerfilPermissao(int id_perfil, int id_permissao)
     {
@@ -11,6 +15,6 @@ public class PerfilPermissao
         this.ID_PERMISSAO = id_permissao;
     }
 
-    public int ID_PERFIL { get; set; }
-    public int ID_PERMISSAO { get; set; }
+    public int ID_PERFIL { get; private set; }
+    public int ID_PERMISSAO { get; private set; }
 }
