@@ -4,7 +4,7 @@ using Usuario.Domain.SeedWork;
 
 namespace Usuario.Domain.Interface.Repository;
 
-public interface IPerfilPermissaoRepository : IRepository<PerfilPermissao>
+public interface IPerfilPermissaoRepository 
 {
-
+    Task Inserir(PerfilPermissao entity, CancellationToken cancellationToken);
 }
