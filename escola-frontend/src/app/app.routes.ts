@@ -13,5 +13,10 @@ export const routes: Routes = [
     canActivate: [authGuard],
     loadComponent: () => import('./features/dashboard/dashboard').then((m) => m.Dashboard),
   },
+  {
+    path: 'cadastro-rede',
+    canActivate: [guestGuard],
+    loadComponent: () => import('./features/cadastro-rede/cadastro-rede.component').then((m) => m.CadastroRedeComponent),
+  },
   { path: '**', redirectTo: 'login' },
 ];
