@@ -1,3 +1,22 @@
-<p>
-  layout works!
-</p>
+<div class="flex min-h-screen bg-slate-50">
+  <aside class="w-60 border-r border-slate-200 bg-white p-4">
+    <div class="mb-6 font-semibold text-slate-900">Sistema Escolar</div>
+    @for (grupo of menu(); track grupo.label) {
+    <p>{{grupo.label}}</p>
+    @for (item of grupo.filhos; track item.rota) {
+    <a [routerLink]="item.rota" routerLinkActive="bg-indigo-50 text-indigo-700"
+      class="block rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-slate-100">{{item.label}}</a>
+    }
+    }
+  </aside>
+
+  <div class="flex-1">
+    <header class="flex justify-end border-b border-slate-200 bg-white px-6 py-3">
+      <span class="mr-4 text-sm text-slate-600">{{ user()?.email }}</span>
+      <button (click)="logout()" class="text-sm text-slate-700">Sair</button>
+    </header>
+     <main class="p-6">
+      <router-outlet />
+    </main>
+  </div>
+</div>
