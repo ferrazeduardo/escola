@@ -8,13 +8,15 @@ interface TokenClaims {
   userId?: string;
   email?: string;
   exp?: number;
+  permissoes?: string[]
 }
 
 const TOKEN_KEY = 'escola_token';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly tokenSignal = signal<string | null>(localStorage.getItem(TOKEN_KEY));
+  private readonly tokenSignal = signal<string | null>(sessionStorage.getItem(TOKEN_KEY));
+  readonly permissoes = computed(() => this.currentUser()?.permissoes || []);
 
   readonly isAuthenticated = computed(() => {
     const claims = this.decodeToken(this.tokenSignal());
@@ -23,7 +25,14 @@ export class AuthService {
 
   readonly currentUser = computed(() => this.decodeToken(this.tokenSignal()));
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) { }
+
+  temPermissao(codigo?: string): boolean{
+    if(!codigo) return true;
+    const lista = this.permissoes();
+    if(lista.length === 0) return true; // apagar, apenas para testar
+    return lista.includes(codigo)
+  }
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http
@@ -32,7 +41,7 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem(TOKEN_KEY);
+    sessionStorage.removeItem(TOKEN_KEY);
     this.tokenSignal.set(null);
   }
 
@@ -41,7 +50,7 @@ export class AuthService {
   }
 
   private setToken(token: string): void {
-    localStorage.setItem(TOKEN_KEY, token);
+    sessionStorage.setItem(TOKEN_KEY, token);
     this.tokenSignal.set(token);
   }
 
