@@ -4,11 +4,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router ,RouterLink} from '@angular/router';
 import { RedeService } from '../../../app/core/services/rede.service';
 import { ProblemDetailsResponse } from '../../core/models/problemDetailsResponse';
+import { CadastroUsuarioRaizComponent } from '../cadastro-usuario-raiz/cadastro-usuario-raiz.component';
 
 @Component({
   selector: 'app-cadastro-rede',
   templateUrl: './cadastro-rede.component.html',
-  imports: [ReactiveFormsModule,RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, CadastroUsuarioRaizComponent],
   styleUrls: ['./cadastro-rede.component.css']
 })
 export class CadastroRedeComponent implements OnInit {
@@ -25,6 +26,16 @@ export class CadastroRedeComponent implements OnInit {
   readonly errorMessage = signal<string | null>(null);
   readonly successMessage = signal<string | null>(null);
 
+  readonly etapas = ['Usuário raiz', 'Rede'];
+  /** 0 = usuário raiz, 1 = rede */
+  readonly etapa = signal(0);
+  private readonly codigoUsuario = signal<number | null>(null);
+
+  onUsuarioCadastrado(codigo: number): void {
+    this.codigoUsuario.set(codigo);
+    this.etapa.set(1);
+  }
+
   constructor() { }
 
   ngOnInit() {
@@ -32,6 +43,11 @@ export class CadastroRedeComponent implements OnInit {
 
 
   submit(): void {
+    if (this.codigoUsuario() === null) {
+      this.etapa.set(0);
+      return;
+    }
+
     if (this.form.invalid || this.isLoading()) {
       this.form.markAllAsTouched();
       return;
@@ -46,7 +62,7 @@ export class CadastroRedeComponent implements OnInit {
       .salvar({
         razaoSocial: razaoSocial!.trim(),
         cnpj: cnpj!.replace(/\D/g, ''), // envia só os dígitos
-        codigoUsuario: 0, // TODO: definir conforme a decisão do backend (ver aviso)
+        codigoUsuario: this.codigoUsuario()!,
       })
       .subscribe({
         next: () => {
