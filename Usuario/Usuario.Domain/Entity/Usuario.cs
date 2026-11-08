@@ -7,13 +7,14 @@ namespace Usuario.Domain.Entity;
 
 public class Usuario : AggregationRoot
 {
-    public Usuario(string nmUsuario, DateTime dtNascimento, string nrCpf, string dsEmail, string segSenha)
+    public Usuario(string nmUsuario, DateTime dtNascimento, string nrCpf, string dsEmail, string segSenha, bool stRaiz = false)
     {
         NM_USUARIO = nmUsuario;
         DT_NASCIMENTO = DateTime.SpecifyKind(dtNascimento, DateTimeKind.Utc);
         NR_CPF = nrCpf;
         DS_EMAIL = dsEmail;
         SEG_SENHA = segSenha;
+        ST_RAIZ = stRaiz;
         ValidacaoCreate();
     }
 
@@ -41,6 +42,7 @@ public class Usuario : AggregationRoot
     public string SEG_SENHA { get; private set; }
     public byte[] SALT { get; private set; }
     public string DS_EMAIL { get; set; }
+    public bool ST_RAIZ { get; set; } = false;
 
     public void SetSalt()
     {

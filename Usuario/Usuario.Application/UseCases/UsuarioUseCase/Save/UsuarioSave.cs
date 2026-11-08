@@ -21,7 +21,7 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
 
     public async Task<UsuarioSaveOutput> Handle(UsuarioSaveInput request, CancellationToken cancellationToken)
     {
-        domain.Usuario usuario = new(request.nome, request.dataNascimento, request.cpf, request.email, request.senha);
+        domain.Usuario usuario = new(request.nome, request.dataNascimento, request.cpf, request.email, request.senha, request.ehRaiz);
         usuario.SetSalt();
         usuario.SetSenhaCriptografada();
 

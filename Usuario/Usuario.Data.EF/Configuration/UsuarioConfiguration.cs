@@ -21,6 +21,7 @@ public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario.Domain.Enti
         builder.Property(x => x.DS_EMAIL).HasMaxLength(50).IsRequired();
         builder.HasIndex(x => x.DS_EMAIL).IsUnique(true);
         builder.Property(x => x.SALT).HasMaxLength(100).IsRequired();
+        builder.Property(x => x.ST_RAIZ).IsRequired().HasDefaultValue(false);
 
     }
 }
