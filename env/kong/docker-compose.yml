@@ -8,7 +8,7 @@ services:
       - escola
     ports:
       - "8000:8000"
-      - "8001:8001"
+      - "127.0.0.1:8001:8001" # painel admin: só acessível deste computador
     environment:
       KONG_DATABASE: "off"
       KONG_PROXY_LISTEN: "0.0.0.0:8000"

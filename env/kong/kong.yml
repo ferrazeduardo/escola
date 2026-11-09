@@ -1,6 +1,18 @@
 _format_version: "3.0"
 _transform: true
 
+# Plugins globais: valem para todas as rotas.
+# O cors roda antes do jwt e responde sozinho a pergunta do navegador (OPTIONS),
+# que vem sem token. Os pedidos de verdade continuam passando pelo jwt de cada rota.
+plugins:
+  - name: cors
+    config:
+      origins:
+        - http://localhost:4200
+      methods: [GET, POST, PUT, DELETE, OPTIONS]
+      headers: [Authorization, Content-Type]
+      max_age: 3600
+
 services:
   - name: api_usuario_service
     host: usuarioapi
