@@ -14,57 +14,63 @@ plugins:
       max_age: 3600
 
 services:
-  - name: api_usuario_service
+  - name: api_login_service
     host: usuarioapi
     port: 8080
     protocol: http
     routes:
-      - name: usuario_routes
-        paths:
-          - /auth
-        strip_path: true
-        plugins:
-          - name: jwt
-
       - name: login
         paths:
           - /login
         strip_path: false
         # sem JWT aqui — rota pública
 
+  - name: api_usuario_service
+    host: usuarioapi
+    port: 8080
+    protocol: http
+    plugins:
+      - name: jwt
+    routes:
+      - name: usuario_routes
+        paths:
+          - /auth
+        strip_path: true
+  
+  - name: api_save_rede
+    host: redeapi
+    port: 8080
+    protocol: http
+    routes:
+      - name: save_rede_route
+        paths:
+          - /rede/save$  # regex: só exatamente /rede/create
+        methods: [POST,OPTIONS]
+        strip_path: false
+
   - name: api_rede_service
     host: redeapi
     port: 8080
     protocol: http
+    plugins:
+      - name: jwt
     routes:
       - name: rede_routes
         paths:
           - /redes
         strip_path: true
-        plugins:
-          - name: jwt
     
   - name: api_academico_service
     host: academicoapi
     port: 8080
     protocol: http
+    plugins:
+      - name: jwt
     routes:
       - name: academico_routes
         paths:
           - /academico
         strip_path: true
-        plugins:
-          - name: jwt
-
-      # - name: api_academico_service
-  #   host: host.docker.internal
-  #   port: 
-  #   protocol: http
-  #   routes:
-  #     - name: academico_routes
-  #       paths:
-  #         - /academico
-  #       strip_path: true
 
 consumers:
   - username: escola
