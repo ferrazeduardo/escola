@@ -44,17 +44,26 @@ namespace Rede.Data.EF.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.Property<string>("ST_REDE")
-                        .IsRequired()
+                    b.Property<bool>("ST_REDE")
                         .HasMaxLength(1)
-                        .HasColumnType("character varying(1)");
-
-                    b.Property<int>("US_REGISTRO")
-                        .HasColumnType("integer");
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
                     b.ToTable("Rede");
+                });
+
+            modelBuilder.Entity("Rede.Domain.Entity.RedeUnidade", b =>
+                {
+                    b.Property<int>("id_rede")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("id_unidade")
+                        .HasColumnType("integer");
+
+                    b.HasKey("id_rede", "id_unidade");
+
+                    b.ToTable("RedeUnidade");
                 });
 
             modelBuilder.Entity("Rede.Domain.Entity.Unidade", b =>
@@ -78,9 +87,6 @@ namespace Rede.Data.EF.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
 
-                    b.Property<int?>("ID_REDE")
-                        .HasColumnType("integer");
-
                     b.Property<string>("NR_CEP")
                         .IsRequired()
                         .HasMaxLength(8)
@@ -91,29 +97,19 @@ namespace Rede.Data.EF.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)");
 
-                    b.Property<string>("ST_UNIDADE")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("character varying(1)");
+                    b.Property<bool>("ST_UNIDADE")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("US_REGISTRO")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ID_REDE");
-
                     b.ToTable("Unidade", (string)null);
                 });
 
             modelBuilder.Entity("Rede.Domain.Entity.Unidade", b =>
                 {
-                    b.HasOne("Rede.Domain.Entity.Rede", "Rede")
-                        .WithMany("Unidades")
-                        .HasForeignKey("ID_REDE")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .HasConstraintName("FK_REDE_UNIDADE");
-
                     b.OwnsMany("Rede.Domain.Entity.Sala", "Salas", b1 =>
                         {
                             b1.Property<int>("Id")
@@ -144,7 +140,7 @@ namespace Rede.Data.EF.Migrations
                                 .HasForeignKey("ID_UNIDADE");
                         });
 
-                    b.OwnsMany("Rede.Domain.Entity.Telefone", "Telefones", b1 =>
+                    b.OwnsMany("Rede.Domain.ValueObject.Telefone", "Telefones", b1 =>
                         {
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
@@ -170,16 +166,9 @@ namespace Rede.Data.EF.Migrations
                                 .HasForeignKey("ID_UNIDADE");
                         });
 
-                    b.Navigation("Rede");
-
                     b.Navigation("Salas");
 
                     b.Navigation("Telefones");
-                });
-
-            modelBuilder.Entity("Rede.Domain.Entity.Rede", b =>
-                {
-                    b.Navigation("Unidades");
                 });
 #pragma warning restore 612, 618
         }

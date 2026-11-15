@@ -26,7 +26,6 @@ public class UnidadeConfiguration : IEntityTypeConfiguration<Unidade>
             .IsRequired();
 
         builder.Property(x => x.ST_UNIDADE)
-            .HasMaxLength(1)
             .IsRequired();
 
         builder.Property(x => x.DH_REGISTRO)

@@ -43,7 +43,6 @@ public class Rede : AggregateRoot
     public string NR_CNPJ { get; set; }
     public DateTime DH_REGISTRO { get; set; }
     public bool ST_REDE { get; set; }
-    public ICollection<int> Unidades { get; private set; } = [];
 
 
     public void Ativar()
@@ -54,11 +53,6 @@ public class Rede : AggregateRoot
     public void Desativar()
     {
         ST_REDE = false;
-    }
-    
-    public void RemoveAllUnidades()
-    {
-        Unidades.Clear();
     }
 
 }

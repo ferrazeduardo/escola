@@ -10,32 +10,13 @@ public class Unidade : SeedWork.AggregateRoot
 
     public string DS_ENDERECO { get; set; }
     public string NR_CEP { get; set; }
-    public bool ST_UNIDADE { get; set; }
+    public Boolean ST_UNIDADE { get; set; }
     public DateTime DH_REGISTRO { get; set; }
     public string NR_UNIDADE { get; set; }
     public int US_REGISTRO { get; set; }
-    public int IdRede { get; set; }
     public ICollection<Telefone> Telefones { get; private set; } = new List<Telefone>();
 
     public ICollection<Sala> Salas { get; private set; } = [];
-    public Unidade(
-        string endereco,
-        string cep,
-        string numeroUnidade,
-        int usuarioRegistro,
-        string dsComplmento,
-        Rede rede)
-    {
-        DS_ENDERECO = endereco;
-        NR_CEP = cep;
-        NR_UNIDADE = numeroUnidade;
-        US_REGISTRO = usuarioRegistro;
-        DH_REGISTRO = DateTime.UtcNow;
-        Rede = rede;
-        DS_COMPLMENTO = dsComplmento;
-        Ativar();
-    }
-
     public Unidade()
     {
 
@@ -48,6 +29,8 @@ public class Unidade : SeedWork.AggregateRoot
         this.NR_UNIDADE = numeroUnidade;
         this.US_REGISTRO = usuarioRegistro;
         this.DS_COMPLMENTO = dsComplmento;
+        this.DH_REGISTRO = DateTime.UtcNow;
+        Ativar();
     }
 
     public void AddSala(Sala sala)
@@ -73,7 +56,6 @@ public class Unidade : SeedWork.AggregateRoot
     public void SetTelefones(List<Telefone> telefones) => Telefones = telefones;
 
     public string DS_COMPLMENTO { get; set; }
-    public Rede? Rede { get; private set; }
 
     public void Ativar()
     {
