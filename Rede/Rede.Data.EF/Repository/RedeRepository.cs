@@ -26,7 +26,7 @@ public class RedeRepository : IRedeRepository
 
     public async Task<Domain.Entity.Rede> ObterPorId(int id, bool rastreavel = false)
     {
-        var redeQuery = _context.Set<Domain.Entity.Rede>().Include(x => x.Unidades).ThenInclude(u => u.Salas).AsQueryable();
+        var redeQuery = _context.Set<Domain.Entity.Rede>().AsQueryable();
 
         if (rastreavel is false)
             redeQuery = redeQuery.AsNoTracking();
