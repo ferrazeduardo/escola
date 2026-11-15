@@ -18,7 +18,7 @@ public class SaveRede : IRequestHandler<SaveRedeInput, SaveRedePayload>
     
     public async Task<SaveRedePayload> Handle(SaveRedeInput request, CancellationToken cancellationToken)
     {
-        Domain.Entity.Rede rede = new(request.razaoSocial,request.cnpj,request.codigoUsuario);
+        Domain.Entity.Rede rede = new(request.razaoSocial,request.cnpj);
         
         await _redeRepository.Inserir(rede,cancellationToken);
         await _unitOfWork.Commit(cancellationToken);

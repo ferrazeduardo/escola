@@ -6,12 +6,11 @@ namespace Rede.Domain.Entity;
 
 public class Rede : AggregateRoot
 {
-    public Rede(string razaoSocial, string nrCnpj,int codigoUsuario)
+    public Rede(string razaoSocial, string nrCnpj)
     {
         RZ_SOCIAL = razaoSocial;
         NR_CNPJ = nrCnpj;
         DH_REGISTRO = DateTime.UtcNow;
-        US_REGISTRO = codigoUsuario;
         Ativar();
 
         // AddDomainEvent(new RedeSalvarEvent(razaoSocial,Id));
@@ -43,9 +42,7 @@ public class Rede : AggregateRoot
     public string RZ_SOCIAL { get; set; }
     public string NR_CNPJ { get; set; }
     public DateTime DH_REGISTRO { get; set; }
-    public int US_REGISTRO { get; set; }
     public bool ST_REDE { get; set; }
-    
     public ICollection<int> Unidades { get; private set; } = [];
 
 

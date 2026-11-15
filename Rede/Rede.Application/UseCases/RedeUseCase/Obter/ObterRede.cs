@@ -23,15 +23,7 @@ public class ObterRede : IRequestHandler<ObterRedeInput, ObterRedeOutput>
         obterRedePayload.id = rede.Id;
         obterRedePayload.razaoSocial = rede.RZ_SOCIAL;
         obterRedePayload.cnpj = rede.NR_CNPJ;
-        obterRedePayload.Unidades = rede.Unidades?.Select(u => new UnidadeDto
-        {
-            id = u.Id,
-            complemento = u.DS_COMPLMENTO,
-            endereco = u.DS_ENDERECO,
-            numero = u.NR_UNIDADE,
-            cep = u.NR_CEP,
-            status = u.ST_UNIDADE
-        }).ToList();
+       
        
         return obterRedePayload;
     }

@@ -3,9 +3,6 @@ using MediatR;
 
 namespace Rede.Application.UseCases.RedeUseCase.Save;
 
-public class SaveRedeInput : IRequest<SaveRedePayload>
+public record SaveRedeInput(string razaoSocial, string cnpj) : IRequest<SaveRedePayload>
 {
-        public string razaoSocial { get; set; }
-        public string cnpj { get; set; }
-        public int codigoUsuario { get; set; }
 }

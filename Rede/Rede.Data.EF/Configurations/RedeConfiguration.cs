@@ -24,9 +24,6 @@ public class RedeConfiguration : IEntityTypeConfiguration<Domain.Entity.Rede>
             .HasMaxLength(1)
             .IsRequired();
 
-        builder.Property(x => x.US_REGISTRO)
-            .IsRequired();
-
         builder.Property(x => x.DH_REGISTRO)
             .IsRequired();
 
