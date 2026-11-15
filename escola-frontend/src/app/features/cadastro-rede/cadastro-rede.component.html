@@ -24,19 +24,9 @@
       <div class="flex items-start transition-transform duration-500 ease-in-out"
         [style.transform]="'translateX(-' + etapa() * 100 + '%)'">
 
-        <!-- Slide 1: usuário raiz -->
+        <!-- Slide 1: rede -->
         <section class="w-full shrink-0 px-1" [attr.inert]="etapa() !== 0 ? '' : null"
           [attr.aria-hidden]="etapa() !== 0">
-          <app-cadastro-usuario-raiz (concluido)="onUsuarioCadastrado($event)" />
-          <p class="mt-5 text-center text-sm text-slate-500">
-            Já tem cadastro?
-            <a routerLink="/login" class="font-medium text-indigo-600 hover:text-indigo-500">Voltar ao Login</a>
-          </p>
-        </section>
-
-        <!-- Slide 2: rede -->
-        <section class="w-full shrink-0 px-1" [attr.inert]="etapa() !== 1 ? '' : null"
-          [attr.aria-hidden]="etapa() !== 1">
           <h2 class="text-2xl font-bold text-gray-800">Cadastrar nova rede</h2>
           <p class="mt-2 text-sm text-slate-500">Informe os dados da rede de ensino</p>
 
@@ -46,12 +36,6 @@
               {{ errorMessage() }}
             </div>
             }
-            @if (successMessage()) {
-            <div class="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
-              {{ successMessage() }}
-            </div>
-            }
-
             <div>
               <label for="razaoSocial" class="block text-sm font-medium text-slate-700">Razão Social</label>
               <input id="razaoSocial" type="text" formControlName="razaoSocial" placeholder="Rede de Ensino Exemplo LTDA"
@@ -73,12 +57,28 @@
               }
             </div>
 
-            <button type="submit" [disabled]="isLoading() || successMessage()"
+            <button type="submit" [disabled]="isLoading()"
               class="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 py-2.5 text-sm font-semibold text-white shadow-sm shadow-indigo-600/20 transition hover:from-indigo-500 hover:to-violet-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40 disabled:cursor-not-allowed disabled:opacity-70">
-              {{ isLoading() ? 'Cadastrando...' : 'Cadastrar' }}
+              {{ isLoading() ? 'Cadastrando...' : 'Continuar' }}
             </button>
           </form>
+          <p class="mt-5 text-center text-sm text-slate-500">
+            Já tem cadastro?
+            <a routerLink="/login" class="font-medium text-indigo-600 hover:text-indigo-500">Voltar ao Login</a>
+          </p>
         </section>
+
+        <!-- Slide 2: usuário raiz -->
+        <section class="w-full shrink-0 px-1" [attr.inert]="etapa() !== 1 ? '' : null"
+          [attr.aria-hidden]="etapa() !== 1">
+          @if (successMessage()) {
+          <div class="mb-5 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+            {{ successMessage() }}
+          </div>
+          }
+          <app-cadastro-usuario-raiz (concluido)="onUsuarioCadastrado($event)" />
+        </section>
+
       </div>
     </div>
   </div>

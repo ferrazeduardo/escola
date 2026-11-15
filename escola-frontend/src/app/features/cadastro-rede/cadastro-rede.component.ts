@@ -26,14 +26,14 @@ export class CadastroRedeComponent implements OnInit {
   readonly errorMessage = signal<string | null>(null);
   readonly successMessage = signal<string | null>(null);
 
-  readonly etapas = ['Usuário raiz', 'Rede'];
-  /** 0 = usuário raiz, 1 = rede */
+  readonly etapas = ['Rede', 'Usuário raiz'];
+  /** 0 = rede, 1 = usuário raiz */
   readonly etapa = signal(0);
-  private readonly codigoUsuario = signal<number | null>(null);
+  private readonly codigoRede = signal<number | null>(null);
 
-  onUsuarioCadastrado(codigo: number): void {
-    this.codigoUsuario.set(codigo);
-    this.etapa.set(1);
+  onUsuarioCadastrado(_codigo: number): void {
+    this.successMessage.set('Cadastro concluído com sucesso! Redirecionando para o login...');
+    setTimeout(() => this.router.navigateByUrl('/login'), 2000);
   }
 
   constructor() { }
@@ -43,11 +43,6 @@ export class CadastroRedeComponent implements OnInit {
 
 
   submit(): void {
-    if (this.codigoUsuario() === null) {
-      this.etapa.set(0);
-      return;
-    }
-
     if (this.form.invalid || this.isLoading()) {
       this.form.markAllAsTouched();
       return;
@@ -62,13 +57,12 @@ export class CadastroRedeComponent implements OnInit {
       .salvar({
         razaoSocial: razaoSocial!.trim(),
         cnpj: cnpj!.replace(/\D/g, ''), // envia só os dígitos
-        codigoUsuario: this.codigoUsuario()!,
       })
       .subscribe({
-        next: () => {
+        next: (res) => {
           this.isLoading.set(false);
-          this.successMessage.set('Rede cadastrada com sucesso! Redirecionando para o login...');
-          setTimeout(() => this.router.navigateByUrl('/login'), 2000);
+          this.codigoRede.set(res.codigo);
+          this.etapa.set(1);
         },
         error: (err: HttpErrorResponse) => {
           this.isLoading.set(false);
