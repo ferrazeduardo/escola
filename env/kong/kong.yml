@@ -79,4 +79,10 @@ consumers:
 jwt_secrets:
   - consumer: escola
     key: escola_key
-    secret: 6v9kX4n2Qw8zP5sJ7rL1yM3bT9uC0fHk
+    secret: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlMaVCgJKms0wuMpGfA47
+      sIqwlHWhoIL0NNwkjtr57k21QZ++g0f8xp6QTuikqGdT2fVKnCHaRAeqi1pAqatL
+      03sl4kfPLzwXV8gRn6aP/96XLis7en3kFKtArv2SduQQ5Z6Hyhd2D8s3FRX6c9WU
+      HiP/zhz3RaFroUnB62GmzwA5YSdYNU9Os9PV0AbcDdGU5Hky86GAyBL0sIk18xNx
+      LkPiBBwjMvgrTOU8wd8MWe08OGOzeKYWXRij0uTToZWQZfZvvM6fqI0gbihvPRHK
+      lbyi8EyPvF8/GYe32OqUQGqjhvakqpcluE4PZJtg7Rpr8BlvaQpcwH7l2G9o8wpc
+      IQIDAQAB
