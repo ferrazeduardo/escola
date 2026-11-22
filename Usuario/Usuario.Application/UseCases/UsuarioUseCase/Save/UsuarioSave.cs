@@ -15,7 +15,7 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
     private IUnitOfWork _unitOfWork;
     private IMediator _mediator;
 
-    public UsuarioSave(IUsuarioRepository usuarioRepository, IUnitOfWork unitOfWork, IMediator mediator)
+    public UsuarioSave(IUsuarioRepository usuarioRepository, IUnitOfWork unitOfWork,IMediator mediator)
     {
         _usuarioRepository = usuarioRepository;
         _unitOfWork = unitOfWork;
@@ -32,7 +32,7 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
 
         await _unitOfWork.Commit(cancellationToken);
 
-        if (usuario.ST_RAIZ) await _mediator.Send(new AddPerfilUsuarioRedeInput(request.redeId, 1, usuario.Id), cancellationToken);
+        if(usuario.ST_RAIZ) await _mediator.Send(new AddPerfilUsuarioRedeInput(request.redeId, 1, usuario.Id), cancellationToken);
 
         UsuarioSaveOutput usuarioSaveOutput = new();
         usuarioSaveOutput.codigo = usuario.Id;
