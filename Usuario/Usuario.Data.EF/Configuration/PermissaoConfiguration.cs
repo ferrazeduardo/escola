@@ -42,6 +42,5 @@ public class PermissaoConfiguration : IEntityTypeConfiguration<Permissao>
         public const string Sistema = "Sistema";
     }
 
-    // Usado pelo seed do perfil Administrador (PerfilPermissaoConfiguration).
     public static readonly int[] TodosOsIds = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
 }
