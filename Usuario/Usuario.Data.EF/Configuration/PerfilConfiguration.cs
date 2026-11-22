@@ -15,7 +15,9 @@ public class PerfilConfiguration : IEntityTypeConfiguration<Usuario.Domain.Entit
 
         builder.Property(x => x.DS_PERFIL).HasMaxLength(100);
 
-
-
+        // Seed: perfil com todas as permissões, para ter quem administre os outros perfis.
+        builder.HasData(new { Id = AdministradorId, DS_PERFIL = "Administrador" });
     }
+
+    public const int AdministradorId = 1;
 }

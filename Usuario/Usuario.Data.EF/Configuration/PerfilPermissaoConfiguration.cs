@@ -13,5 +13,10 @@ public class PerfilPermissaoConfiguration : IEntityTypeConfiguration<PerfilPermi
         builder.HasKey(x => new {x.ID_PERFIL, x.ID_PERMISSAO});
         builder.Property(x => x.ID_PERFIL).IsRequired();
         builder.Property(x => x.ID_PERMISSAO).IsRequired();
+
+        // Seed: o perfil Administrador recebe todas as permissões.
+        builder.HasData(PermissaoConfiguration.TodosOsIds
+            .Select(idPermissao => new { ID_PERFIL = PerfilConfiguration.AdministradorId, ID_PERMISSAO = idPermissao })
+            .ToArray());
     }
 }

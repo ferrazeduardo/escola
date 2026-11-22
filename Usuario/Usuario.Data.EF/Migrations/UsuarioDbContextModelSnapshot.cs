@@ -38,6 +38,13 @@ namespace Usuario.Data.EF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Perfil", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DS_PERFIL = "Administrador"
+                        });
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.PerfilPermissao", b =>
@@ -51,6 +58,68 @@ namespace Usuario.Data.EF.Migrations
                     b.HasKey("ID_PERFIL", "ID_PERMISSAO");
 
                     b.ToTable("PerfilPermissao", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 1
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 2
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 3
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 4
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 5
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 6
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 7
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 8
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 9
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 10
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 11
+                        },
+                        new
+                        {
+                            ID_PERFIL = 1,
+                            ID_PERMISSAO = 12
+                        });
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.PerfilUsuarioRede", b =>
@@ -98,7 +167,96 @@ namespace Usuario.Data.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Permisao", (string)null);
+                    b.HasIndex("PL_PERMISSAO")
+                        .IsUnique();
+
+                    b.ToTable("Permissao", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Visualizar alunos",
+                            PL_PERMISSAO = "aluno.listar"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Cadastrar aluno",
+                            PL_PERMISSAO = "aluno.criar"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Gerenciar turmas",
+                            PL_PERMISSAO = "turma.gerenciar"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Lançar notas",
+                            PL_PERMISSAO = "nota.lancar"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Lançar frequência",
+                            PL_PERMISSAO = "frequencia.lancar"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Transferir aluno de turma",
+                            PL_PERMISSAO = "aluno.transferir"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DS_MODULO = "Rede",
+                            DS_PERMISSAO = "Gerenciar dados da rede",
+                            PL_PERMISSAO = "rede.gerenciar"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DS_MODULO = "Rede",
+                            DS_PERMISSAO = "Gerenciar unidades escolares",
+                            PL_PERMISSAO = "unidade.gerenciar"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DS_MODULO = "Rede",
+                            DS_PERMISSAO = "Gerenciar séries",
+                            PL_PERMISSAO = "serie.gerenciar"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DS_MODULO = "Sistema",
+                            DS_PERMISSAO = "Gerenciar usuários",
+                            PL_PERMISSAO = "usuario.gerenciar"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DS_MODULO = "Sistema",
+                            DS_PERMISSAO = "Gerenciar perfis",
+                            PL_PERMISSAO = "perfil.gerenciar"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            DS_MODULO = "Acadêmico",
+                            DS_PERMISSAO = "Matricular aluno em turma",
+                            PL_PERMISSAO = "aluno.matricular"
+                        });
                 });
 
             modelBuilder.Entity("Usuario.Domain.Entity.Rede", b =>
