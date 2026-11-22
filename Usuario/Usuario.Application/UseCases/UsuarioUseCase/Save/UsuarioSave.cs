@@ -1,4 +1,5 @@
 using MediatR;
+using Usuario.Application.UseCases.UsuarioUseCase.AddPerfilUsuarioRede;
 using Usuario.Application.UseCases.UsuarioUseCase.Save;
 using Usuario.Domain.Entity;
 using Usuario.Domain.Interface;
@@ -12,11 +13,13 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
 {
     private IUsuarioRepository _usuarioRepository;
     private IUnitOfWork _unitOfWork;
+    private IMediator _mediator;
 
-    public UsuarioSave(IUsuarioRepository usuarioRepository, IUnitOfWork unitOfWork)
+    public UsuarioSave(IUsuarioRepository usuarioRepository, IUnitOfWork unitOfWork, IMediator mediator)
     {
         _usuarioRepository = usuarioRepository;
         _unitOfWork = unitOfWork;
+        _mediator = mediator;
     }
 
     public async Task<UsuarioSaveOutput> Handle(UsuarioSaveInput request, CancellationToken cancellationToken)
@@ -28,6 +31,9 @@ public class UsuarioSave : IRequestHandler<UsuarioSaveInput, UsuarioSaveOutput>
         await _usuarioRepository.Inserir(usuario, cancellationToken);
 
         await _unitOfWork.Commit(cancellationToken);
+
+        if (usuario.ST_RAIZ) await _mediator.Send(new AddPerfilUsuarioRedeInput(request.redeId, 1, usuario.Id), cancellationToken);
+
         UsuarioSaveOutput usuarioSaveOutput = new();
         usuarioSaveOutput.codigo = usuario.Id;
         return usuarioSaveOutput;
